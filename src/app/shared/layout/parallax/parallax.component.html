@@ -1,5 +1,5 @@
 <!-- Enroll -->
-<section class="enroll overlay section" data-stellar-background-ratio="0.5">
+<section class="enroll overlay section" data-stellar-background-ratio="0.5" style="height:100vh;">
     <div class="container">
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
@@ -15,18 +15,22 @@
                             <form class="form" action="#">
                                 <div class="form-group">
                                     <label>Enter Your name</label>
-                                    <input name="name" type="text" placeholder="John Mathew">
+                                    <input name="name" type="text" [(ngModel)]="user.fName" placeholder="Enter you name" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Enter Your Email</label>
-                                    <input name="email" type="email" placeholder="john@youremail.com">
+                                    <input name="email" type="email" [(ngModel)]="user.email" placeholder="Enter your email address" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Type your messages</label>
-                                    <textarea name="message" placeholder="i would like to talking..."></textarea>
+                                    <label>Enter Your Phone</label>
+                                    <input name="phone" type="text" [(ngModel)]="user.phone" placeholder="Enter your phone without country code" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Enter Your Password</label>
+                                    <input name="password" type="password" [(ngModel)]="user.password" placeholder="Enter your password" required>
                                 </div>
                                 <div class="form-group button">
-                                    <button type="submit" class="btn">Register Now</button>
+                                    <button type="submit" class="btn" (click)="signupHandler()">Register Now</button>
                                 </div>
                             </form>
                             <!--/ End Form -->

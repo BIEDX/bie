@@ -1,105 +1,37 @@
 <!-- Slider Area -->
 <section class="home-slider">
-    <div class="slider-active">
-        <!-- Single Slider -->
-        <div class="single-slider overlay" style="background-image:url('../../../../assets/images/slider/slider-bg1.jpg')">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-md-8 col-12">
-                        <div class="slider-text" style="margin: 90px 0 0;">
-                            <!-- <h1>Perfect Template for <span>Education</span> & Courses Website</h1> -->
-                            <h1>Live Project in <span>Angular 7</span> with UX-UI & <span>Web API</span> by <span style="font-size: 48px;"> Learn Now</span></h1>
+    <p-carousel [value]="products" [numVisible]="1" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+        <!-- <ng-template pTemplate="header">
+            <h5>Basic</h5>
+        </ng-template> -->
+        <ng-template let-product pTemplate="item">
+            <div class="product-item single-slider overlay" [style.background-image]="'url(' + product.image + ')'">
+                <div class="product-item-content">
+                    <!-- <div class="p-mb-3"></div> -->
 
-                            <!-- <h1>Live Project in <span>Angular 7</span> with <span> full stack </span> development & <span>UX/UI</span> </h1> -->
-
-                            <p style="font-size:24px;">
-                                Build fullstack social networking web application like facebook or linkedin with Angular 7, Asp .Net Web API, SQL DB, HTML5, CSS3, Bootstarp & Angular Material
-                            </p>
-                            <h1 style="font-size: 46px;"><span>63rd Batch</span> starting from <span>8th June</span> 7:00 AM IST @ <span>Rs7000 / 100$</span> </h1>
-
-                            <div class="button" style="margin-top: 10px;">
-                                <a style="color: #fff; font-size: 30px;" href="http://learnnow.in/">@ http://learnnow.in/</a>
-                                <a href="courses.html" class="btn primary">Join Now !</a>
-                                <a href="about.html" class="btn">Ask For Demo</a>
-                            </div>
+                    <div class="slider-text">
+                        <h1>
+                            {{ product.name }} <br><span>{{ product.category }}</span> {{ product.subCategory }}
+                        </h1>
+                        <p>{{ product.description }}.</p>
+                        <div class="button">
+                            <a href="courses.html" class="btn primary">Our Courses</a>
+                            <a href="about.html" class="btn">About Learnedu</a>
                         </div>
+                        <!-- <h4 class="p-mb-1">{{product.name}}</h4>
+                        <h6 class="p-mt-0 p-mb-3">${{product.price}}</h6> -->
+                        <!-- <span [class]="'product-badge status-'+product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span> -->
                     </div>
+
                 </div>
             </div>
-        </div>
-        <!--/ End Single Slider -->
-        <!-- Single Slider -->
-        <!-- <div class="single-slider overlay" style="background-image:url('../../../../assets/images/slider/slider-bg2.jpg')">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-12">
-                        <div class="slider-text text-center" style="margin: 90px 0 0;">
-                        
-                            <h1> What <span>I will get</span> from this <span>course !</span></h1>
+        </ng-template>
+    </p-carousel>
 
-                            <p style="    font-size: 24px;  color: #fff;    padding: 0 10px;">
-
-                                <span style="color: #fff;">- Live / Real Time Project.</span>
-                                <span style="color: #FF9800;">- Live Sessions Led By Instructor.</span>
-                                <br>
-                                <span style="color: #FF9800;">- POC & Assignments Available.</span>
-                                <span style="color: #FFF;">- Recording Available for Life Time.</span>
-                                <br>
-                                <span style="color: #fff;">- Certificate Of Completion.</span>
-                                <span style="color: #FF9800;">- Unlimited Doubt Sessions.</span>
-                            </p>
-                            <br>
-                            <p style="font-size:24px;padding:0">Build fullstack social networking web application like facebook or linkedin with Angular 7, Asp .Net Web API, SQL DB, HTML5, CSS3, Bootstarp & Angular Material</p>
-                            <div class="button">
-                                <a style="color: #fff; font-size: 30px;" href="http://learnnow.in/">@ http://learnnow.in/</a>
-                                <a href="courses.html" class="btn primary">Our Courses</a>
-                                <a href="about.html" class="btn">About Learn Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!--/ End Single Slider -->
-        <!-- Single Slider -->
-        <!-- <div class="single-slider overlay" style="background-image:url('../../../../assets/images/slider/slider-bg3.jpg')">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 offset-lg-4 col-md-8 offset-md-4 col-12">
-                        <div class="slider-text text-right" style="margin: 90px 0 0;">
-                            
-                            <h1>Why from <span>Learn Now ?</span> </h1>
-
-                            <p style="    font-size: 24px;     color: #fff;     padding: 0 10px;">
-
-                                <span style="color: #FFF;">- Available on Mobile & Tablet.</span>
-                                <span style="color: #FF9800;">- Expert's Support 24/7.</span>
-                                <br>
-                                <span style="color: #FF9800;">- Job Assistance.</span>
-                                <span style="color: #FFF;">- Interview Assistance.</span>
-                                <br>
-                                <span style="color: #FFF;">- Production Based Knowledge.</span>
-                                <span style="color: #FF9800;">- Learn From Industry Experts.</span>
-                            </p>
-                            <br>
-                            <p style="font-size:24px;padding:0">Build fullstack social networking web application like facebook or linkedin with Angular 7, Asp .Net Web API, SQL DB, HTML5, CSS3, Bootstarp & Angular Material</p>
-
-                            <div class="button">
-                                <a style="color: #fff; font-size: 30px;" href="http://learnnow.in/">@ http://learnnow.in/</a>
-                                <a href="courses.html" class="btn primary">Our Courses</a>
-                                <a href="about.html" class="btn">About Learn Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!--/ End Single Slider -->
-    </div>
 </section>
 <!--/ End Slider Area -->
 
-<p-carousel [value]="products" [numVisible]="3" [numScroll]="3" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+<!-- <p-carousel [value]="products" [numVisible]="3" [numScroll]="3" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
     <ng-template pTemplate="header">
         <h5>Basic</h5>
     </ng-template>
@@ -117,22 +49,4 @@
         </div>
     </ng-template>
 </p-carousel>
-<br />
-<p-carousel [value]="products" [numVisible]="1" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
-    <ng-template pTemplate="header">
-        <h5>Basic</h5>
-    </ng-template>
-    <ng-template let-product pTemplate="item">
-        <div class="product-item">
-            <div class="product-item-content">
-                <div class="p-mb-3">
-                </div>
-                <div>
-                    <h4 class="p-mb-1">{{product.name}}</h4>
-                    <h6 class="p-mt-0 p-mb-3">${{product.price}}</h6>
-                    <span [class]="'product-badge status-'+product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>
-                </div>
-            </div>
-        </div>
-    </ng-template>
-</p-carousel>
+<br /> -->

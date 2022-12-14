@@ -1,1 +1,48 @@
-<p>latest-news works!</p>
+<!-- Blogs -->
+<section class="blog section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title">
+                    <h2>Latest <span>News</span></h2>
+                    <p>Mauris at varius orci. Vestibulum interdum felis eu nisl pulvinar, quis ultricies nibh. Sed ultricies ante vitae laoreet sagittis. In pellentesque viverra purus. Sed risus est, molestie nec hendrerit hendreri </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p-carousel [value]="products" [numVisible]="3" [numScroll]="3" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+                    <ng-template let-product pTemplate="item">
+                        <div class="product-item blog-slider">
+                            <div class="product-item-content">
+                                <div class="single-blog">
+                                    <div class="blog-head overlay">
+                                        <div class="date">
+                                            <h4>{{product.date | date:'dd'}}<span>{{product.date | date:'MMM'}}</span></h4>
+                                        </div>
+                                        <img src="{{product.image}}" alt="#">
+                                    </div>
+                                    <div class="blog-content">
+                                        <h4 class="blog-title"><a href="blog-single.html">{{product.name}}</a></h4>
+                                        <div class="blog-info">
+                                            <a href="#"><i class="fa fa-user"></i>By: {{product.subCategory}}</a>
+                                            <a href="#"><i class="fa fa-list"></i>{{product.category}}</a>
+                                            <a href="#"><i class="fa fa-heart-o"></i>{{product.rating}}</a>
+                                        </div>
+                                        <p>{{product.description}}</p>
+                                        <div class="button">
+                                            <a href="blog-single.html" class="btn">Read More<i class="fa fa-angle-double-right"></i></a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </p-carousel>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ End Blogs -->

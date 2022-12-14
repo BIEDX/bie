@@ -8,6 +8,16 @@ const routes: Routes = [
       import('./modules/static-pages/static-pages.module').then((m) => m.StaticModule),
   },
   {
+    path: 'auth',
+    loadChildren: () =>
+      import('./modules/auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
+    path: 'student',
+    loadChildren: () =>
+      import('./modules/student/student.module').then((m) => m.StudentModule),
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full'

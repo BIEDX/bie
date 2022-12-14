@@ -7,6 +7,9 @@ import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { StaticPageComponent } from './static-page.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { CourseComponent } from './pages/course/course.component';
+import { EventComponent } from './pages/event/event.component';
+import { BlogComponent } from './pages/blog/blog.component';
 
 
 @NgModule({
@@ -14,7 +17,10 @@ import { SharedModule } from 'src/app/shared/shared.module';
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    StaticPageComponent
+    StaticPageComponent,
+    CourseComponent,
+    EventComponent,
+    BlogComponent
   ],
   imports: [
     CommonModule,

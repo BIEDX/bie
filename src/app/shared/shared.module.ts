@@ -18,6 +18,8 @@ import { LatestNewsComponent } from './layout/latest-news/latest-news.component'
 import { ParallaxWeFocusComponent } from './layout/parallax-we-focus/parallax-we-focus.component';
 
 import {CarouselModule} from 'primeng/carousel';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,8 +40,9 @@ import {CarouselModule} from 'primeng/carousel';
   imports: [
     CommonModule,
     SharedRoutingModule,
-    
+    FormsModule,
     CarouselModule,
+    HttpClientModule
   ],  
   exports:[HeaderComponent,FooterComponent,CarouselComponent,WeProvideComponent,ParallaxComponent,PopularCourseComponent,
   OurTeamComponent,TestimonialComponent,UpcomingEventComponent,RibbonComponent,LatestNewsComponent,ParallaxWeFocusComponent]
