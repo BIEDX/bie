@@ -18,7 +18,7 @@ import { LatestNewsComponent } from './layout/latest-news/latest-news.component'
 import { ParallaxWeFocusComponent } from './layout/parallax-we-focus/parallax-we-focus.component';
 
 import {CarouselModule} from 'primeng/carousel';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SubscribeComponent } from './layout/subscribe/subscribe.component';
 
@@ -42,6 +42,7 @@ import { SubscribeComponent } from './layout/subscribe/subscribe.component';
   imports: [
     CommonModule,
     SharedRoutingModule,
+    ReactiveFormsModule,
     FormsModule,
     CarouselModule,
     HttpClientModule

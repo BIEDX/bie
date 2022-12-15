@@ -1,5 +1,5 @@
 <!-- Enroll -->
-<section class="enroll overlay section" data-stellar-background-ratio="0.5" style="height: 800px;" id="register">
+<section class="enroll overlay section" data-stellar-background-ratio="0.5" style="height: 1000px;" id="register">
     <div class="container">
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
@@ -11,31 +11,34 @@
                                 <h2>Enroll Today to participate in pre launch.</h2>
                                 <p>For a free and priority access to educational content, hands-on training, and a lot more! </p>
                             </div>
+                            <div *ngIf="errorResponse">
+                                <p class="my-2 text-danger">{{errorResponse.header.message}}</p>
+                            </div>
                             <!-- Form -->
-                            <form class="form" action="#">
+                            <form class="form" [formGroup]="userForm" action="#">
                                 <div class="form-group">
                                     <label>Enter Your name</label>
-                                    <input name="name" type="text" [(ngModel)]="user.fName" placeholder="Enter you name" required>
+                                    <input name="name" type="text" formControlName="name" placeholder="Enter you name" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Enter Your Email</label>
-                                    <input name="email" type="email" [(ngModel)]="user.email" placeholder="Enter your email address" required>
+                                    <input name="email" type="email" formControlName="email" placeholder="Enter your email address" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Enter Your Phone</label>
-                                    <input name="phone" type="text" [(ngModel)]="user.phone" placeholder="Enter your phone with country code" required>
+                                    <input name="phone" type="text" formControlName="phone" placeholder="Enter your phone with country code" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Country</label>
-                                    <input name="phone" type="text" [(ngModel)]="user.country" placeholder="Enter your country" required>
+                                    <input name="phone" type="text" formControlName="country" placeholder="Enter your country" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Affiliation</label>
-                                    <input name="phone" type="text" [(ngModel)]="user.affiliation" placeholder="Enter your affiliation" required>
+                                    <input name="phone" type="text" formControlName="affiliation" placeholder="Enter your affiliation" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Enter Your Password</label>
-                                    <input name="password" type="password" [(ngModel)]="user.password" placeholder="Enter your password" required>
+                                    <input name="password" type="password" formControlName="password" placeholder="Enter your password" required>
                                 </div>
                                 <div class="form-group button">
                                     <button type="submit" class="btn" (click)="signupHandler()">Register Now</button>
