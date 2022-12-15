@@ -10,6 +10,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { CourseComponent } from './pages/course/course.component';
 import { EventComponent } from './pages/event/event.component';
 import { BlogComponent } from './pages/blog/blog.component';
+import { LearnTopicComponent } from './pages/learnTopics/learn-topic/learn-topic.component';
+import { ConsultTopicComponent } from './pages/consult-topic/consult-topic.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { BlogComponent } from './pages/blog/blog.component';
     StaticPageComponent,
     CourseComponent,
     EventComponent,
-    BlogComponent
+    BlogComponent,
+    LearnTopicComponent,
+    ConsultTopicComponent
   ],
   imports: [
     CommonModule,

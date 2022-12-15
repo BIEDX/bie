@@ -9,6 +9,7 @@ import { ProviderUserAuthService } from 'src/app/core/providers/auth/provider-us
 })
 export class HeaderComponent implements OnInit {
   user: any = {}
+  phoneNo = '+6589525405'
   constructor(private router: Router, private userAuth: ProviderUserAuthService) { }
 
   ngOnInit(): void {
@@ -19,6 +20,15 @@ export class HeaderComponent implements OnInit {
       }
     )
   }
+
+  sendWhatsAppMessage(){
+    window.open('https://wa.me/' + this.phoneNo, "_blank")
+  }
+  
+  mailTo(){
+    window.open("mailto:ask@biedx.com", "_blank")
+  }
+
   goToItems(value: string) {
     console.log('hi')
     switch (value) {
