@@ -5,56 +5,62 @@ import { ProviderUserAuthService } from 'src/app/core/providers/auth/provider-us
 @Component({
   selector: 'el-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  user: any = null
-  phoneNo = '+6589525405'
+  user: any = null;
+  phoneNo = '+6589525405';
 
-  constructor(private router: Router, private userAuth: ProviderUserAuthService) { }
+  constructor(
+    private router: Router,
+    private userAuth: ProviderUserAuthService
+  ) {}
 
   ngOnInit(): void {
     const result = localStorage.getItem('user-key');
-    if(result){
-      const parse = JSON.parse(result)
+    if (result) {
+      const parse = JSON.parse(result);
       this.user = parse;
     }
   }
 
-  sendWhatsAppMessage(){
-    window.open('https://wa.me/' + this.phoneNo, "_blank")
+  sendWhatsAppMessage() {
+    window.open('https://wa.me/' + this.phoneNo, '_blank');
   }
-  
-  mailTo(){
-    window.open("mailto:ask@biedx.com", "_blank")
+
+  mailTo() {
+    window.open('mailto:ask@biedx.com', '_blank');
   }
 
   goToItems(value: string) {
-    console.log('hi')
+    console.log('hi');
     switch (value) {
       case 'home':
         this.router.navigate(['/home']);
         break;
-        case 'course':
+      case 'course':
         this.router.navigate(['/course']);
         break;
-        case 'event':
+      case 'event':
         this.router.navigate(['/event']);
         break;
-        case 'blog':
+      case 'blog':
         this.router.navigate(['/blog']);
         break;
-        case 'contact':
+      case 'contact':
         this.router.navigate(['/contact']);
         break;
-        case 'about':
+      case 'about':
         this.router.navigate(['/about']);
         break;
-        case 'sign-in':
-          this.router.navigate(['/auth/sign-in']);
-          break;
-        
+      case 'sign-in':
+        this.router.navigate(['/auth/sign-in']);
+        break;
     }
+  }
 
+  handleLogout() {
+    localStorage.clear();
+    window.location.reload();
   }
 }

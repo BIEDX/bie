@@ -96,14 +96,9 @@
               <!-- Main Menu -->
               <ul id="nav" class="nav menu navbar-nav" style="display: block">
                 <li class="active">
-                  <a (click)="goToItems('home')"
+                  <a
                     >Home
-                    <i class="fa fa-angle-down"></i>
                   </a>
-                  <ul class="dropdown">
-                                        <li><a href="index-2.html">Homepage Default</a></li>
-                                        <li><a href="index2.html">Homepage Animation</a></li>
-                                    </ul>
                 </li>
                 <!-- <li>
                                     <a href="#">Pages<i class="fa fa-angle-down"></i></a>
@@ -167,6 +162,9 @@
                 <a class="btn" (click)="goToItems('sign-in')"
                   ><i class="fa fa-pencil"></i>Sign In</a
                 >
+              </div>
+              <div class="button" *ngIf="user" (click)="handleLogout()">
+                <a class="btn"><i class="fa fa-power-off"></i></a>
               </div>
               <!--/ End Button -->
             </div>
