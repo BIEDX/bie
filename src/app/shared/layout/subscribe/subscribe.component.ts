@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-subscribe',
   templateUrl: './subscribe.component.html',
-  styleUrls: ['./subscribe.component.scss']
+  styleUrls: ['./subscribe.component.scss'],
 })
 export class SubscribeComponent implements OnInit {
   @ViewChild('btn', { static: false }) btn: ElementRef<HTMLElement>;
@@ -15,33 +15,44 @@ export class SubscribeComponent implements OnInit {
   email: string = '';
   checked: boolean = false;
 
-  constructor(private userService: ProviderUserAuthService, private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) {}
 
   ngOnInit(): void {
     this.init();
   }
 
-  init(){
-    this.userService.getUserStorage().subscribe((data)=>{
-      if(!data){
-        setTimeout(()=>{
-          this.btn.nativeElement.click()
-        }, 15000)
+  init() {
+    const result = localStorage.getItem('user-key');
+    if (result) {
+      const parsed = JSON.parse(result);
+      if (parsed) {
+        setTimeout(() => {
+          this.btn.nativeElement.click();
+        }, 15000);
       }
-    });
+    }
   }
 
-  submit(event){
+  submit(event) {
     event.preventDefault();
-    this.http.post(environment.apiUrl + '/newsletter', { name: this.name, email: this.email}).subscribe((res)=>{
-      console.log("Success")
-      this.name = '';
-      this.email = ''
-    }, (error)=> console.log(error))
+    this.http
+      .post(environment.apiUrl + '/newsletter', {
+        name: this.name,
+        email: this.email,
+      })
+      .subscribe(
+        (res) => {
+          console.log('Success');
+          this.name = '';
+          this.email = '';
+        },
+        (error) => console.log(error)
+      );
   }
 
-  onChange(){
+  onChange() {
     this.checked = !this.checked;
   }
-
 }
