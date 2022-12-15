@@ -12,6 +12,7 @@ import { EventComponent } from './pages/event/event.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { ConsultTopicComponent } from './pages/consult-topic/consult-topic.component';
 import { EducatorsComponent } from './pages/educators/educators.component';
+import { LearnTopicComponent } from './pages/learn-topic/learn-topic.component';
 
 
 @NgModule({
@@ -24,11 +25,13 @@ import { EducatorsComponent } from './pages/educators/educators.component';
     EventComponent,
     BlogComponent,
     ConsultTopicComponent,
-    EducatorsComponent
+    EducatorsComponent,
+    LearnTopicComponent
   ],
   imports: [
     CommonModule,
     StaticRoutingModule,
+    
     SharedModule
   ]
 })

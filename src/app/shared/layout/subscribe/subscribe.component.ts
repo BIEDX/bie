@@ -15,24 +15,20 @@ export class SubscribeComponent implements OnInit {
   email: string = '';
   checked: boolean = false;
 
-  constructor(
-    private http: HttpClient
-  ) {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     this.init();
   }
 
   init() {
-    const result = localStorage.getItem('user-key');
-    if (result) {
-      const parsed = JSON.parse(result);
-      if (parsed) {
-        setTimeout(() => {
-          this.btn.nativeElement.click();
-        }, 15000);
+    setTimeout(() => {
+      const result = localStorage.getItem('user-key');
+      if (result) {
+      } else {
+        this.btn.nativeElement.click();
       }
-    }
+    }, 15000);
   }
 
   submit(event) {

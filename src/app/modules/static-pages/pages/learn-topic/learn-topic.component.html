@@ -1,1 +1,30 @@
-<p>learn-topic works!</p>
+<el-header></el-header>
+<!-- Start Breadcrumbs -->
+<section class="breadcrumbs overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Learn</h2>
+                <ul class="bread-list">
+                    <li><a href="/">Home</a></li>
+                    <!-- <li class="active"><a href="course-single.html">Course Single</a></li> -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ End Breadcrumbs -->
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-4 mt-5" *ngFor="let item of learnTopics">
+            <a class="single-feature">
+                <!-- <div class="feature-head">
+                    <img [src]="item.img" class="feature-img" alt="#">
+                </div> -->
+                <h2>{{item.label}}</h2>
+                <p>{{ item.des2 }}</p>
+            </a>
+        </div>
+    </div>
+</div>

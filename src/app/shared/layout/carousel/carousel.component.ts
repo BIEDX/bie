@@ -39,7 +39,7 @@ export class CarouselComponent implements OnInit {
       id: '1002',
       code: 'zz21cz3c1',
       name: 'Perfect Template for',
-      description: 'Our mission is to empower clients, colleagues, and communities to achieve aspirations while building lasting, caring relationships.',
+      description: '',
       image: '../../../../assets/images/slider/slider-bg3.jpg',
       price: 79,
       category: 'Educational',

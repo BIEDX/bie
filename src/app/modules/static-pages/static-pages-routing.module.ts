@@ -6,6 +6,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { CourseComponent } from './pages/course/course.component';
 import { EventComponent } from './pages/event/event.component';
 import { HomeComponent } from './pages/home/home.component';
+import { LearnTopicComponent } from './pages/learn-topic/learn-topic.component';
 import { StaticPageComponent } from './static-page.component';
 
 const routes: Routes = [
@@ -35,7 +36,14 @@ const routes: Routes = [
         path: 'blog',
         component: BlogComponent,        
       },
-     
+      {
+        path: 'learn',
+        component: LearnTopicComponent,        
+      },
+      {
+        path: 'consult',
+        component: LearnTopicComponent,        
+      },
     ],
   }, 
 ];
