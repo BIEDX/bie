@@ -8,17 +8,17 @@ import { ProviderUserAuthService } from 'src/app/core/providers/auth/provider-us
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  user: any = {}
+  user: any = null
   phoneNo = '+6589525405'
+
   constructor(private router: Router, private userAuth: ProviderUserAuthService) { }
 
   ngOnInit(): void {
-    this.userAuth.getUserStorage().subscribe(
-      (res) => {
-        this.user = res;
-        console.log(this.user)
-      }
-    )
+    const result = localStorage.getItem('user-key');
+    if(result){
+      const parse = JSON.parse(result)
+      this.user = parse;
+    }
   }
 
   sendWhatsAppMessage(){

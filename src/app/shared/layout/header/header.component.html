@@ -163,7 +163,7 @@
               </ul>
               <!-- End Main Menu -->
               <!-- button -->
-              <div class="button">
+              <div class="button" *ngIf="!user">
                 <a class="btn" (click)="goToItems('sign-in')"
                   ><i class="fa fa-pencil"></i>Sign In</a
                 >
