@@ -1,5 +1,5 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+<button #btn type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="display: none;">
     Launch demo modal
 </button>
 
@@ -27,26 +27,18 @@
 
                                 <h6 class=" subscribe mt-1">Subscribe to our newsletter!</h6>
                                 <p class="subscribeText mt-1">Want to know how? Join our free lectures and webinars to skyrocket your skills!</p>
-                                <form class="mt-2">
+                                <form class="mt-2" (submit)="submit($event)">
                                     <div class="form-group" >
-                                        <!-- <label for="exampleInputEmail1">Email address</label> -->
-                                        <!-- <input  type="email" class="form-control p-4 form-control-sm" id="exampleInputEmail1"
-                                            aria-describedby="emailHelp" placeholder="Your Name"> -->
-                                            <input class="form-control form-control-sm p-1" type="text" placeholder="  Your Name">
-
-                                        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                                            <input [ngModelOptions]="{standalone: true}" [(ngModel)]="name" class="form-control form-control-sm p-1" type="text" placeholder="  Your Name" required>
                                     </div>
                                     <div class="form-group">
-                                        <!-- <label for="exampleInputPassword1">Password</label> -->
-                                        <!-- <input type="password" class="form-control p-4 form-control-sm" id="exampleInputPassword1" style="height:10px"
-                                            placeholder="Your E-mail"> -->
-                                            <input class="form-control form-control-sm p-1" type="text" placeholder="  Your E-mail">
+                                            <input [ngModelOptions]="{standalone: true}" [(ngModel)]="email" class="form-control form-control-sm p-1" type="email" placeholder="  Your E-mail" required>
                                     </div>
                                     <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <input (change)="onChange()" [checked]="checked" type="checkbox" class="form-check-input" id="exampleCheck1">
                                         <label class="form-check-label term" for="exampleCheck1">I accept the Terms and the Privacy Policy. </label>
                                     </div>
-                                    <button type="submit" class="btn btn-primary submit-btn mt-1">Submit</button>
+                                    <button type="submit" [disabled]="!checked" class="btn btn-primary submit-btn mt-1">Submit</button>
                                 </form>
                             </div>
                         </div>
