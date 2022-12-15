@@ -7,11 +7,12 @@
 
                     <ng-template let-product pTemplate="item">
                         <div class="product-item testimonial-slider">
-                            <div class="product-item-content single-testimonial">
-                                <img src="../../../../assets/images/testimonial1.png" alt="#">
+                            <div class="product-item-content single-testimonial" style="height: 500px;">
+                                <img [src]="product.image" [alt]="product.name" >
                                 <div class="main-content">
-                                    <h4 class="name">Dr. Ma. Theresa Buenaflor</h4>
-                                    <p>The Breast MRI course by Dr. Niketa is a supercharged version with much-needed multimodality as well as radiologic-pathologic correlation. More importantly,  Dr. Niketa and Dr. Ramyesh have been accommodating in giving real-time feedback and persoal interaction. It vastly helped in accelerating the learning curve and makes it less intimidating. Thank you for offering this course and making it accessible. Whether you are a novice radiologist with an interest in breast imaging or practicing for many years, this course will equip you well.</p>
+                                    <h4 class="name mb-0">{{ product.name }}</h4>
+                                    <p class="mb-3"><b>{{ product.location }}</b></p>
+                                    <p>{{ product.description }}</p>
                                 </div>
                             </div>
                         </div>
