@@ -47,7 +47,7 @@ export class UpcomingEventComponent implements OnInit {
       code: 'nvklal433',
       name: 'Intensive MRI Breast Reading Course',
       description: 'IMBRC 2022 (Intensive MRI Breast Reading Course) is BIE’s flagship MRI Breast workshop that is revered by radiologists globally. It is a 2 day hands-on intensive program designed to help radiologists, radiology fellows, and trainees to learn in-depth MRI Breast reporting through comprehensive case practice and live discussions with experts.',
-      image: '../../../../assets/image2/events/1929event.jpg',
+      image: '../../../../assets/image2/carousel1.jpeg',
       price: 72,
       category: 'Education',
       subCategory: ' & Courses Website',

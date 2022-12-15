@@ -13,6 +13,7 @@ import { BlogComponent } from './pages/blog/blog.component';
 import { ConsultTopicComponent } from './pages/consult-topic/consult-topic.component';
 import { EducatorsComponent } from './pages/educators/educators.component';
 import { LearnTopicComponent } from './pages/learn-topic/learn-topic.component';
+import { ThankYouComponent } from './pages/thank-you/thank-you.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { LearnTopicComponent } from './pages/learn-topic/learn-topic.component';
     BlogComponent,
     ConsultTopicComponent,
     EducatorsComponent,
-    LearnTopicComponent
+    LearnTopicComponent,
+    ThankYouComponent
   ],
   imports: [
     CommonModule,

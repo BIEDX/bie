@@ -17,7 +17,7 @@ export class SignInComponent implements OnInit {
       (res:any) => {
         console.log('res',res);
         this.userAuth.userStorage(res);
-        this.router.navigateByUrl('/student');
+        this.router.navigateByUrl('/thank-you');
       // if (res.header.code === 200) {
       //   this.router.navigateByUrl('/b2b/active-account');
       //   this.appMessageService.createBasicNotification('green', res.header.message);

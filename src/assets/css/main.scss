@@ -1229,14 +1229,15 @@
 
 .team .single-team:hover .team-hover,
 .team .single-team.active .team-hover {
-    transform: scale(1.0);
+    transform: scale(1);
     opacity: 1;
     visibility: visible;
 }
 
 .team .team-hover h4 {
     color: #fff;
-    font-size: 20px;
+    font-size: 16px;
+    font-weight: 800;
 }
 
 .team .team-hover h4 span {

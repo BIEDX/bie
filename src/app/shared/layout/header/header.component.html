@@ -69,7 +69,7 @@
           <div class="header-widget">
             <div class="single-widget cursor" (click)="sendWhatsAppMessage()">
               <i class="fa fa-whatsapp"></i>
-              <h4>Send Message<span>(+65) 89525405</span></h4>
+              <h4>Whatsapp Us<span>(+65) 89525405</span></h4>
             </div>
             <div class="single-widget cursor" (click)="mailTo()">
               <i class="fa fa-envelope-o"></i>
@@ -160,7 +160,7 @@
               <!-- button -->
               <div class="button" *ngIf="!user">
                 <a class="btn" (click)="goToItems('sign-in')"
-                  ><i class="fa fa-pencil"></i>Sign In</a
+                  ><i class="fa fa-pencil"></i>Sign In / Register</a
                 >
               </div>
               <div class="button" *ngIf="user" (click)="handleLogout()">
