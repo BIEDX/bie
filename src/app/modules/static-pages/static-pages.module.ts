@@ -11,6 +11,7 @@ import { CourseComponent } from './pages/course/course.component';
 import { EventComponent } from './pages/event/event.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { ConsultTopicComponent } from './pages/consult-topic/consult-topic.component';
+import { EducatorsComponent } from './pages/educators/educators.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ConsultTopicComponent } from './pages/consult-topic/consult-topic.compo
     CourseComponent,
     EventComponent,
     BlogComponent,
-    ConsultTopicComponent
+    ConsultTopicComponent,
+    EducatorsComponent
   ],
   imports: [
     CommonModule,
