@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ProviderUserAuthService } from 'src/app/core/providers/auth/provider-user-auth.service';
 // import { Router } from '@angular/router';
 // import { ProviderUserAuthService } from '../../../../core/providers/auth/provider-user-auth.service';
 @Component({
@@ -7,24 +10,42 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
-  //user:any={};
-  // constructor(private userAuth:ProviderUserAuthService, private router: Router,) { }
-  constructor(){}
+  userForm:FormGroup;
+  errorResponse: any = null;
+  btnMessage: string = ""
+  @ViewChild('errorMessageTemp', { static: false} ) errorMessageTem: ElementRef<HTMLElement>;
+
+  constructor(private userAuth:ProviderUserAuthService, private router: Router, private formBuilder: FormBuilder) {
+    this.userForm = this.formBuilder.group({
+      email: ['', Validators.required],
+      phone: ['', Validators.required],
+      name: ['', Validators.required],
+      country: ['', Validators.required],
+      affiliation: ['', Validators.required],
+      password: ['', Validators.required]
+    })
+   }
 
   ngOnInit(): void {
+
   }
-  // signupHandler(){
-  //   console.log('user',this.user)
-  //   this.userAuth.userSignUp(this.user).subscribe((res:any) => {
-  //     this.router.navigateByUrl('/student');
-  //     // if (res.header.code === 200) {
-  //     //   this.router.navigateByUrl('/b2b/active-account');
-  //     //   this.appMessageService.createBasicNotification('green', res.header.message);
-  //     // } else {
-  //     //   this.appMessageService.createBasicNotification('blue', res.header.message);
-  //     // }
-  //   }, err => {
-  //     //this.appMessageService.createBasicNotification('red', 'Something went wrong');
-  //   });
-  // }
+
+  signupHandler(){
+    const value = this.userForm.value;
+    this.btnMessage = "";
+    this.errorResponse = null;
+    this.userAuth.userSignUp(value).subscribe((res:any) => {
+      if(res.header.code === 200){
+        this.router.navigateByUrl('/auth/sign-in');
+      } else {
+        this.btnMessage = res.header.message;
+        this.errorResponse = res;
+        setTimeout(()=>{
+          this.btnMessage = ''
+        }, 3000)
+      }
+    }, err => {
+      //this.appMessageService.createBasicNotification('red', 'Something went wrong');
+    });
+  }
 }

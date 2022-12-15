@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class SubscribeComponent implements OnInit {
   @ViewChild('btn', { static: false }) btn: ElementRef<HTMLElement>;
-
+  @ViewChild('close', { static: false }) closeBtn: ElementRef<HTMLElement>;
   name: string = '';
   email: string = '';
   checked: boolean = false;
@@ -28,7 +28,7 @@ export class SubscribeComponent implements OnInit {
       } else {
         this.btn.nativeElement.click();
       }
-    }, 15000);
+    }, 100);
   }
 
   submit(event) {
@@ -43,6 +43,7 @@ export class SubscribeComponent implements OnInit {
           console.log('Success');
           this.name = '';
           this.email = '';
+          this.closeBtn.nativeElement.click();
         },
         (error) => console.log(error)
       );
