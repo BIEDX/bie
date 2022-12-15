@@ -20,6 +20,7 @@ import { ParallaxWeFocusComponent } from './layout/parallax-we-focus/parallax-we
 import {CarouselModule} from 'primeng/carousel';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { SubscribeComponent } from './layout/subscribe/subscribe.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { HttpClientModule } from '@angular/common/http';
     UpcomingEventComponent,
     RibbonComponent,
     LatestNewsComponent,
-    ParallaxWeFocusComponent
+    ParallaxWeFocusComponent,
+    SubscribeComponent
   ],
   imports: [
     CommonModule,
@@ -45,6 +47,6 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],  
   exports:[HeaderComponent,FooterComponent,CarouselComponent,WeProvideComponent,ParallaxComponent,PopularCourseComponent,
-  OurTeamComponent,TestimonialComponent,UpcomingEventComponent,RibbonComponent,LatestNewsComponent,ParallaxWeFocusComponent]
+  OurTeamComponent,TestimonialComponent,UpcomingEventComponent,RibbonComponent,LatestNewsComponent,ParallaxWeFocusComponent,SubscribeComponent]
 })
 export class SharedModule { }
