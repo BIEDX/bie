@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ProviderUserAuthService } from '../../../core/providers/auth/provider-user-auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -10,7 +10,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ParallaxComponent implements OnInit {
   userForm:FormGroup;
-  errorResponse: any = null
+  errorResponse: any = null;
+  btnMessage: string = ""
+  @ViewChild('errorMessageTemp', { static: false} ) errorMessageTem: ElementRef<HTMLElement>;
 
   constructor(private userAuth:ProviderUserAuthService, private router: Router, private formBuilder: FormBuilder) {
     this.userForm = this.formBuilder.group({
@@ -29,13 +31,17 @@ export class ParallaxComponent implements OnInit {
 
   signupHandler(){
     const value = this.userForm.value;
-    console.log(value);
+    this.btnMessage = "";
+    this.errorResponse = null;
     this.userAuth.userSignUp(value).subscribe((res:any) => {
-      console.log(res);
       if(res.header.code === 200){
         this.router.navigateByUrl('/auth/sign-in');
       } else {
+        this.btnMessage = res.header.message;
         this.errorResponse = res;
+        setTimeout(()=>{
+          this.btnMessage = ''
+        }, 3000)
       }
     }, err => {
       //this.appMessageService.createBasicNotification('red', 'Something went wrong');
