@@ -1,13 +1,18 @@
-.cover-image{
+.cover-image {
     object-fit: cover;
     width: 100%;
+    width: 40%;
     height: 175px !important;
 }
 
-.work{
+.work {
     font-size: 12px;
 }
 
-.team .team-hover{
+.team .team-hover {
     padding: 40px 16px;
+}
+
+.section-title {
+    padding: 0px!important;
 }
