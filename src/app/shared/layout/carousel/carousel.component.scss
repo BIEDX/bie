@@ -1,12 +1,26 @@
 .home-slider .single-slider h1 {
-    text-transform: none !important;
-    height: auto;
+  text-transform: none !important;
+  height: auto;
 }
 
 .carousel-card {
-    height: 400px;
+  height: 400px;
 }
 
 .home-slider-height {
-    height: 420px !important;
+  height: 420px !important;
+}
+
+.d-flex {
+  .slider-text {
+    h1 {
+      color: white;
+      span {
+        color: #ff2768;
+      }
+    }
+    p {
+      color: white;
+    }
+  }
 }

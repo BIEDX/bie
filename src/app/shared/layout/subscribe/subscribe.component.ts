@@ -28,7 +28,7 @@ export class SubscribeComponent implements OnInit {
       } else {
         this.btn.nativeElement.click();
       }
-    }, 100);
+    }, 15000);
   }
 
   submit(event) {

@@ -1,9 +1,6 @@
 <!-- Slider Area -->
 <section class="home-slider d-none d-md-block">
     <p-carousel [value]="products" [numVisible]="1" [numScroll]="1" [circular]="true" [autoplayInterval]="5000" [responsiveOptions]="responsiveOptions">
-        <!-- <ng-template pTemplate="header">
-            <h5>Basic</h5>
-        </ng-template> -->
         <ng-template let-product pTemplate="item">
             <div class="product-item single-slider overlay  " style="background-repeat: none;" [style.background-image]="'url(' + product.image + ')'">
                 <div class="product-item-content">
@@ -26,12 +23,8 @@
 </section>
 <section class="home-slider d-md-none home-slider-height">
     <p-carousel [value]="products" [numVisible]="1" [numScroll]="1" [circular]="true" [autoplayInterval]="5000" [responsiveOptions]="responsiveOptions">
-        <!-- <ng-template pTemplate="header">
-            <h5>Basic</h5>
-        </ng-template> -->
         <ng-template let-product pTemplate="item">
-
-            <div class="d-flex align-items-center p-4 carousel-card ">
+            <div class="d-flex align-items-center p-4 carousel-card " style="background-repeat: none; background-size: cover;" [style.background-image]="'url(' + product.image + ')'">
                 <div class="product-item-content ">
                     <!-- <div class="p-mb-3"></div> -->
 
@@ -45,9 +38,6 @@
 
                 </div>
             </div>
-
-
-
         </ng-template>
     </p-carousel>
 
