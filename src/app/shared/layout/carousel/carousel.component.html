@@ -10,8 +10,8 @@
                         <h1>
                             <span>{{ product.name }}</span> <br /> {{ product.name2 }}
                         </h1>
-                        <p>{{ product.description }}.</p>
-                        <p>{{ product.description2 }}.</p>
+                        <p>{{ product.description }}</p>
+                        <p>{{ product.description2 }}</p>
                     </div>
 
                 </div>
@@ -24,18 +24,20 @@
 <section class="home-slider d-md-none home-slider-height">
     <p-carousel [value]="products" [numVisible]="1" [numScroll]="1" [circular]="true" [autoplayInterval]="5000" [responsiveOptions]="responsiveOptions">
         <ng-template let-product pTemplate="item">
-            <div class="d-flex align-items-center p-4 carousel-card " style="background-repeat: none; background-size: cover;" [style.background-image]="'url(' + product.image + ')'">
-                <div class="product-item-content ">
-                    <!-- <div class="p-mb-3"></div> -->
-
-                    <div class="slider-text" style="text-transform: none !important;">
-                        <h1>
-                            <span>{{ product.name }}</span> <br /> {{ product.name2 }}
-                        </h1>
-                        <p>{{ product.description }}.</p>
-                        <p>{{ product.description2 }}.</p>
+            <div class="" style="background-repeat: none; background-size: cover;" [style.background-image]="'url(' + product.image + ')'">
+                <div class="d-flex align-items-center p-4 carousel-card backdrop" >
+                    <div class="product-item-content ">
+                        <!-- <div class="p-mb-3"></div> -->
+    
+                        <div class="slider-text " style="text-transform: none !important;">
+                            <h1>
+                                <span>{{ product.name }}</span> <br /> {{ product.name2 }}
+                            </h1>
+                            <p>{{ product.description }}</p>
+                            <p>{{ product.description2 }}</p>
+                        </div>
+    
                     </div>
-
                 </div>
             </div>
         </ng-template>
