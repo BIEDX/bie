@@ -8,8 +8,8 @@
 </div> -->
 
 <header class="header">
-    <!-- Topbar -->
-    <!-- <div class="topbar">
+  <!-- Topbar -->
+  <!-- <div class="topbar">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-12">
@@ -51,53 +51,57 @@
       </div>
     </div>
   </div> -->
-    <!-- End Topbar -->
-    <!-- Header Inner -->
-    <div class="header-inner">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col-12 py-2">
-                    <div class="logo">
-                        <a href="/"><img src="../../../../assets/image2/logo.png" class="logo" alt="#" /></a>
-                    </div>
-                    <div class="mobile-menu"> </div>
-                </div>
-                <div class="col-lg-9 col-md-9 col-12 ">
-                    <!-- Header Widget -->
-                    <div class="header-widget">
-                        <div class="single-widget cursor" (click)="sendWhatsAppMessage()">
-                            <i class="fa fa-whatsapp"></i>
-                            <h4>Whatsapp Us<span>(+65) 89525405</span></h4>
-                        </div>
-                        <div class="single-widget cursor" (click)="mailTo()">
-                            <i class="fa fa-envelope-o"></i>
-                            <h4>Send Mail<span>ask@biedx.com</span></h4>
-                        </div>
-                        <div class="single-widget">
-                            <i class="fa fa-map-marker"></i>
-                            <h4>Our Location<span>37 Kallang Pudding Rd, Singapore</span></h4>
-                        </div>
-                    </div>
-                    <!--/ End Header Widget -->
-                </div>
-            </div>
+  <!-- End Topbar -->
+  <!-- Header Inner -->
+  <div class="header-inner">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-3 col-12 py-2">
+          <div class="logo">
+            <a href="/"
+              ><img
+                src="../../../../assets/image2/logo.png"
+                class="logo"
+                alt="#"
+            /></a>
+          </div>
+          <div class="mobile-menu"></div>
         </div>
+        <div class="col-lg-9 col-md-9 col-12">
+          <!-- Header Widget -->
+          <div class="header-widget">
+            <div class="single-widget cursor" (click)="sendWhatsAppMessage()">
+              <i class="fa fa-whatsapp"></i>
+              <h4>Whatsapp Us<span>(+65) 89525405</span></h4>
+            </div>
+            <div class="single-widget cursor" (click)="mailTo()">
+              <i class="fa fa-envelope-o"></i>
+              <h4>Send Mail<span>ask@biedx.com</span></h4>
+            </div>
+            <div class="single-widget">
+              <i class="fa fa-map-marker"></i>
+              <h4>Our Location<span>37 Kallang Pudding Rd, Singapore</span></h4>
+            </div>
+          </div>
+          <!--/ End Header Widget -->
+        </div>
+      </div>
     </div>
-    <!--/ End Header Inner -->
-    <!-- Header Menu -->
-    <div class="header-menu">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="navbar navbar-default">
-                        <div class="navbar-collapse">
-                            <!-- Main Menu -->
-                            <ul id="nav" class="nav menu navbar-nav" style="display: block">
-                                <li class="active">
-                                    <a>Home
-                  </a>
-                                </li>
-                                <!-- <li>
+  </div>
+  <!--/ End Header Inner -->
+  <!-- Header Menu -->
+  <div class="header-menu">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="navbar navbar-default">
+            <div class="navbar-collapse">
+              <!-- Main Menu -->
+              <ul id="nav" class="nav menu navbar-nav" style="display: block">
+                <li class="active">
+                  <a>Home </a>
+                </li>
+                <!-- <li>
                                     <a href="#">Pages<i class="fa fa-angle-down"></i></a>
                                     <ul class="dropdown">
                                         <li><a href="about.html">About Us</a></li>
@@ -113,7 +117,7 @@
                                         <li><a href="404.html">404 Page</a></li>
                                     </ul>
                                 </li> -->
-                                <!-- <li>
+                <!-- <li>
                   <a (click)="goToItems('course')"
                     >Courses
                     <i class="fa fa-angle-down"></i>
@@ -124,7 +128,7 @@
                                         <li><a href="course-single-video.html">Course Single Video</a></li>
                                     </ul>
                 </li> -->
-                                <!-- <li>
+                <!-- <li>
                   <a (click)="goToItems('event')"
                     >Events
                     <i class="fa fa-angle-down"></i>
@@ -134,7 +138,7 @@
                                         <li><a href="event-single.html">Event Single</a></li>
                                     </ul>
                 </li> -->
-                                <!-- <li>
+                <!-- <li>
                   <a (click)="goToItems('blog')"
                     >Blogs
                     <i class="fa fa-angle-down"></i>
@@ -147,28 +151,29 @@
                                         <li><a href="blog-single.html">Blogs Single - Right Sidebar</a></li>
                                     </ul>
                 </li> -->
-                                <!-- <li><a (click)="goToItems('contact')">Contact Us</a></li>
+                <!-- <li><a (click)="goToItems('contact')">Contact Us</a></li>
                 <li><a (click)="goToItems('about')">About Us</a></li> -->
-                                <li *ngIf="user">
-                                    <a>Welcome, {{ user.data.email }}</a>
-                                </li>
-                            </ul>
-                            <!-- End Main Menu -->
-                            <!-- button -->
-                            <div class="button" *ngIf="!user">
-                                <a class="btn" (click)="goToItems('sign-in')"><i class="fa fa-pencil"></i>Sign In / Register</a
+                <li *ngIf="user">
+                  <a>Welcome, {{ user.data.name }}</a>
+                </li>
+              </ul>
+              <!-- End Main Menu -->
+              <!-- button -->
+              <div class="button" *ngIf="!user">
+                <a class="btn" (click)="goToItems('sign-in')"
+                  ><i class="fa fa-pencil"></i>Sign In / Register</a
                 >
               </div>
               <div class="button" *ngIf="user" (click)="handleLogout()">
                 <a class="btn"><i class="fa fa-power-off"></i></a>
-                            </div>
-                            <!--/ End Button -->
-                        </div>
-                    </nav>
-                </div>
+              </div>
+              <!--/ End Button -->
             </div>
+          </nav>
         </div>
+      </div>
     </div>
-    <!--/ End Header Menu -->
+  </div>
+  <!--/ End Header Menu -->
 </header>
 <!-- End Header -->

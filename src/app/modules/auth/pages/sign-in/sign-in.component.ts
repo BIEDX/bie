@@ -8,16 +8,22 @@ import { Router } from '@angular/router';
 })
 export class SignInComponent implements OnInit {
   user:any={};
+  errorMessage: string = ''
   constructor(private userAuth:ProviderUserAuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
   signInHandler(){
+    this.errorMessage = ''
     this.userAuth.userSignIn(this.user).subscribe(
       (res:any) => {
-        console.log('res',res);
-        this.userAuth.userStorage(res);
-        this.router.navigateByUrl('/thank-you');
+        if(res.header.code === 200){
+          console.log('res',res);
+          this.userAuth.userStorage(res);
+          this.router.navigateByUrl('/thank-you');
+        } else {
+          this.errorMessage = res.header.message
+        }
       // if (res.header.code === 200) {
       //   this.router.navigateByUrl('/b2b/active-account');
       //   this.appMessageService.createBasicNotification('green', res.header.message);
