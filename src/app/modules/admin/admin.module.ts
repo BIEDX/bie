@@ -6,18 +6,20 @@ import { AdminComponent } from './admin.component';
 import { NewsletterComponent } from './newsletter/newsletter.component';
 import { UsersComponent } from './users/users.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { TeacherModule } from './teacher/teacher.module';
 
 
 @NgModule({
   declarations: [
     AdminComponent,
     NewsletterComponent,
-    UsersComponent
+    UsersComponent,
   ],
   imports: [
+    TeacherModule,
     CommonModule,
     AdminRoutingModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class AdminModule { }

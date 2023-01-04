@@ -1,0 +1,64 @@
+<section class="enroll overlay section d-none d-md-block" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="row m-5">
+                    <div class="col-lg-6 col-12">
+                        <!-- Single Enroll -->
+                        <div class="enroll-form">
+                            <div class="form-title">
+                                <h2>Create Teacher Account</h2>
+                            </div>
+
+                            <!-- Form -->
+                            <form class="form" [formGroup]="teacherFrom" action="#">
+                                <div id="errorMessage" class="">
+                                    <p *ngIf="errorResponse" class="mt-2 text-danger">
+                                        {{ errorResponse.header.message }}
+                                    </p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Enter Teacher name</label>
+                                    <input name="name" type="text" formControlName="name" placeholder="Enter you name"
+                                        required />
+                                </div>
+                                <div class="form-group">
+                                    <label>Enter Teacher Email</label>
+                                    <input name="email" type="email" formControlName="email"
+                                        placeholder="Enter Teacher email address" required />
+                                </div>
+                                <div class="form-group">
+                                    <label>Enter Teacher Phone</label>
+                                    <input name="phone" type="text" formControlName="phone"
+                                        placeholder="Enter Teacher phone with country code" required />
+                                </div>
+                                <div class="form-group">
+                                    <label>Country</label>
+                                    <input name="phone" type="text" formControlName="country"
+                                        placeholder="Enter Teacher country" required />
+                                </div>
+                                <div class="form-group">
+                                    <label>Affiliation</label>
+                                    <input name="phone" type="text" formControlName="affiliation"
+                                        placeholder="Enter Teacher affiliation" required />
+                                </div>
+                                <div id="errorMessage" class="">
+                                    <p *ngIf="errorResponse" class="mt-2 text-danger">
+                                        {{ errorResponse.header.message }}
+                                    </p>
+                                </div>
+                                <div class="form-group button">
+                                    <button type="submit" class="btn" (click)="signupHandler()">
+                                        {{ btnMessage.length > 0 ? btnMessage : "Register Now" }}
+                                    </button>
+                                </div>
+                            </form>
+                            <!--/ End Form -->
+                        </div>
+                        <!-- Single Enroll -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

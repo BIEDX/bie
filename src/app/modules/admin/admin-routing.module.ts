@@ -12,6 +12,7 @@ const routes: Routes = [
       { path: "", redirectTo: "users"},
       { path: 'users', component: UsersComponent },
       { path: 'newsletter', component: NewsletterComponent },
+      { path: "teacher", loadChildren: ()=> import("./teacher/teacher.module").then((m)=> m.TeacherModule)}
     ],
   },
 ];
