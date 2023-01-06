@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TeacherService } from 'src/app/core/providers/apis/teacher.service';
 
 @Component({
@@ -12,13 +13,17 @@ export class TeacherAddComponent {
   errorResponse: any = null;
   btnMessage: string = ""
 
-  constructor(private formBuilder: FormBuilder,private teacherService: TeacherService){}
+  constructor(
+    private formBuilder: FormBuilder,
+    private teacherService: TeacherService,
+    private _route: Router
+  ) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.createForm();
   }
 
-  createForm(){
+  createForm() {
     this.teacherFrom = this.formBuilder.group({
       phone: ['', Validators.required],
       email: ['', Validators.email],
@@ -28,10 +33,14 @@ export class TeacherAddComponent {
     })
   }
 
-  signupHandler(){
+  signupHandler() {
+    if (!this.teacherFrom.valid) {
+      return;
+    }
     const formValues = this.teacherFrom.value
-    this.teacherService.createTeacher(formValues).subscribe((res)=>{
+    this.teacherService.createTeacher(formValues).subscribe((res) => {
       console.log(res)
-    }, (error)=> console.log(error));
+      this._route.navigateByUrl('/admin/teacher/list')
+    }, (error) => console.log(error));
   }
 }

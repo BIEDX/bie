@@ -9,6 +9,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { TeacherComponent } from './pages/teacher/teacher.component';
 import { CoursesComponent } from './pages/courses/courses.component';
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
+import { CourseDetailsComponent } from './pages/course-details/course-details.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard
     TeacherComponent,
     CoursesComponent,
     AdminDashboardComponent,
+    CourseDetailsComponent,
   ],
   imports: [
     CommonModule,

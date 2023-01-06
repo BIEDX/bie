@@ -3,7 +3,15 @@
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
                 <div class="row m-5">
-                    <div class="col-lg-6 col-12">
+                    <div class="col-lg-3 col-12">
+                        <div class="left-navigation">
+                            <ul>
+                                <li class="list-navigation" [routerLink]="'/admin/teacher/list'">List Teacher</li>
+                                <li class="list-navigation active" [routerLink]="'/admin/teacher/add'">Add Teacher</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-12">
                         <!-- Single Enroll -->
                         <div class="enroll-form">
                             <div class="form-title">

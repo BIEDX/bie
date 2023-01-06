@@ -20,7 +20,7 @@ export class SignInComponent implements OnInit {
         if(res.header.code === 200){
           console.log('res',res);
           this.userAuth.userStorage(res);
-          this.router.navigateByUrl('/thank-you');
+          this.router.navigateByUrl('/admin');
         } else {
           this.errorMessage = res.header.message
         }
