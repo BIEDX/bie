@@ -23,10 +23,15 @@ const routes: Routes = [
       import('./modules/admin/admin.module').then((m) => m.AdminModule),
   },
   {
+    path: 'trainer',
+    loadChildren: () =>
+      import('./modules/trainer/trainer.module').then((m) => m.TrainerModule),
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full'
-}
+  }
 ];
 
 @NgModule({
