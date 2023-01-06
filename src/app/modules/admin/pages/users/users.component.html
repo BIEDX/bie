@@ -1,4 +1,4 @@
-<el-header></el-header>
+
 <div class="container mt-3">
     <button class="btn btn-secondary mb-3" (click)="naviagteToNewsLetter()">Newsletters</button>
     <table class="table">
@@ -20,8 +20,8 @@
             <td>{{ item.email }}</td>
             <td>{{ item.phone }}</td>
             <td>{{ item.country }}</td>
-            <td><span [ngClass]="item.isVerified ? 'badge-primary' : 'badge-danger' " class="badge ">{{ item.isVerified ? 'Yes' : 'No' }}</span></td>
-            <td>{{ item.createdOn | date: "yyyy/MM/dd" }}</td>
+            <!-- <td><span [ngClass]="item.isVerified ? 'badge-primary' : 'badge-danger' " class="badge ">{{ item.isVerified ? 'Yes' : 'No' }}</span></td>
+            <td>{{ item.createdOn | date: "yyyy/MM/dd" }}</td> -->
           </tr>
         </tbody>
       </table>

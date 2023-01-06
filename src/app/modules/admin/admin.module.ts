@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
-import { NewsletterComponent } from './newsletter/newsletter.component';
-import { UsersComponent } from './users/users.component';
+import { NewsletterComponent } from './pages/newsletter/newsletter.component';
+import { UsersComponent } from './pages/users/users.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { TeacherModule } from './teacher/teacher.module';
+import { TeacherComponent } from './pages/teacher/teacher.component';
+import { CoursesComponent } from './pages/courses/courses.component';
+import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
 
 
 @NgModule({
@@ -14,9 +16,11 @@ import { TeacherModule } from './teacher/teacher.module';
     AdminComponent,
     NewsletterComponent,
     UsersComponent,
+    TeacherComponent,
+    CoursesComponent,
+    AdminDashboardComponent,
   ],
   imports: [
-    TeacherModule,
     CommonModule,
     AdminRoutingModule,
     SharedModule,
