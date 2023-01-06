@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/core/providers/apis/auth.service';
-import { ConstantsService } from 'src/app/core/providers/apis/constants.service';
 
 @Component({
   selector: 'app-users',
@@ -11,7 +9,7 @@ import { ConstantsService } from 'src/app/core/providers/apis/constants.service'
 export class UsersComponent implements OnInit {
   users:any[] = [];
 
-  constructor(private router: Router,private authService: AuthService) {
+  constructor(private router: Router) {
   }
 
   ngOnInit(): void {
@@ -19,12 +17,7 @@ export class UsersComponent implements OnInit {
   }
 
   getUsers() {
-    this.authService.getUsers().subscribe((res) => {
-      console.log(res);
-      if(Array.isArray(res)){
-        this.users = res;
-      }
-    });
+
   }
 
   naviagteToNewsLetter(){
