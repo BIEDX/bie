@@ -5,22 +5,22 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./modules/static-pages/static-pages.module').then((m) => m.StaticModule),
+      import('./private/static-pages/static-pages.module').then((m) => m.StaticModule),
   },
   {
     path: 'auth',
     loadChildren: () =>
-      import('./modules/auth/auth.module').then((m) => m.AuthModule),
+      import('./public/auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: 'student',
     loadChildren: () =>
-      import('./modules/student/student.module').then((m) => m.StudentModule),
+      import('./private/student/student.module').then((m) => m.StudentModule),
   },
   {
     path: 'admin',
     loadChildren: () =>
-      import('./modules/admin/admin.module').then((m) => m.AdminModule),
+      import('./private/admin/admin.module').then((m) => m.AdminModule),
   },
   {
     path: '**',
