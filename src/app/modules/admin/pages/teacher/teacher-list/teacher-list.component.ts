@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { TeacherService } from 'src/app/core/providers/apis/teacher.service';
 
 @Component({
@@ -9,16 +10,21 @@ import { TeacherService } from 'src/app/core/providers/apis/teacher.service';
 export class TeacherListComponent {
   teachers: any[] = [];
 
-  constructor(private teacherService: TeacherService){}
+  constructor(private teacherService: TeacherService,
+    private router: Router
+  ) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.getTeachers()
   }
 
-  getTeachers(){
-    this.teacherService.getTeachers().subscribe((res)=>{
-      console.log("teachers", res);
-      if(Array.isArray(res)) this.teachers = res;
+  getTeachers() {
+    this.teacherService.getTeachers().subscribe((res) => {
+      if (Array.isArray(res)) this.teachers = res;
     })
+  }
+
+  seeDetails(_id): void {
+    this.router.navigateByUrl("/admin/teacher/details" + '?id=' + _id)
   }
 }

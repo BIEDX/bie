@@ -7,31 +7,36 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit {
-  user:any={};
+  user: any = {};
   errorMessage: string = ''
-  constructor(private userAuth:ProviderUserAuthService, private router: Router) { }
+  constructor(private userAuth: ProviderUserAuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
-  signInHandler(){
+  signInHandler() {
     this.errorMessage = ''
     this.userAuth.userSignIn(this.user).subscribe(
-      (res:any) => {
-        if(res.header.code === 200){
-          console.log('res',res);
+      (res: any) => {
+        if (res.header.code === 200) {
           this.userAuth.userStorage(res);
-          this.router.navigateByUrl('/admin');
+          if (res?.data?.role === 'admin') {
+            this.router.navigateByUrl('/admin');
+          } else if (res?.data?.role === 'student') {
+            this.router.navigateByUrl('/admin');
+          } else if (res?.data?.role === 'teacher') {
+            this.router.navigateByUrl('/teacher');
+          }
         } else {
-          this.errorMessage = res.header.message
+          this.errorMessage = res.header.message ? res.header.message : 'Invalid Credentials '
         }
-      // if (res.header.code === 200) {
-      //   this.router.navigateByUrl('/b2b/active-account');
-      //   this.appMessageService.createBasicNotification('green', res.header.message);
-      // } else {
-      //   this.appMessageService.createBasicNotification('blue', res.header.message);
-      // }
-    }, err => {
-      //this.appMessageService.createBasicNotification('red', 'Something went wrong');
-    });
+        // if (res.header.code === 200) {
+        //   this.router.navigateByUrl('/b2b/active-account');
+        //   this.appMessageService.createBasicNotification('green', res.header.message);
+        // } else {
+        //   this.appMessageService.createBasicNotification('blue', res.header.message);
+        // }
+      }, err => {
+        //this.appMessageService.createBasicNotification('red', 'Something went wrong');
+      });
   }
 }

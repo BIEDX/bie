@@ -1,0 +1,123 @@
+<section class="enroll overlay section d-none d-md-block" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="row m-5">
+                    <div class="col-lg-4 col-12">
+                        <div class="learnedu-sidebar bg-light left">
+                            <!-- Categories -->
+                            <div class="single-widget categories">
+                                <h3 class="title">Categories</h3>
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i>Education Tips<span>16</span></a>
+                                    </li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i>General
+                                            Knowledge<span>30</span></a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i>Tips for success<span>80</span></a>
+                                    </li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i>Student Life<span>23</span></a>
+                                    </li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i>Courses<span>28</span></a></li>
+                                </ul>
+                            </div>
+                            <!--/ End Categories -->
+                        </div>
+                    </div>
+
+                    <!-- <div class="col-lg-3 col-12">
+                        <div class="left-navigation">
+                            <ul>
+                                <li class="list-navigation" [routerLink]="'/admin/courses/list'">List Courses</li>
+                                <li class="list-navigation active" [routerLink]="'/admin/courses/add'">Add Courses</li>
+                            </ul>
+                        </div>
+                    </div> -->
+                    <div class="col-lg-8 col-12">
+                        <!-- Single Enroll -->
+                        <div class="enroll-form">
+                            <div class="form-title">
+                                <h2>{{isEdit ? "Update": "Create" }} Course</h2>
+                            </div>
+
+                            <!-- Form -->
+                            <form class="form" [formGroup]="fromGroup" action="#">
+                                <div id="errorMessage" class="">
+                                    <p *ngIf="errorResponse" class="mt-2 text-danger">
+                                        {{ errorResponse.header.message }}
+                                    </p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Enter Course name</label>
+                                    <input name="name" type="text" formControlName="name" placeholder="Enter you name"
+                                        required />
+                                </div>
+                                <div class="form-group">
+                                    <label>Enter Description</label>
+                                    <textarea formControlName="description" placeholder="Enter Course Description"
+                                        required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Enter Tags</label>
+                                    <input name="phone" type="text" formControlName="tags" placeholder="Enter Tags"
+                                        required />
+                                </div>
+                                <div class="form-group">
+                                    <label>Upload Image</label>
+                                    <input type="file" formControlName="image" accept="image/*" (change)="selectFiles($event)" required />
+                                </div>
+                                <div class="form-group">
+                                    <label>Enter Price</label>
+                                    <input name="phone" type="text" formControlName="price" placeholder="Enter Price"
+                                        required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="sel-type">Select Type</label>
+                                    <select class="form-control" id="sel-type" formControlName="type">
+                                        <option value="Video">
+                                            Video
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="sel-body">Select Body Parts</label>
+                                    <select class="form-control" id="sel-body" (change)="onBodyPartsClick($event)">
+                                        <option *ngFor="let bodypart of bodyParts" [value]="bodypart._id">
+                                            {{bodypart.name}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="sel-diag">Select Diagnosis</label>
+                                    <select class="form-control" id="sel-diag" formControlName="diagnosis">
+                                        <option *ngFor="let diagnos of diagnosis" [value]="diagnos._id">
+                                            {{diagnos.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="sel-teach">Select Teacher</label>
+                                    <select class="form-control" id="sel-teach" formControlName="teacher">
+                                        <option *ngFor="let teacher of teachers" [value]="teacher._id">
+                                            {{teacher.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div id="errorMessage" class="">
+                                    <p *ngIf="errorResponse" class="mt-2 text-danger">
+                                        {{ errorResponse.header.message }}
+                                    </p>
+                                </div>
+                                <div class="form-group button">
+                                    <button type="submit" class="btn" (click)="signupHandler()">
+                                        {{ isEdit ? "Update Now" : "Add Now" }}
+                                    </button>
+                                </div>
+                            </form>
+                            <!--/ End Form -->
+                        </div>
+                        <!-- Single Enroll -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

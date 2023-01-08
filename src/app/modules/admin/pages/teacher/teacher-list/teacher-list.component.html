@@ -2,34 +2,61 @@
   <div class="table-top-strip">
     <h3 style="margin-top: 10px; margin-bottom: 10px;">Teacher List</h3>
   </div>
-  <div class="d-flex justify-content-end">
-    <button class="btn add-btn" [routerLink]="'/admin/teacher/add'">Add Teacher</button>
-  </div>
-  <ng-container *ngIf="teachers?.length > 0; else noData">
-    <div class="common-table table-responsive">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let teacher of teachers; let i = index">
-            <th scope="row">{{ i + 1 }}</th>
-            <td>{{ teacher?.name }}</td>
-            <td>{{ teacher?.email }}</td>
-            <td>
-              <button class="btn view-btn" [routerLink]="'/admin/teacher/teacher-details/teacher?.id'">View More</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+  <div class="row">
+    <div class="col-lg-4 col-12">
+      <div class="learnedu-sidebar bg-light left">
+        <!-- Categories -->
+        <div class="single-widget categories">
+          <h3 class="title">Categories</h3>
+          <ul>
+            <li><a href="#"><i class="fa fa-angle-right"></i>Education Tips<span>16</span></a>
+            </li>
+            <li><a href="#"><i class="fa fa-angle-right"></i>General
+                Knowledge<span>30</span></a></li>
+            <li><a href="#"><i class="fa fa-angle-right"></i>Tips for success<span>80</span></a>
+            </li>
+            <li><a href="#"><i class="fa fa-angle-right"></i>Student Life<span>23</span></a>
+            </li>
+            <li><a href="#"><i class="fa fa-angle-right"></i>Courses<span>28</span></a></li>
+          </ul>
+        </div>
+        <!--/ End Categories -->
+      </div>
     </div>
-  </ng-container>
-  <ng-template #noData>
-    <p>No Result Found.</p>
-  </ng-template>
+    <div class="col-lg-8 col-12">
+      <div class="d-flex justify-content-end mb-4">
+        <button class="btn add-btn" [routerLink]="'/admin/teacher/add'">Add Teacher</button>
+      </div>
+      <div class="common-table table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngIf="teachers?.length > 0; else noData">
+              <tr *ngFor="let teacher of teachers; let i = index">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ teacher?.name }}</td>
+                <td>{{ teacher?.email }}</td>
+                <td>
+                  <button class="btn view-btn" (click)="seeDetails(teacher?._id)">View
+                    More</button>
+                </td>
+              </tr>
+            </ng-container>
+            <ng-template #noData>
+              <tr>
+                <td>No Result Found.</td>
+              </tr>
+            </ng-template>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>

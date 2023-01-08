@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminDashboardComponent, CoursesComponent } from '.';
+import { AdminDashboardComponent } from '.';
 import { AdminComponent } from './admin.component';
-import { CourseDetailsComponent } from './pages/course-details/course-details.component';
 import { NewsletterComponent } from './pages/newsletter/newsletter.component';
 import { UsersComponent } from './pages/users/users.component';
 
@@ -13,10 +12,9 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'dashboard' },
       { path: 'dashboard', component: AdminDashboardComponent },
-      { path: 'courses', component: CoursesComponent },
-      { path: 'course-details', component: CourseDetailsComponent },
       { path: 'users', component: UsersComponent },
       { path: 'newsletter', component: NewsletterComponent },
+      { path: 'courses', loadChildren: () => import("./pages/courses/courses.module").then((m) => m.CoursesModule) },
       { path: "teacher", loadChildren: () => import("./pages/teacher/teacher.module").then((m) => m.TeacherModule) }
     ],
   },

@@ -1,0 +1,71 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { ConstantsService } from './constants.service';
+
+export enum Role {
+    Admin = 'admin',
+    Student = 'student',
+    Teacher = 'teacher'
+}
+
+@Injectable({
+    providedIn: 'root'
+})
+
+export class CourseService {
+    token: string = '';
+
+    constructor(private http: HttpClient) {
+        const result = localStorage.getItem(ConstantsService.LocalStorage.auth);
+        if (result) {
+            const parsed = JSON.parse(result);
+            this.token = parsed.data.jwt;
+        }
+    }
+
+    getCourses(data: { value: any; type?: string; }) {
+        return this.http.get(environment.apiUrl + '/courses', {
+            // if(data.type==) {
+            //     params: { searchText: data.value }
+            // }
+            // else{
+            //     params: { id: data.value }
+            // },
+            params: { searchText: data?.value },
+            headers: { Authorization: 'Bearer ' + this.token },
+        });
+    }
+
+    getBodyParts() {
+        return this.http.get(environment.apiUrl + '/body-parts', {
+            headers: { Authorization: 'Bearer ' + this.token },
+        });
+    }
+    getDiagnos(data: any) {
+        return this.http.get(environment.apiUrl + '/diagnosis', {
+            params: { bodyPartId: data },
+            headers: { Authorization: 'Bearer ' + this.token },
+        });
+    }
+
+    createCourses(values) {
+        return this.http.post(environment.apiUrl + '/courses', { ...values }, {
+            headers: { Authorization: 'Bearer ' + this.token },
+        });
+    }
+
+    updateCourses(values) {
+        return this.http.put(environment.apiUrl + '/courses', { ...values }, {
+            params: { id: values?.id },
+            headers: { Authorization: 'Bearer ' + this.token },
+        });
+    }
+
+    getImages(data: any) {
+        const formData = new FormData();
+        formData.append('file', data)
+        return this.http.post(environment.apiUrl + '/image', formData, {
+        });
+    }
+}
