@@ -24,13 +24,18 @@ export class BlogService {
     }
   }
 
-  getTeachers() {
+  getBlogs() {
     return this.http.get(environment.apiUrl + '/blog', {
       params: { role: Role.Teacher },
       headers: { Authorization: 'Bearer ' + this.token },
     });
   }
-
+  getBlogById(id) {
+    return this.http.get(environment.apiUrl + '/blog/'+id, {
+      params: { role: Role.Teacher },
+      headers: { Authorization: 'Bearer ' + this.token },
+    });
+  }
   createBlog(values) {
     return this.http.post(environment.apiUrl + '/blog', { ...values }, {
       headers: { Authorization: 'Bearer ' + this.token },

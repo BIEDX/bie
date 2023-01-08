@@ -44,20 +44,36 @@
                 padding-left: 15px;
             }
         }
-    }
-    .btn {
-        width: 100%;
-        background: #252525;
-        color: #fff;
-        text-align: center;
-        transition: all 0.4s ease;
-        display: block;
-        padding: 18px 0;
-        border-radius: 3px;
-        border: none;
-        &:hover {
-            background: #ff2768;
-            color: black;
+        .btn {
+            width: 100%;
+            background: #252525;
+            color: #fff;
+            text-align: center;
+            transition: all 0.4s ease;
+            display: block;
+            padding: 18px 0;
+            border-radius: 3px;
+            border: none;
+            &:hover {
+                background: #ff2768;
+                color: #000;
+            }
         }
+    }
+}
+
+.btn {
+    width: 100%;
+    background: #252525;
+    color: #fff;
+    text-align: center;
+    transition: all 0.4s ease;
+    display: block;
+    padding: 18px 0;
+    border-radius: 3px;
+    border: none;
+    &:hover {
+        background: #ff2768;
+        color: #fff;
     }
 }

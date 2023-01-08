@@ -13,7 +13,7 @@ const routes: Routes = [
       { path: "", redirectTo: "list" },
       { path: 'list', component: ListBlogComponent },
       { path: 'add', component: AddBlogComponent },
-      { path: 'view', component: ViewBlogComponent },
+      { path: 'view/:blogId', component: ViewBlogComponent },
       // { path: 'newsletter', component: NewsletterComponent },
       // { path: "teacher", loadChildren: () => import("./pages/teacher/teacher.module").then((m) => m.TeacherModule) }
     ],

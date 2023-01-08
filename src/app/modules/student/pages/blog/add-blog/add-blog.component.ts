@@ -50,7 +50,8 @@ export class AddBlogComponent implements OnInit {
   createBlogHandler() {    
     const blogId:any=Guid.create();    
     const requestData={
-      title:this.htmlContent,
+      title:this.blog.title,
+      description: this.htmlContent,
       by:this.blog.by,
       date:this.blog.date,
       tag:this.blog.tag,

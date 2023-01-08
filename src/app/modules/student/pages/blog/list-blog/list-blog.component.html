@@ -1,1 +1,71 @@
-<p>list-blog works!</p>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="float-left col-lg-6 col-12 mt-4">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+            </div>
+            <div class="float-left col-lg-3 col-12 mt-4">
+                <button class="btn my-2 my-sm-0" type="submit">Search</button>
+            </div>
+            <div class="float-right col-lg-3 col-12 mt-4">
+                <a routerLink="/student/blog/add" class="btn">Add Blog</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Blogs -->
+<section class="blog b-archives section">
+    <div class="container">
+        <div class="row masonry">
+            <div class="col-lg-6 col-12 grid-item" *ngFor="let item of blogs; let i = index">
+                <!-- Single Blog -->
+                <div class="single-blog">
+                    <div class="blog-head overlay">
+                        <div class="date">
+                            <h4>{{item.date |date:'dd'}}<span>{{item.date |date:'MMM'}}</span></h4>
+                        </div>
+                        <!-- <img src="../../../../assets/images/blog/blog6.jpg" alt="#" /> -->
+                    </div>
+                    <div class="blog-content">
+                        <h4 class="blog-title">
+                            <a href="blog-single.html">{{item.title}}</a>
+                        </h4>
+                        <div class="blog-info">
+                            <a href="#"><i class="fa fa-user"></i>By: {{item.by}}</a>
+                            <a href="#"><i class="fa fa-list"></i>{{item.tag}}</a>
+                            <a href="#"><i class="fa fa-heart-o"></i>{{item.category}}</a>
+                        </div>
+                        <!-- <p>
+                            Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim. Et harum quidem rerum facilis est et expedita distinctio
+                        </p> -->
+                        <div class="button">
+                            <a [routerLink]="['/student/blog/view',item.blogId]" class="btn">Read More<i class="fa fa-angle-double-right"></i
+              ></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Blog -->
+            </div>
+        </div>
+        <!-- <div class="row">
+        <div class="col-12">
+          
+            <div class="pagination-main">
+                <ul class="pagination">
+                    <li class="prev">
+                        <a href="#"><i class="fa fa-angle-double-left"></i></a>
+                    </li>
+                    <li><a href="#">1</a></li>
+                    <li class="active"><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li class="next">
+                        <a href="#"><i class="fa fa-angle-double-right"></i></a>
+                    </li>
+                </ul>
+            </div>
+         
+        </div>
+    </div> -->
+    </div>
+</section>
+<!--/ End Blogs -->
