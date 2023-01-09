@@ -10,6 +10,7 @@ const routes: Routes = [
     component: StudentComponent,
     children: [
       { path: '', component: StudentDashboardComponent },
+      { path: "blog", loadChildren: () => import("./pages/blog/blog.module").then((m) => m.BlogModule) }
       
     ],
   }, 

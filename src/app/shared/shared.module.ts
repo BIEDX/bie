@@ -21,6 +21,8 @@ import { CarouselModule } from 'primeng/carousel';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SubscribeComponent } from './layout/subscribe/subscribe.component';
+import { StudentNavigationComponent } from './layout/student-navigation/student-navigation.component';
+
 @NgModule({
   declarations: [
     FooterComponent,
@@ -37,6 +39,7 @@ import { SubscribeComponent } from './layout/subscribe/subscribe.component';
     LatestNewsComponent,
     ParallaxWeFocusComponent,
     SubscribeComponent,
+    StudentNavigationComponent
   ],
   imports: [
     CommonModule,
@@ -46,7 +49,19 @@ import { SubscribeComponent } from './layout/subscribe/subscribe.component';
     CarouselModule,
     HttpClientModule
   ],
-  exports: [HeaderComponent, FooterComponent, CarouselComponent, WeProvideComponent, ParallaxComponent, PopularCourseComponent,
-    OurTeamComponent, TestimonialComponent, UpcomingEventComponent, RibbonComponent, LatestNewsComponent, ParallaxWeFocusComponent, SubscribeComponent]
+  exports: [HeaderComponent,
+    FooterComponent,
+    CarouselComponent,
+    WeProvideComponent,
+    ParallaxComponent,
+    PopularCourseComponent,
+    OurTeamComponent,
+    TestimonialComponent,
+    UpcomingEventComponent,
+    RibbonComponent,
+    LatestNewsComponent,
+    ParallaxWeFocusComponent,
+    SubscribeComponent,
+    StudentNavigationComponent]
 })
 export class SharedModule { }
