@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TeacherService } from 'src/app/core/providers/apis/teacher.service';
 
 @Component({
@@ -13,7 +13,8 @@ export class TeacherDetailsComponent implements OnInit {
   payload: any = {};
   constructor(
     private _activatedRoute: ActivatedRoute,
-    private _teacherService: TeacherService
+    private _teacherService: TeacherService,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
@@ -33,11 +34,14 @@ export class TeacherDetailsComponent implements OnInit {
 
   getTeacher(id): void {
     this._teacherService.getTeachersData(id).subscribe((res) => {
-      this.teacherDetails = res;
+      this.teacherDetails = res[0];
     }, (err) => {
       console.log('err', err);
-
     })
+  }
+
+  editTeacher(id): void {
+    this._router.navigateByUrl("/admin/teacher/edit" + '?id=' + id);
   }
 
 }

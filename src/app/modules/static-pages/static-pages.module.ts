@@ -14,6 +14,7 @@ import { ConsultTopicComponent } from './pages/consult-topic/consult-topic.compo
 import { EducatorsComponent } from './pages/educators/educators.component';
 import { LearnTopicComponent } from './pages/learn-topic/learn-topic.component';
 import { ThankYouComponent } from './pages/thank-you/thank-you.component';
+import { BodyPartsComponent, CourseListComponent, DiagnosisComponent } from '.';
 
 
 @NgModule({
@@ -28,7 +29,10 @@ import { ThankYouComponent } from './pages/thank-you/thank-you.component';
     ConsultTopicComponent,
     EducatorsComponent,
     LearnTopicComponent,
-    ThankYouComponent
+    ThankYouComponent,
+    BodyPartsComponent,
+    CourseListComponent,
+    DiagnosisComponent
   ],
   imports: [
     CommonModule,

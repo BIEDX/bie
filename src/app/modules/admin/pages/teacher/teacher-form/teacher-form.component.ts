@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TeacherInterface } from 'src/app/core/constants';
 import { TeacherService } from 'src/app/core/providers/apis/teacher.service';
 
 @Component({
@@ -13,6 +14,7 @@ export class TeacherFormComponent implements OnInit {
   btnMessage: string = ""
   isEdit: boolean = false;
   patchFormValue: any;
+  payload: TeacherInterface;
   @Input() set data(value) {
     this.patchFormValue = value;
   };
@@ -29,7 +31,7 @@ export class TeacherFormComponent implements OnInit {
 
   ngAfterViewInit(): void {
     setTimeout(() => {
-      if (this.patchFormValue && this.patchFormValue.hasOwnProperty('id')) {
+      if (this.patchFormValue && this.patchFormValue.hasOwnProperty('_id')) {
         this.isEdit = true;
         this.patchForm();
       }
@@ -61,10 +63,32 @@ export class TeacherFormComponent implements OnInit {
     if (!this.teacherFrom.valid) {
       return;
     }
-    const formValues = this.teacherFrom.value
-    this.teacherService.createTeacher(formValues).subscribe((res) => {
+    const formValues = this.teacherFrom.value;
+    this.payload = {
+      phone: formValues.phone,
+      email: formValues.email,
+      name: formValues.name,
+      country: formValues.country,
+      affiliation: formValues.affiliation
+    }
+
+    if (this.patchFormValue._id) {
+      this.payload.id = this.patchFormValue._id;
+      console.log('payload', this.payload);
+      this.createTeacher(this.payload)
+    } else {
+      console.log('payload', this.payload);
+      this.createTeacher(this.payload);
+    }
+
+
+  }
+
+  createTeacher(payload) {
+    this.teacherService.createTeacher(payload).subscribe((res) => {
       console.log(res)
       this._route.navigateByUrl('/admin/teacher/list')
     }, (error) => console.log(error));
   }
+
 }

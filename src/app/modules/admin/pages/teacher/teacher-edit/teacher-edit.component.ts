@@ -7,8 +7,8 @@ import { TeacherDetailsComponent } from '..';
 })
 export class TeacherEditComponent extends TeacherDetailsComponent implements OnInit {
 
-  // ngAfterViewInit(): void {
-  //   this.getId();
-  // }
+  ngAfterViewInit(): void {
+    this.getId();
+  }
 
 }

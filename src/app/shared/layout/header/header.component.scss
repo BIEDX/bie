@@ -1,56 +1,70 @@
-.cursor{
-    cursor: pointer;
+.cursor {
+  cursor: pointer;
 }
 
 .m-scroll {
+  display: flex;
+  position: relative;
+  width: 100vw;
+  height: 50px;
+  margin: auto;
+  background-color: #252525;
+  overflow: hidden;
+  z-index: 1;
+
+  &__title {
     display: flex;
-    position: relative;
-    width: 100vw;
-    height: 50px;
-    margin: auto;
-    background-color: #252525;
-    overflow: hidden;
-    z-index: 1;
-  
-      &__title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    white-space: nowrap;
+    transform: scale(2);
+    transition: all 1s ease;
+
+    &>div {
       display: flex;
-      position: absolute;
-      top: 0;
-      left: 0;
-      align-items: center;
-      justify-content: flex-start;
-      width: 100%;
-      height: 100%;
-      white-space: nowrap;
-      transform: scale(2);
-      transition: all 1s ease;
-      & > div {
-        display: flex;
-        animation: scrollText 10s infinite linear;
-      }
-      h1 {
-        margin: 0;
-        font-size: 140px;
-        color: rgba(255,255,255,1);
-        transition: all 2s ease;
-        }
-        a {
-          text-decoration:none;
-          color:white;
-          }
-        a:hover{
-          -webkit-text-stroke: 1px white;
-          color: transparent;
-        }
+      animation: scrollText 10s infinite linear;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 140px;
+      color: rgba(255, 255, 255, 1);
+      transition: all 2s ease;
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
+
+    a:hover {
+      -webkit-text-stroke: 1px white;
+      color: transparent;
     }
   }
-  
-  @keyframes scrollText {
-    from   { transform: translateX(0%); }
-    to { transform: translateX(-50%); }
+}
+
+@keyframes scrollText {
+  from {
+    transform: translateX(0%);
   }
 
-  .logo{
-    width: 100px;
-    margin-top: 0px;
+  to {
+    transform: translateX(-50%);
   }
+}
+
+.logo {
+  width: 80px;
+  margin-top: 0px;
+}
+
+.fa-whatsapp:hover {
+  background-color: #25D366;
+  color: #fff;
+}

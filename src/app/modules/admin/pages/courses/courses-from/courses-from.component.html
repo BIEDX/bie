@@ -9,29 +9,16 @@
                             <div class="single-widget categories">
                                 <h3 class="title">Categories</h3>
                                 <ul>
-                                    <li><a href="#"><i class="fa fa-angle-right"></i>Education Tips<span>16</span></a>
+                                    <li><a href="/admin/courses/add"><i class="fa fa-angle-right"></i>Create Course</a>
                                     </li>
-                                    <li><a href="#"><i class="fa fa-angle-right"></i>General
-                                            Knowledge<span>30</span></a></li>
-                                    <li><a href="#"><i class="fa fa-angle-right"></i>Tips for success<span>80</span></a>
+                                    <li><a href="/admin/courses/list"><i class="fa fa-angle-right"></i>List Course</a>
                                     </li>
-                                    <li><a href="#"><i class="fa fa-angle-right"></i>Student Life<span>23</span></a>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-angle-right"></i>Courses<span>28</span></a></li>
                                 </ul>
                             </div>
                             <!--/ End Categories -->
                         </div>
                     </div>
 
-                    <!-- <div class="col-lg-3 col-12">
-                        <div class="left-navigation">
-                            <ul>
-                                <li class="list-navigation" [routerLink]="'/admin/courses/list'">List Courses</li>
-                                <li class="list-navigation active" [routerLink]="'/admin/courses/add'">Add Courses</li>
-                            </ul>
-                        </div>
-                    </div> -->
                     <div class="col-lg-8 col-12">
                         <!-- Single Enroll -->
                         <div class="enroll-form">
@@ -63,7 +50,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Upload Image</label>
-                                    <input type="file" formControlName="image" accept="image/*" (change)="selectFiles($event)" required />
+                                    <input type="file" formControlName="image" accept="image/*"
+                                        (change)="selectFiles($event)" required />
                                 </div>
                                 <div class="form-group">
                                     <label>Enter Price</label>

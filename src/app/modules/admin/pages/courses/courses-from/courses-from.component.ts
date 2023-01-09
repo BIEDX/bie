@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CourseInterface } from 'src/app/core/constants';
 import { CourseService } from 'src/app/core/providers/apis/courses.service';
 import { TeacherService } from 'src/app/core/providers/apis/teacher.service';
 
@@ -10,9 +11,7 @@ import { TeacherService } from 'src/app/core/providers/apis/teacher.service';
 })
 export class CoursesFromComponent implements OnInit {
   fromGroup: FormGroup;
-  payload: any = {
-    id: null
-  };
+  payload: CourseInterface;
   errorResponse: any = null;
   isEdit: boolean = false;
   bodyParts: any;
@@ -40,7 +39,7 @@ export class CoursesFromComponent implements OnInit {
 
   ngAfterViewInit(): void {
     setTimeout(() => {
-      if (this.patchFormValue && this.patchFormValue.hasOwnProperty('id')) {
+      if (this.patchFormValue && this.patchFormValue.hasOwnProperty('_id')) {
         this.isEdit = true;
         this.patchForm();
       }
@@ -136,11 +135,12 @@ export class CoursesFromComponent implements OnInit {
       type: formValues.type,
       image: formValues.image,
     }
-    console.log('payload', this.payload);
     if (this.patchFormValue?._id) {
       this.payload.id = this.patchFormValue?._id;
+      console.log('payload', this.payload);
       this.updateCourses(this.payload);
     } else {
+      console.log('payload', this.payload);
       this.addCourses(this.payload);
     }
   }

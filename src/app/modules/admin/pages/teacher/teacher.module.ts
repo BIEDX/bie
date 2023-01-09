@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TeacherRoutingModule } from './teacher-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TeacherAddComponent, TeacherDetailsComponent, TeacherEditComponent, TeacherFormComponent, TeacherListComponent } from '.';
+import { TeacherAddComponent, TeacherComponent, TeacherDetailsComponent, TeacherEditComponent, TeacherFormComponent, TeacherListComponent } from '.';
 
 
 @NgModule({
   declarations: [
+    TeacherComponent,
     TeacherAddComponent,
     TeacherListComponent,
     TeacherFormComponent,
@@ -19,6 +20,6 @@ import { TeacherAddComponent, TeacherDetailsComponent, TeacherEditComponent, Tea
     FormsModule,
     TeacherRoutingModule
   ],
-  exports:[TeacherFormComponent]
+  exports: [TeacherFormComponent]
 })
 export class TeacherModule { }

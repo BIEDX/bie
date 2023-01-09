@@ -6,7 +6,6 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
 import { NewsletterComponent } from './pages/newsletter/newsletter.component';
-import { TeacherComponent } from './pages/teacher/teacher.component';
 import { UsersComponent } from './pages/users/users.component';
 
 
@@ -15,7 +14,6 @@ import { UsersComponent } from './pages/users/users.component';
     AdminComponent,
     NewsletterComponent,
     UsersComponent,
-    TeacherComponent,
     AdminDashboardComponent,
   ],
   imports: [

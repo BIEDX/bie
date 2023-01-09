@@ -21,6 +21,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     CoursesRoutingModule
   ],
-  // exports: [CoursesFromComponent],
+  exports: [CoursesFromComponent],
 })
 export class CoursesModule { }

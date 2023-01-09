@@ -57,7 +57,6 @@ export class CourseService {
 
     updateCourses(values) {
         return this.http.put(environment.apiUrl + '/courses', { ...values }, {
-            params: { id: values?.id },
             headers: { Authorization: 'Bearer ' + this.token },
         });
     }
