@@ -5,7 +5,7 @@ import { ConstantsService } from './constants.service';
 
 export enum Role {
   Admin = 'admin',
-  Student= 'student',
+  Student = 'student',
   Teacher = 'teacher'
 }
 
@@ -25,8 +25,15 @@ export class TeacherService {
   }
 
   getTeachers() {
-    return this.http.get(environment.apiUrl + '/auth', {
-      params: { role: Role.Teacher },
+    return this.http.get(environment.apiUrl + '/teacher/all', {
+      // params: { role: Role.Teacher },
+      headers: { Authorization: 'Bearer ' + this.token },
+    });
+  }
+
+  getTeachersData(id) {
+    return this.http.get(environment.apiUrl + '/teacher/detail', {
+      params: { teacherId: id },
       headers: { Authorization: 'Bearer ' + this.token },
     });
   }

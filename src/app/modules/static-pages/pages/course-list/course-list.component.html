@@ -1,0 +1,69 @@
+<el-header></el-header>
+<el-carousel></el-carousel>
+<section class="breadcrumbs overlay mt-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Our Course Pages</h2>
+                <ul class="bread-list">
+                    <li><a href="">Home<i class="fa fa-angle-right"></i></a></li>
+                    <li class="active"><a href="">Course</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="courses archives section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title">
+                    <h2>Popular <span>Course</span> We Offer</h2>
+                    <p>Mauris at varius orci. Vestibulum interdum felis eu nisl pulvinar, quis ultricies nibh. Sed
+                        ultricies ante vitae laoreet sagittis. In pellentesque viverra purus. Sed risus est, molestie
+                        nec hendrerit hendreri </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-12" *ngFor="let course of courses">
+                <!-- Single Course -->
+                <div class="single-course">
+                    <div class="course-head overlay">
+                        <img [src]="image ? image : '../../../../../../../../assets/images/course/course1.jpg'" alt="">
+                        <a class="btn"><i class="fa fa-link"></i>
+                        </a>
+                    </div>
+                    <div class="single-content">
+                        <h4><a><span>{{course?.name}}</span>{{course?.tags}}</a>
+                        </h4>
+                        <p>{{course?.description}}</p>
+                    </div>
+                    <div class="course-meta">
+                        <div class="meta-left">
+                            <span (click)="navigate(course?._id)"><i class="fa fa-shopping-cart"></i>Add to cart</span>
+                            <span><i class="fa fa-clock-o"></i>2 Years</span>
+                        </div>
+                        <span class="price">{{course?.price}}</span>
+                    </div>
+                </div>
+                <!--/ End Single Course -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <!-- Start Pagination -->
+                <div class="pagination-main">
+                    <ul class="pagination">
+                        <li class="prev"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
+                        <li><a href="#">1</a></li>
+                        <li class="active"><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li class="next"><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+                    </ul>
+                </div>
+                <!--/ End Pagination -->
+            </div>
+        </div>
+    </div>
+</section>

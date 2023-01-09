@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TeacherAddComponent } from './teacher-add/teacher-add.component';
-import { TeacherListComponent } from './teacher-list/teacher-list.component';
-import { TeacherComponent } from './teacher.component';
+import { TeacherAddComponent, TeacherComponent, TeacherDetailsComponent, TeacherEditComponent, TeacherListComponent } from '.';
 
 const routes: Routes = [
   {
@@ -10,12 +8,23 @@ const routes: Routes = [
     component: TeacherComponent,
     children: [
       {
+        path: '', redirectTo: 'list'
+      },
+      {
         path: 'add',
         component: TeacherAddComponent
       },
       {
+        path: 'edit',
+        component: TeacherEditComponent
+      },
+      {
         path: 'list',
         component: TeacherListComponent,
+      },
+      {
+        path: 'details',
+        component: TeacherDetailsComponent,
       },
     ],
   },

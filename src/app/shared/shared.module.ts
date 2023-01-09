@@ -17,17 +17,16 @@ import { RibbonComponent } from './layout/ribbon/ribbon.component';
 import { LatestNewsComponent } from './layout/latest-news/latest-news.component';
 import { ParallaxWeFocusComponent } from './layout/parallax-we-focus/parallax-we-focus.component';
 
-import {CarouselModule} from 'primeng/carousel';
+import { CarouselModule } from 'primeng/carousel';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SubscribeComponent } from './layout/subscribe/subscribe.component';
-
 @NgModule({
   declarations: [
     FooterComponent,
     HeaderComponent,
     CarouselComponent,
-    
+
     WeProvideComponent,
     ParallaxComponent,
     PopularCourseComponent,
@@ -37,7 +36,7 @@ import { SubscribeComponent } from './layout/subscribe/subscribe.component';
     RibbonComponent,
     LatestNewsComponent,
     ParallaxWeFocusComponent,
-    SubscribeComponent
+    SubscribeComponent,
   ],
   imports: [
     CommonModule,
@@ -46,8 +45,8 @@ import { SubscribeComponent } from './layout/subscribe/subscribe.component';
     FormsModule,
     CarouselModule,
     HttpClientModule
-  ],  
-  exports:[HeaderComponent,FooterComponent,CarouselComponent,WeProvideComponent,ParallaxComponent,PopularCourseComponent,
-  OurTeamComponent,TestimonialComponent,UpcomingEventComponent,RibbonComponent,LatestNewsComponent,ParallaxWeFocusComponent,SubscribeComponent]
+  ],
+  exports: [HeaderComponent, FooterComponent, CarouselComponent, WeProvideComponent, ParallaxComponent, PopularCourseComponent,
+    OurTeamComponent, TestimonialComponent, UpcomingEventComponent, RibbonComponent, LatestNewsComponent, ParallaxWeFocusComponent, SubscribeComponent]
 })
 export class SharedModule { }

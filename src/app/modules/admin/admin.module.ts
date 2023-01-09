@@ -1,14 +1,12 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
+import { SharedModule } from 'src/app/shared/shared.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
+import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
 import { NewsletterComponent } from './pages/newsletter/newsletter.component';
 import { UsersComponent } from './pages/users/users.component';
-import { SharedModule } from 'src/app/shared/shared.module';
-import { TeacherComponent } from './pages/teacher/teacher.component';
-import { CoursesComponent } from './pages/courses/courses.component';
-import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
 
 
 @NgModule({
@@ -16,8 +14,6 @@ import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard
     AdminComponent,
     NewsletterComponent,
     UsersComponent,
-    TeacherComponent,
-    CoursesComponent,
     AdminDashboardComponent,
   ],
   imports: [
