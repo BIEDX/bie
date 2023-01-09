@@ -30,20 +30,18 @@
                 <!-- Single Course -->
                 <div class="single-course">
                     <div class="course-head overlay">
-                        <img [src]="image ? image : '../../../../../../../../assets/images/course/course1.jpg'"
-                            alt="">
-                        <a (click)="navigate(course?._id)" class="btn"><i class="fa fa-link"></i>
+                        <img [src]="image ? image : '../../../../../../../../assets/images/course/course1.jpg'" alt="">
+                        <a class="btn"><i class="fa fa-link"></i>
                         </a>
                     </div>
                     <div class="single-content">
-                        <h4><a
-                                (click)="navigate(course?._id)"><span>{{course?.name}}</span>{{course?.tags}}</a>
+                        <h4><a><span>{{course?.name}}</span>{{course?.tags}}</a>
                         </h4>
                         <p>{{course?.description}}</p>
                     </div>
                     <div class="course-meta">
                         <div class="meta-left">
-                            <span>Add to cart</span>
+                            <span (click)="navigate(course?._id)"><i class="fa fa-shopping-cart"></i>Add to cart</span>
                             <span><i class="fa fa-clock-o"></i>2 Years</span>
                         </div>
                         <span class="price">{{course?.price}}</span>

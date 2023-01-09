@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { TeacherInterface } from 'src/app/core/constants';
 import { TeacherService } from 'src/app/core/providers/apis/teacher.service';
 
@@ -9,6 +10,7 @@ import { TeacherService } from 'src/app/core/providers/apis/teacher.service';
   templateUrl: './teacher-form.component.html',
 })
 export class TeacherFormComponent implements OnInit {
+  serviceSubscription: Subscription[] = [];
   teacherFrom: FormGroup;
   errorResponse: any = null;
   btnMessage: string = ""
@@ -85,10 +87,18 @@ export class TeacherFormComponent implements OnInit {
   }
 
   createTeacher(payload) {
-    this.teacherService.createTeacher(payload).subscribe((res) => {
-      console.log(res)
-      this._route.navigateByUrl('/admin/teacher/list')
-    }, (error) => console.log(error));
+    this.serviceSubscription.push(
+      this.teacherService.createTeacher(payload).subscribe((res) => {
+        console.log(res)
+        this._route.navigateByUrl('/admin/teacher/list')
+      }, (error) => console.log(error))
+    )
+  }
+
+  ngOnDestroy(): void {
+    this.serviceSubscription.forEach(service => {
+      service.unsubscribe();
+    });
   }
 
 }

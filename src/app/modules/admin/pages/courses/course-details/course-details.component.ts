@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { CourseService } from 'src/app/core/providers/apis/courses.service';
 
 @Component({
@@ -8,6 +9,7 @@ import { CourseService } from 'src/app/core/providers/apis/courses.service';
   styleUrls: ['./course-details.component.scss']
 })
 export class CourseDetailsComponent implements OnInit {
+  serviceSubscription: Subscription[] = [];
   coursesDetails: any;
   courseId: string;
   constructor(
@@ -36,15 +38,23 @@ export class CourseDetailsComponent implements OnInit {
       value: this.courseId,
       type: 'get'
     }
-    this._courseService.getCourses(data).subscribe((res) => {
-      this.coursesDetails = res;
-    }, (err) => {
-      console.log('err', err);
-    })
+    this.serviceSubscription.push(
+      this._courseService.getCourses(data).subscribe((res) => {
+        this.coursesDetails = res;
+      }, (err) => {
+        console.log('err', err);
+      })
+    )
   }
 
   editCourse(id): void {
     this._router.navigateByUrl("/admin/courses/edit" + '?id=' + id);
+  }
+
+  ngOnDestroy(): void {
+    this.serviceSubscription.forEach(service => {
+      service.unsubscribe();
+    });
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { TeacherService } from 'src/app/core/providers/apis/teacher.service';
 
 @Component({
@@ -8,6 +9,7 @@ import { TeacherService } from 'src/app/core/providers/apis/teacher.service';
   styleUrls: ['./teacher-details.component.scss']
 })
 export class TeacherDetailsComponent implements OnInit {
+  serviceSubscription: Subscription[] = [];
   teacherDetails: any;
   teacherId: string;
   payload: any = {};
@@ -33,15 +35,23 @@ export class TeacherDetailsComponent implements OnInit {
   }
 
   getTeacher(id): void {
-    this._teacherService.getTeachersData(id).subscribe((res) => {
-      this.teacherDetails = res[0];
-    }, (err) => {
-      console.log('err', err);
-    })
+    this.serviceSubscription.push(
+      this._teacherService.getTeachersData(id).subscribe((res) => {
+        this.teacherDetails = res[0];
+      }, (err) => {
+        console.log('err', err);
+      })
+    )
   }
 
   editTeacher(id): void {
     this._router.navigateByUrl("/admin/teacher/edit" + '?id=' + id);
+  }
+
+  ngOnDestroy(): void {
+    this.serviceSubscription.forEach(service => {
+      service.unsubscribe();
+    });
   }
 
 }

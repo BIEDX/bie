@@ -67,4 +67,11 @@ export class CourseService {
         return this.http.post(environment.apiUrl + '/image', formData, {
         });
     }
+
+    addCart(values) {
+        return this.http.post(environment.apiUrl + '/courses', { ...values }, {
+            params: { role: Role.Student },
+            headers: { Authorization: 'Bearer ' + this.token },
+        });
+    }
 }

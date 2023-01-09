@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { CourseService } from 'src/app/core/providers/apis/courses.service';
 import { environment } from 'src/environments/environment';
 
@@ -9,6 +10,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./courses-list.component.scss']
 })
 export class CoursesListComponent implements OnInit {
+  serviceSubscription: Subscription[] = [];
   courses: any[] = [];
   image: string;
   constructor(
@@ -21,17 +23,19 @@ export class CoursesListComponent implements OnInit {
   }
 
   getCourses(data): void {
-    this._courseService.getCourses(data ? data : null).subscribe(
-      (res) => {
-        if (Array.isArray(res)) {
-          this.courses = res;
-          this.courses.forEach(element => {
-            this.image = environment.imgUrl + element?.image[0];
-          })
-        }
-      }, (err) => {
-        console.log('err', err);
-      })
+    this.serviceSubscription.push(
+      this._courseService.getCourses(data ? data : null).subscribe(
+        (res) => {
+          if (Array.isArray(res)) {
+            this.courses = res;
+            this.courses.forEach(element => {
+              this.image = environment.imgUrl + element?.image[0];
+            })
+          }
+        }, (err) => {
+          console.log('err', err);
+        })
+    )
   }
 
   searchCourses(event): void {
@@ -45,6 +49,12 @@ export class CoursesListComponent implements OnInit {
 
   seeDetails(_id): void {
     this.router.navigateByUrl("/admin/courses/details" + '?id=' + _id)
+  }
+
+  ngOnDestroy(): void {
+    this.serviceSubscription.forEach(service => {
+      service.unsubscribe();
+    });
   }
 
 }

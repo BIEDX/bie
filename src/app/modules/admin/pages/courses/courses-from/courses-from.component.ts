@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { CourseInterface } from 'src/app/core/constants';
 import { CourseService } from 'src/app/core/providers/apis/courses.service';
 import { TeacherService } from 'src/app/core/providers/apis/teacher.service';
@@ -10,6 +11,7 @@ import { TeacherService } from 'src/app/core/providers/apis/teacher.service';
   templateUrl: './courses-from.component.html',
 })
 export class CoursesFromComponent implements OnInit {
+  serviceSubscription: Subscription[] = [];
   fromGroup: FormGroup;
   payload: CourseInterface;
   errorResponse: any = null;
@@ -74,27 +76,33 @@ export class CoursesFromComponent implements OnInit {
   }
 
   getBodyParts() {
-    this._courseService.getBodyParts().subscribe((res) => {
-      this.bodyParts = res;
-    }, (err) => {
-      console.log('err', err);
-    })
+    this.serviceSubscription.push(
+      this._courseService.getBodyParts().subscribe((res) => {
+        this.bodyParts = res;
+      }, (err) => {
+        console.log('err', err);
+      })
+    )
   }
 
   getDiagonis(data): void {
-    this._courseService.getDiagnos(data ? data : null).subscribe((res) => {
-      this.diagnosis = res;
-    }, (err) => {
-      console.log('err', err);
-    })
+    this.serviceSubscription.push(
+      this._courseService.getDiagnos(data ? data : null).subscribe((res) => {
+        this.diagnosis = res;
+      }, (err) => {
+        console.log('err', err);
+      })
+    )
   }
 
   getTeachers(): void {
-    this._teacherService.getTeachers().subscribe((res) => {
-      this.teachers = res;
-    }, (err) => {
-      console.log('err', err);
-    })
+    this.serviceSubscription.push(
+      this._teacherService.getTeachers().subscribe((res) => {
+        this.teachers = res;
+      }, (err) => {
+        console.log('err', err);
+      })
+    )
   }
 
   onBodyPartsClick(event): void {
@@ -110,13 +118,15 @@ export class CoursesFromComponent implements OnInit {
   }
 
   getImage(data): void {
-    this._courseService.getImages(data).subscribe(
-      (res: any) => {
-        console.log('res', res);
-        this.fromGroup?.controls?.['image']?.setValue(res?.fileName ? res?.fileName : '');
-      }, (err) => {
-        console.log('err', err);
-      })
+    this.serviceSubscription.push(
+      this._courseService.getImages(data).subscribe(
+        (res: any) => {
+          console.log('res', res);
+          this.fromGroup?.controls?.['image']?.setValue(res?.fileName ? res?.fileName : '');
+        }, (err) => {
+          console.log('err', err);
+        })
+    )
   }
 
   signupHandler() {
@@ -146,17 +156,28 @@ export class CoursesFromComponent implements OnInit {
   }
 
   addCourses(payload): void {
-    this._courseService.createCourses(payload).subscribe((res) => {
-      console.log(res)
-      this._route.navigateByUrl('/admin/courses/list')
-    }, (error) => console.log(error));
+    this.serviceSubscription.push(
+      this._courseService.createCourses(payload).subscribe((res) => {
+        console.log(res)
+        this._route.navigateByUrl('/admin/courses/list')
+      }, (error) => console.log(error))
+    )
   }
 
   updateCourses(payload): void {
-    this._courseService.updateCourses(payload).subscribe((res) => {
-      console.log(res)
-      this._route.navigateByUrl('/admin/courses/list')
-    }, (error) => console.log(error));
+    this.serviceSubscription.push(
+      this._courseService.updateCourses(payload).subscribe((res) => {
+        console.log(res)
+        this._route.navigateByUrl('/admin/courses/list')
+      }, (error) => console.log(error))
+    )
   }
+
+  ngOnDestroy(): void {
+    this.serviceSubscription.forEach(service => {
+      service.unsubscribe();
+    });
+  }
+
 }
 

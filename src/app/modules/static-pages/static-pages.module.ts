@@ -14,7 +14,7 @@ import { ConsultTopicComponent } from './pages/consult-topic/consult-topic.compo
 import { EducatorsComponent } from './pages/educators/educators.component';
 import { LearnTopicComponent } from './pages/learn-topic/learn-topic.component';
 import { ThankYouComponent } from './pages/thank-you/thank-you.component';
-import { BodyPartsComponent, CourseListComponent, DiagnosisComponent } from '.';
+import { AddCartComponent, BodyPartsComponent, CourseListComponent, DiagnosisComponent } from '.';
 
 
 @NgModule({
@@ -32,12 +32,13 @@ import { BodyPartsComponent, CourseListComponent, DiagnosisComponent } from '.';
     ThankYouComponent,
     BodyPartsComponent,
     CourseListComponent,
-    DiagnosisComponent
+    DiagnosisComponent,
+    AddCartComponent
   ],
   imports: [
     CommonModule,
     StaticRoutingModule,
-    
+
     SharedModule
   ]
 })
