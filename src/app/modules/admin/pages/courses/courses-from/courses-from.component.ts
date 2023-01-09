@@ -58,7 +58,7 @@ export class CoursesFromComponent implements OnInit {
       image: this.patchFormValue.image ? this.patchFormValue.image : '',
       price: this.patchFormValue.price ? this.patchFormValue.price : '',
       teacher: this.patchFormValue.teacher ? this.patchFormValue.teacher : '',
-      type: this.patchFormValue.type ? this.patchFormValue.type : '',
+      video: this.patchFormValue.video ? this.patchFormValue.video : '',
     })
   }
 
@@ -71,7 +71,7 @@ export class CoursesFromComponent implements OnInit {
       image: ['', Validators.required],
       price: ['', [Validators.required]],
       teacher: ['', [Validators.required]],
-      type: ['', [Validators.required]],
+      video: ['', [Validators.required]],
     })
   }
 
@@ -142,7 +142,7 @@ export class CoursesFromComponent implements OnInit {
       tags: formValues.tags,
       price: formValues.tags,
       teacherId: formValues.teacher,
-      type: formValues.type,
+      video: formValues.video,
       image: formValues.image,
     }
     if (this.patchFormValue?._id) {

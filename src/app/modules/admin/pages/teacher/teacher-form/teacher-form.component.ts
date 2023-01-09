@@ -74,8 +74,8 @@ export class TeacherFormComponent implements OnInit {
       affiliation: formValues.affiliation
     }
 
-    if (this.patchFormValue._id) {
-      this.payload.id = this.patchFormValue._id;
+    if (this.patchFormValue?._id) {
+      this.payload.id = this.patchFormValue?._id;
       console.log('payload', this.payload);
       this.createTeacher(this.payload)
     } else {
