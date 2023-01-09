@@ -1,0 +1,32 @@
+<!-- header -->
+<el-header></el-header>
+<!-- header -->
+<!-- Start Breadcrumbs -->
+<section class="breadcrumbs overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Blogs & News Pages</h2>
+                <ul class="bread-list">
+                    <li><a href="index-2.html">Home<i class="fa fa-angle-right"></i></a></li>
+                    <li class="active"><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ End Breadcrumbs -->
+<!-- Blogs -->
+<section class="blog b-archives section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-12">
+                <el-admin-navigation></el-admin-navigation>
+            </div>
+            <div class="col-lg-8 col-12">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ End Blogs -->

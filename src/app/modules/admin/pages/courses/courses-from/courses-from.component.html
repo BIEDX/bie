@@ -1,27 +1,11 @@
-<section class="enroll overlay section d-none d-md-block" data-stellar-background-ratio="0.5">
+<section class=" section d-none d-md-block" data-stellar-background-ratio="0.5">
     <div class="container">
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
-                <div class="row m-5">
-                    <div class="col-lg-4 col-12">
-                        <div class="learnedu-sidebar bg-light left">
-                            <!-- Categories -->
-                            <div class="single-widget categories">
-                                <h3 class="title">Categories</h3>
-                                <ul>
-                                    <li><a href="/admin/courses/add"><i class="fa fa-angle-right"></i>Create Course</a>
-                                    </li>
-                                    <li><a href="/admin/courses/list"><i class="fa fa-angle-right"></i>List Course</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!--/ End Categories -->
-                        </div>
-                    </div>
-
-                    <div class="col-lg-8 col-12">
+                <div class="row">
+                    <div class="col-lg-12 col-12">
                         <!-- Single Enroll -->
-                        <div class="enroll-form">
+                        <div class="form-cls">
                             <div class="form-title">
                                 <h2>{{isEdit ? "Update": "Create" }} Course</h2>
                             </div>
@@ -59,12 +43,9 @@
                                         required />
                                 </div>
                                 <div class="form-group">
-                                    <label for="sel-type">Select Type</label>
-                                    <select class="form-control" id="sel-type" formControlName="type">
-                                        <option value="Video">
-                                            Video
-                                        </option>
-                                    </select>
+                                    <label>Enter Videos Link</label>
+                                    <textarea formControlName="video" placeholder="Enter Videos Link"
+                                        required></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="sel-body">Select Body Parts</label>

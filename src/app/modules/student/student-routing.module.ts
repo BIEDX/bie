@@ -4,16 +4,15 @@ import { StudentDashboardComponent } from './pages/student-dashboard/student-das
 import { StudentComponent } from './student.component';
 
 const routes: Routes = [
-
   {
     path: '',
     component: StudentComponent,
     children: [
       { path: '', component: StudentDashboardComponent },
-      { path: "blog", loadChildren: () => import("./pages/blog/blog.module").then((m) => m.BlogModule) }
-      
+      { path: "blog", loadChildren: () => import("./pages/blog/blog.module").then((m) => m.BlogModule) },
+      { path: "course", loadChildren: () => import("./pages/courses/courses.module").then((m) => m.CoursesModule) }
     ],
-  }, 
+  },
 ];
 
 @NgModule({

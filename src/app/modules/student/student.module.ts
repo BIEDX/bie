@@ -10,7 +10,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 @NgModule({
   declarations: [
     StudentComponent,
-    StudentDashboardComponent
+    StudentDashboardComponent,
   ],
   imports: [
     CommonModule,

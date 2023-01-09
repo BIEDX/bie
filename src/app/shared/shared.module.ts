@@ -22,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SubscribeComponent } from './layout/subscribe/subscribe.component';
 import { StudentNavigationComponent } from './layout/student-navigation/student-navigation.component';
+import { AdminNavigationComponent } from './layout/admin-navigation/admin-navigation.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { StudentNavigationComponent } from './layout/student-navigation/student-
     LatestNewsComponent,
     ParallaxWeFocusComponent,
     SubscribeComponent,
-    StudentNavigationComponent
+    StudentNavigationComponent,
+    AdminNavigationComponent
   ],
   imports: [
     CommonModule,
@@ -62,6 +64,8 @@ import { StudentNavigationComponent } from './layout/student-navigation/student-
     LatestNewsComponent,
     ParallaxWeFocusComponent,
     SubscribeComponent,
-    StudentNavigationComponent]
+    StudentNavigationComponent,
+    AdminNavigationComponent
+  ]
 })
 export class SharedModule { }

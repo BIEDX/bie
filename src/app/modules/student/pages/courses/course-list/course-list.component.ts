@@ -5,11 +5,11 @@ import { CourseService } from 'src/app/core/providers/apis/courses.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-courses-list',
-  templateUrl: './courses-list.component.html',
-  styleUrls: ['./courses-list.component.scss']
+  selector: 'app-course-list',
+  templateUrl: './course-list.component.html',
+  styleUrls: ['./course-list.component.scss']
 })
-export class CoursesListComponent implements OnInit {
+export class CourseListComponent implements OnInit {
   serviceSubscription: Subscription[] = [];
   courses: any[] = [];
   image: string;
@@ -48,7 +48,7 @@ export class CoursesListComponent implements OnInit {
   }
 
   seeDetails(_id): void {
-    this.router.navigateByUrl("/admin/courses/edit" + '?id=' + _id)
+    this.router.navigateByUrl("/student/course/details" + '?id=' + _id)
   }
 
   ngOnDestroy(): void {
