@@ -1,30 +1,30 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TeacherAddComponent, TeacherComponent, TeacherDetailsComponent, TeacherEditComponent, TeacherListComponent } from '.';
+import { CourseDetailsComponent, CoursesAddComponent, CoursesComponent, CoursesEditComponent, CoursesListComponent } from '.';
 
 const routes: Routes = [
   {
     path: '',
-    component: TeacherComponent,
+    component: CoursesComponent,
     children: [
       {
         path: '', redirectTo: 'list'
       },
       {
         path: 'add',
-        component: TeacherAddComponent
+        component: CoursesAddComponent
       },
       {
         path: 'edit',
-        component: TeacherEditComponent
+        component: CoursesEditComponent
       },
       {
         path: 'list',
-        component: TeacherListComponent,
+        component: CoursesListComponent,
       },
       {
         path: 'details',
-        component: TeacherDetailsComponent,
+        component: CourseDetailsComponent,
       },
     ],
   },
@@ -34,4 +34,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TeacherRoutingModule { }
+export class CoursesRoutingModule { }
