@@ -7,7 +7,16 @@
                     <!-- Single Course -->
                     <div class="single-course">
                         <div class="course-head">
-                            <img src="../../../../../assets/images/course/course-single.jpg" alt="#">
+                            <!-- <video src="https://www.youtube.com/watch?v=ulF7pF5RWAE" controls="controls"></video> -->
+                            <!-- poster='http://video-js.zencoder.com/oceans-clip.jpg' -->
+                            <!-- <video controls="controls" preload="none"
+                                
+                                data-setup='{ "aspectRatio":"640:267", "playbackRates": [1, 1.5, 2] }'>
+                                <source [src]="videoLink" type='video/mp4' />
+                            </video> -->
+                            <video controls [src]="videoLink">
+                            </video>
+                            <!-- <iframe width="853" height="480" src="https://www.youtube.com/embed/vPsPqZxBsGA" title="Baby Mere Birthday Pe Goli Chalegi (Official Video)| Baby Tere Birthday Pe |Pranjal Dahiya Song 2022" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
                         </div>
                     </div>
                     <!--/ End Single Course -->
@@ -18,52 +27,10 @@
                         <div class="feature-main">
                             <h4>Course Features</h4>
                             <!-- Single Feature -->
-                            <div class="single-feature">
-                                <i class="fa fa-files-o"></i>
-                                <span class="label">Lectures</span>
-                                <span class="value">8</span>
-                            </div>
-                            <!--/ End Single Feature -->
-                            <!-- Single Feature -->
-                            <div class="single-feature">
-                                <i class="fa fa-puzzle-piece"></i>
-                                <span class="label">Quizzes</span>
-                                <span class="value">1</span>
-                            </div>
-                            <!--/ End Single Feature -->
-                            <!-- Single Feature -->
-                            <div class="single-feature">
-                                <i class="fa fa-clock-o"></i>
-                                <span class="label">Duration</span>
-                                <span class="value">1 Year</span>
-                            </div>
-                            <!--/ End Single Feature -->
-                            <!-- Single Feature -->
-                            <div class="single-feature">
-                                <i class="fa fa-magic"></i>
-                                <span class="label">Skill Level</span>
-                                <span class="value">Beginner</span>
-                            </div>
-                            <!--/ End Single Feature -->
-                            <!-- Single Feature -->
-                            <div class="single-feature">
-                                <i class="fa fa-user"></i>
-                                <span class="label">Students</span>
-                                <span class="value">50</span>
-                            </div>
-                            <!--/ End Single Feature -->
-                            <!-- Single Feature -->
-                            <div class="single-feature">
-                                <i class="fa fa-check-square-o"></i>
-                                <span class="label">Certificate</span>
-                                <span class="value">Yes</span>
-                            </div>
-                            <!--/ End Single Feature -->
-                            <!-- Single Feature -->
-                            <div class="single-feature">
-                                <i class="fa fa-check-square-o"></i>
-                                <span class="label">Assessments</span>
-                                <span class="value">Yes</span>
+                            <div class="single-feature" *ngFor="let video of videos; let i = index">
+                                <i class="fa fa-files-o" (click)="onVideoClick(video)"></i>
+                                <span class="label">{{video ? 'Video' : ''}} {{i+1}}</span>
+                                <span class="value">{{video.count}}</span>
                             </div>
                             <!--/ End Single Feature -->
                         </div>
@@ -79,19 +46,19 @@
                         <div class="course-info">
                             <div class="single-info author">
                                 <img src="../../../../../assets/images/testimonial2.jpg" alt="#">
-                                <h4>Teacher:<a href="#"><span>Keny White</span></a></h4>
+                                <h4>Teacher:<a href="#"><span>{{teacherDetails?.name}}</span></a></h4>
                             </div>
                             <div class="single-info category">
                                 <i class="fa fa-bolt"></i>
-                                <h4>Category<a href="#"><span>Web Design</span></a></h4>
+                                <h4>Category<a href="#"><span>{{diagnosisDetails?.name}}</span></a></h4>
                             </div>
-                            <div class="single-info s-enroll">
+                            <!-- <div class="single-info s-enroll">
                                 <i class="fa fa-users"></i>
                                 <h4>Enrolled:<span>302 Student Enrolled</span></h4>
-                            </div>
+                            </div> -->
                             <div class="single-info rattings">
                                 <i class="fa fa-clock-o"></i>
-                                <h4>Course Time:<span>05 Years</span></h4>
+                                <h4>Course Time:<span>{{coursesDetails?.duration}}</span></h4>
                             </div>
                         </div>
                         <!--/ End Course Info -->

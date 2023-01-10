@@ -59,6 +59,7 @@ export class CoursesFromComponent implements OnInit {
       price: this.patchFormValue.price ? this.patchFormValue.price : '',
       teacher: this.patchFormValue.teacher ? this.patchFormValue.teacher : '',
       video: this.patchFormValue.video ? this.patchFormValue.video : '',
+      duration: this.patchFormValue.duration ? this.patchFormValue.duration : '',
     })
   }
 
@@ -72,6 +73,7 @@ export class CoursesFromComponent implements OnInit {
       price: ['', [Validators.required]],
       teacher: ['', [Validators.required]],
       video: ['', [Validators.required]],
+      duration: ['', [Validators.required]],
     })
   }
 
@@ -140,10 +142,11 @@ export class CoursesFromComponent implements OnInit {
       name: formValues.name,
       description: formValues.description,
       tags: formValues.tags,
-      price: formValues.tags,
+      price: formValues.price,
       teacherId: formValues.teacher,
       video: formValues.video,
       image: formValues.image,
+      duration:formValues.duration,
     }
     if (this.patchFormValue?._id) {
       this.payload.id = this.patchFormValue?._id;
