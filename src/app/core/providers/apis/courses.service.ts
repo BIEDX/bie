@@ -32,7 +32,7 @@ export class CourseService {
             // else{
             //     params: { id: data.value }
             // },
-            params: { searchText: data?.value },
+            params: { searchText: data?.value ? data?.value : null  },
             headers: { Authorization: 'Bearer ' + this.token },
         });
     }

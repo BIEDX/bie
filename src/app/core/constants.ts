@@ -17,4 +17,5 @@ export interface CourseInterface {
     image: string,
     price: string,
     id?: string,
+    duration: string,
 }
