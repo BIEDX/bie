@@ -7,7 +7,7 @@ import { ListBlogComponent } from './list-blog/list-blog.component';
 import { ViewBlogComponent } from './view-blog/view-blog.component';
 import { AddBlogComponent } from './add-blog/add-blog.component';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { HttpClientModule } from '@angular/common/http'
 
@@ -21,7 +21,9 @@ import { HttpClientModule } from '@angular/common/http'
   imports: [
     CommonModule,
     BlogRoutingModule,
-    FormsModule, AngularEditorModule, HttpClientModule
+    FormsModule,
+    ReactiveFormsModule,
+    AngularEditorModule, HttpClientModule
   ]
 })
 export class BlogModule { }
