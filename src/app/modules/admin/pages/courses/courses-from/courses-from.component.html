@@ -76,7 +76,7 @@
                                     <label for="sel-body">Select Body Parts *</label>
                                     <select class="form-control" id="sel-body" formControlName="bodyParts"
                                         (change)="onBodyPartsClick($event)">
-                                        <option *ngFor="let bodypart of bodyParts" [value]="bodypart._id">
+                                        <option *ngFor="let bodypart of bodyParts" [value]="bodypart.name">
                                             {{bodypart.name}}</option>
                                     </select>
                                     <p class="text-danger"

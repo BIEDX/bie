@@ -39,13 +39,9 @@ export class CourseDetailsComponent implements OnInit {
   }
 
   getCourse(): void {
-    let data = {
-      value: this.courseId,
-      type: 'get'
-    }
     this.serviceSubscription.push(
-      this._courseService.getCourses(data).subscribe((res) => {
-        this.coursesDetails = res[2];
+      this._courseService.getCoursesDetails(this.courseId).subscribe((res) => {
+        this.coursesDetails = res;
         this.videos = this.coursesDetails.video.split(',');
         this.videoLink = this.videos[0];
         this.getTeacher();

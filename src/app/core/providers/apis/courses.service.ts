@@ -32,7 +32,14 @@ export class CourseService {
             // else{
             //     params: { id: data.value }
             // },
-            params: { searchText: data?.value ? data?.value : null  },
+            params: { searchText: data?.value ? data?.value : null },
+            headers: { Authorization: 'Bearer ' + this.token },
+        });
+    }
+
+    getCoursesDetails(data) {
+        return this.http.get(environment.apiUrl + '/courses/detail', {
+            params: { courseId: data },
             headers: { Authorization: 'Bearer ' + this.token },
         });
     }
