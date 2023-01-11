@@ -50,17 +50,20 @@ export class CoursesFromComponent implements OnInit {
 
 
   patchForm(): void {
+    console.log('patchFormValue',this.patchFormValue);
+    
     this.formGroup.patchValue({
       name: this.patchFormValue.name ? this.patchFormValue.name : '',
       description: this.patchFormValue.description ? this.patchFormValue.description : '',
       tags: this.patchFormValue.tags ? this.patchFormValue.tags : '',
-      diagnosis: this.patchFormValue.diagnosis ? this.patchFormValue.diagnosis : '',
-      image: this.patchFormValue.image ? this.patchFormValue.image : '',
+      diagnosis: this.patchFormValue.diagnosisId ? this.patchFormValue.diagnosisId : '',
       price: this.patchFormValue.price ? this.patchFormValue.price : '',
-      teacher: this.patchFormValue.teacher ? this.patchFormValue.teacher : '',
+      teacher: this.patchFormValue.teacherId ? this.patchFormValue.teacherId : '',
       video: this.patchFormValue.video ? this.patchFormValue.video : '',
       duration: this.patchFormValue.duration ? this.patchFormValue.duration : '',
-      bodyParts:this.patchFormValue.bodyParts ? this.patchFormValue.bodyParts: ''
+      bodyParts:this.patchFormValue.bodyParts ? this.patchFormValue.bodyParts: '',
+      image: this.patchFormValue.image ? this.patchFormValue.image : '',
+     
     })
   }
 

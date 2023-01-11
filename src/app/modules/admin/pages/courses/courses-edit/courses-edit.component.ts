@@ -39,12 +39,8 @@ export class CoursesEditComponent implements OnInit {
   }
 
   getCourse(): void {
-    let data = {
-      value: this.courseId,
-      type: 'get'
-    }
     this.serviceSubscription.push(
-      this._courseService.getCourses(data).subscribe((res) => {
+      this._courseService.getCoursesDetails(this.courseId).subscribe((res) => {
         this.coursesDetails = res;
       }, (err) => {
         console.log('err', err);
