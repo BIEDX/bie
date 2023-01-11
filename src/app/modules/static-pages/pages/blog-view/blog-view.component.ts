@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router'
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { BlogReplyInterface } from 'src/app/core/constants';
 import { BlogService } from 'src/app/core/providers/apis/blog.service';
+
 @Component({
-  selector: 'app-view-blog',
-  templateUrl: './view-blog.component.html',
-  styleUrls: ['./view-blog.component.scss']
+  selector: 'app-blog-view',
+  templateUrl: './blog-view.component.html',
+  styleUrls: ['./blog-view.component.scss']
 })
-export class ViewBlogComponent implements OnInit {
+export class BlogViewComponent implements OnInit {
   serviceSubscription: Subscription[] = [];
   blogId: string = ''
   blog: any = {}
@@ -91,3 +92,4 @@ export class ViewBlogComponent implements OnInit {
   }
 
 }
+

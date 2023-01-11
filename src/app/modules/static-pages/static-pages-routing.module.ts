@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddCartComponent, BodyPartsComponent, CourseListComponent, DiagnosisComponent } from '.';
+import { AddCartComponent, BlogViewComponent, BodyPartsComponent, CourseListComponent, DiagnosisComponent } from '.';
 import { AboutComponent } from './pages/about/about.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { ContactComponent } from './pages/contact/contact.component';
@@ -33,10 +33,14 @@ const routes: Routes = [
       //   path: 'event',
       //   component: EventComponent,
       // },
-      // {
-      //   path: 'blog',
-      //   component: BlogComponent,
-      // },
+      {
+        path: 'blog',
+        component: BlogComponent,
+      },
+      {
+        path: 'blog-view/:blogId',
+        component: BlogViewComponent,
+      },
       // {
       //   path: 'learn',
       //   component: LearnTopicComponent,

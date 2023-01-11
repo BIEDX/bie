@@ -34,15 +34,24 @@
                             </li>
                         </ul>
                         <!-- Next Prev -->
-                        <ul class="prev-next">
+                        <!-- <ul class="prev-next">
                             <li class="prev">
                                 <a href="#"><i class="fa fa-angle-double-left"></i></a>
                             </li>
                             <li class="next">
                                 <a href="#"><i class="fa fa-angle-double-right"></i></a>
                             </li>
-                        </ul>
+                        </ul> -->
                         <!--/ End Next Prev -->
+                    </div>
+                    <div class="comment-main" *ngIf="replies?.length > 0">
+                        <div class="comment-title">
+                            <h2>Replies:-</h2>
+                        </div>
+                        <div *ngFor="let reply of replies" class="mb-3">
+                            <h5>{{reply?.name}}</h5>
+                            <p>{{reply?.comment}}</p>
+                        </div>
                     </div>
                     <div class="comment-main">
                         <div class="comment-title">
@@ -52,39 +61,34 @@
                             </p>
                         </div>
                         <!-- Form -->
-                        <form class="form" action="#">
+                        <form class="form" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
                             <div class="row">
-                                <div class="col-lg-6 col-12">
+                                <div class="col-lg-12 col-12">
                                     <div class="form-group">
-                                        <input name="name" type="text" placeholder="Full name" />
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-12">
-                                    <div class="form-group">
-                                        <input name="email" type="email" placeholder="Enter your email" />
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-12">
-                                    <div class="form-group">
-                                        <input name="subject" type="text" placeholder="Subjects" />
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-12">
-                                    <div class="form-group">
-                                        <input name="address" type="url" placeholder="Web Address" />
+                                        <label>Enter Full Name * </label>
+                                        <input name="name" type="text" formControlName="name" />
+                                        <p class="text-danger"
+                                            *ngIf="formGroup.get('name').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                            Full Name is required.
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <textarea name="address" rows="6" placeholder="Web Address"></textarea>
+                                        <label>Enter Your Comments * </label>
+                                        <textarea rows="6" placeholder="Comment" formControlName="comment"></textarea>
+                                        <p class="text-danger"
+                                            *ngIf="formGroup.get('comment').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                            Comments is required.
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
                                         <div class="button">
-                                            <button type="submit" class="btn primary">
-                        Post Comment
-                      </button>
+                                            <button [disabled]="!formGroup.valid" type="submit" class="btn primary">
+                                                Post Comment
+                                            </button>
                                         </div>
                                     </div>
                                 </div>

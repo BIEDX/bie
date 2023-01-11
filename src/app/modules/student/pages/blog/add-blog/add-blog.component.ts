@@ -3,6 +3,8 @@ import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { BlogService } from 'src/app/core/providers/apis/blog.service';
 import { Guid } from "guid-typescript";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BlogInterface } from 'src/app/core/constants';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-blog',
@@ -10,8 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./add-blog.component.scss']
 })
 export class AddBlogComponent implements OnInit {
-  htmlContent = '';
-  blog: any = {};
+  payload: BlogInterface;
   formGroup: FormGroup;
   config: AngularEditorConfig = {
     editable: true,
@@ -41,13 +42,11 @@ export class AddBlogComponent implements OnInit {
       },
     ]
   };
-  constructor(private blogService: BlogService,
-    private _formBuilder: FormBuilder
-  ) {
-    this.blog = {
-
-    }
-  }
+  constructor(
+    private blogService: BlogService,
+    private _formBuilder: FormBuilder,
+    private _router: Router
+  ) { }
 
   ngOnInit(): void {
     this.buildForm();
@@ -61,29 +60,27 @@ export class AddBlogComponent implements OnInit {
       createdBy: ['', [Validators.required]],
       date: ['', [Validators.required]],
       tag: ['', [Validators.required]],
-      id: ['', [Validators.required]],
     })
   }
   createBlogHandler() {
     const blogId: any = Guid.create();
     let formData = this.formGroup.value;
-    const requestData = {
+    this.payload = {
       title: formData.title,
       description: formData.htmlContent,
       by: formData.createdBy,
       date: formData.date,
       tag: formData.tag,
-      blogId: formData.id
+      blogId: blogId.value
     }
-    console.log('requestData', requestData);
-    this.blogService.createBlog(requestData).subscribe(
-      (data) => {
-        console.log(data);
-        this.htmlContent = '';
-        this.blog = {};
+    console.log('requestData', this.payload);
+    this.blogService.createBlog(this.payload).subscribe(
+      (res) => {
+        console.log(res);
+        this._router.navigateByUrl('/student/blog/list');
       },
       (err) => {
-        console.log(err)
+        console.log('err', err)
       }
     )
   }

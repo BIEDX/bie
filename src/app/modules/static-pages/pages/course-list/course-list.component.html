@@ -1,5 +1,4 @@
 <el-header></el-header>
-<el-carousel></el-carousel>
 <section class="breadcrumbs overlay mt-3">
     <div class="container">
         <div class="row">
@@ -13,57 +12,202 @@
         </div>
     </div>
 </section>
-<section class="courses archives section">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="section-title">
-                    <h2>Popular <span>Course</span> We Offer</h2>
-                    <p>Mauris at varius orci. Vestibulum interdum felis eu nisl pulvinar, quis ultricies nibh. Sed
-                        ultricies ante vitae laoreet sagittis. In pellentesque viverra purus. Sed risus est, molestie
-                        nec hendrerit hendreri </p>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-12">
+            <div class="learnedu-sidebar left">
+                <!-- <div class="search">
+                <div class="form">
+                    <input type="email" placeholder="Search ...">
+                    <button class="button"><i class="fa fa-search"></i></button>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-6 col-12" *ngFor="let course of courses">
-                <!-- Single Course -->
-                <div class="single-course">
-                    <div class="course-head overlay">
-                        <img [src]="image ? image : '../../../../../../../../assets/images/course/course1.jpg'" alt="">
-                        <a class="btn"><i class="fa fa-link"></i>
-                        </a>
-                    </div>
-                    <div class="single-content">
-                        <h4><a><span>{{course?.name}}</span>{{course?.tags}}</a>
-                        </h4>
-                        <p>{{course?.description}}</p>
-                    </div>
-                    <div class="course-meta">
-                        <div class="meta-left">
-                            <span (click)="navigate(course?._id)"><i class="fa fa-shopping-cart"></i>Add to cart</span>
-                            <span><i class="fa fa-clock-o"></i>2 Years</span>
-                        </div>
-                        <span class="price">{{course?.price}}</span>
-                    </div>
-                </div>
-                <!--/ End Single Course -->
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <!-- Start Pagination -->
-                <div class="pagination-main">
-                    <ul class="pagination">
-                        <li class="prev"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-                        <li><a href="#">1</a></li>
-                        <li class="active"><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li class="next"><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+            </div> -->
+                <!-- Categories -->
+                <div class="single-widget categories">
+                    <h3 class="title">Categories</h3>
+                    <ul>
+                        <li><a href="/blog"><i class="fa fa-angle-right"></i>Blog<span>16</span></a>
+                        </li>
+                        <li><a href="/course-list"><i class="fa fa-angle-right"></i>Course<span>30</span></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-angle-right"></i>Tips for success<span>80</span></a></li>
+                        <li><a href="#"><i class="fa fa-angle-right"></i>Student Life<span>23</span></a></li>
+                        <li><a href="#"><i class="fa fa-angle-right"></i>Courses<span>28</span></a></li>
+                        <li><a routerLink="/student/blog"><i class="fa fa-angle-right"></i>Blogs<span>28</span></a></li>
                     </ul>
                 </div>
-                <!--/ End Pagination -->
+                <!--/ End Categories -->
+                <!-- Posts -->
+                <div class="single-widget posts">
+                    <h3>Recent <span>Posts</span></h3>
+                    <div class="single-post">
+                        <div class="post-img">
+                            <img src="../../../assets/images/blog/blog1.jpg" alt="">
+                        </div>
+                        <div class="post-info">
+                            <h4><a href="#">Sed libero justo, tempus sit amet efficitur auctor</a></h4>
+                            <span><i class="fa fa-calendar"></i>May 05, 2018</span>
+                        </div>
+                    </div>
+                    <div class="single-post">
+                        <div class="post-img">
+                            <img src="../../../assets/images/blog/blog2.jpg" alt="">
+                        </div>
+                        <div class="post-info">
+                            <h4><a href="#">velit mauris pharetra ligula, luctus suscipit dui dui </a></h4>
+                            <span><i class="fa fa-calendar"></i>April 10, 2018</span>
+                        </div>
+                    </div>
+                    <div class="single-post">
+                        <div class="post-img">
+                            <img src="../../../assets/images/blog/blog3.jpg" alt="">
+                        </div>
+                        <div class="post-info">
+                            <h4><a href="#"> Aenean congue laoreet velit a varius. Nulla facilisi.</a></h4>
+                            <span><i class="fa fa-calendar"></i>March 15, 2018</span>
+                        </div>
+                    </div>
+                    <div class="single-post">
+                        <div class="post-img">
+                            <img src="../../../assets/images/blog/blog1.jpg" alt="">
+                        </div>
+                        <div class="post-info">
+                            <h4><a href="#">Ut malesuada sed lorem sagittis ullamcorper Class </a></h4>
+                            <span><i class="fa fa-calendar"></i>Feb 29, 2018</span>
+                        </div>
+                    </div>
+                    <div class="single-post">
+                        <div class="post-img">
+                            <img src="../../../assets/images/blog/blog2.jpg" alt="">
+                        </div>
+                        <div class="post-info">
+                            <h4><a href="#">Nunc id arcu eros. Proin nec mattis elit. Nulla ut odio</a></h4>
+                            <span><i class="fa fa-calendar"></i>Jan 11, 2018</span>
+                        </div>
+                    </div>
+                </div>
+                <!--/ End Posts -->
+                <div class="single-widget course">
+                    <h3>Popular <span>Courses</span></h3>
+                    <!-- Single Course -->
+                    <div class="single-course">
+                        <img src="../../../assets/images/course/course1.jpg" alt="#">
+                        <div class="course-content">
+                            <h4><a href="#">Web Design Course</a></h4>
+                            <div class="meta">$900.00, <span><i class="fa fa-clock-o"></i>3 Years</span></div>
+                        </div>
+                    </div>
+                    <!-- Single Course -->
+                    <!-- Single Course -->
+                    <div class="single-course">
+                        <img src="../../../assets/images/course/course2.jpg" alt="#">
+                        <div class="course-content">
+                            <h4><a href="#">Business Management Course</a></h4>
+                            <div class="meta">$150.00, <span><i class="fa fa-clock-o"></i>1 Year</span></div>
+                        </div>
+                    </div>
+                    <!-- Single Course -->
+                    <!-- Single Course -->
+                    <div class="single-course">
+                        <img src="../../../assets/images/course/course3.jpg" alt="#">
+                        <div class="course-content">
+                            <h4><a href="#">Software Engineer Course</a></h4>
+                            <div class="meta">$500.00, <span><i class="fa fa-clock-o"></i>6 Month</span></div>
+                        </div>
+                    </div>
+                    <!-- Single Course -->
+                    <!-- Single Course -->
+                    <div class="single-course">
+                        <img src="../../../assets/images/course/course4.jpg" alt="#">
+                        <div class="course-content">
+                            <h4><a href="#">Master in website Development Course</a></h4>
+                            <div class="meta">$200.00, <span><i class="fa fa-clock-o"></i>1 Year</span></div>
+                        </div>
+                    </div>
+                    <!-- Single Course -->
+                    <!-- Single Course -->
+                    <div class="single-course">
+                        <img src="../../../assets/images/course/course5.jpg" alt="#">
+                        <div class="course-content">
+                            <h4><a href="#">Zero to Hero Cources</a></h4>
+                            <div class="meta">$300.00, <span><i class="fa fa-clock-o"></i>2 Years</span></div>
+                        </div>
+                    </div>
+                    <!-- Single Course -->
+                </div>
+                <div class="single-widget tags">
+                    <h3>Recent <span>Tags</span></h3>
+                    <ul>
+                        <li><a href="#">Course</a></li>
+                        <li><a href="#">University</a></li>
+                        <li><a href="#">Scholarship</a></li>
+                        <li><a href="#">Free</a></li>
+                        <li><a href="#">Standard</a></li>
+                        <li><a href="#">Standard</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
+        <div class="col-lg-8 col-12">
+            <section class="courses archives section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="section-title">
+                                <h2>Popular <span>Course</span> We Offer</h2>
+                                <p>Mauris at varius orci. Vestibulum interdum felis eu nisl pulvinar, quis ultricies
+                                    nibh.
+                                    Sed
+                                    ultricies ante vitae laoreet sagittis. In pellentesque viverra purus. Sed risus est,
+                                    molestie
+                                    nec hendrerit hendreri </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-12" *ngFor="let course of courses">
+                            <!-- Single Course -->
+                            <div class="single-course">
+                                <div class="course-head overlay">
+                                    <img [src]="image ? image : '../../../../../../../../assets/images/course/course1.jpg'"
+                                        alt="">
+                                    <a class="btn"><i class="fa fa-link"></i>
+                                    </a>
+                                </div>
+                                <div class="single-content">
+                                    <h4><a><span>{{course?.name}}</span>{{course?.tags}}</a>
+                                    </h4>
+                                    <p>{{course?.description}}</p>
+                                </div>
+                                <div class="course-meta">
+                                    <div class="meta-left">
+                                        <span (click)="navigate(course?._id)"><i class="fa fa-shopping-cart"></i>Add to
+                                            cart</span>
+                                        <span><i class="fa fa-clock-o"></i>{{course?.duration}}</span>
+                                    </div>
+                                    <span class="price">{{course?.price}}</span>
+                                </div>
+                            </div>
+                            <!--/ End Single Course -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- Start Pagination -->
+                            <!-- <div class="pagination-main">
+                            <ul class="pagination">
+                                <li class="prev"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
+                                <li><a href="#">1</a></li>
+                                <li class="active"><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li class="next"><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+                            </ul>
+                        </div> -->
+                            <!--/ End Pagination -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
     </div>
-</section>
+</div>
