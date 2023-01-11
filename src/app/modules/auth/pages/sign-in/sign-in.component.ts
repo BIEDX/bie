@@ -22,7 +22,7 @@ export class SignInComponent implements OnInit {
           if (res?.data?.role === 'admin') {
             this.router.navigateByUrl('/admin');
           } else if (res?.data?.role === 'student') {
-            this.router.navigateByUrl('/admin');
+            this.router.navigateByUrl('/student');
           } else if (res?.data?.role === 'teacher') {
             this.router.navigateByUrl('/teacher');
           }
