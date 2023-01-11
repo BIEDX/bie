@@ -22,14 +22,16 @@
                                 </a>
                             </div>
                             <div class="single-content">
-                                <h4><a
-                                        (click)="seeDetails(course?._id)"><span>{{course?.name}}</span>{{course?.tags}}</a>
+                                <h4>
+                                    <a (click)="seeDetails(course?._id)">{{course?.name}}
+                                    </a>
+                                    <span>{{course?.tags}}</span>
                                 </h4>
                                 <p>{{course?.description}}</p>
                             </div>
                             <div class="course-meta">
                                 <div class="meta-left">
-                                    <span><i class="fa fa-users"></i>36 Seat</span>
+                                    <!-- <span><i class="fa fa-users"></i>36 Seat</span> -->
                                     <span><i class="fa fa-clock-o"></i>{{course?.duration}}</span>
                                 </div>
                                 <span class="price">{{course?.price}}</span>

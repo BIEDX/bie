@@ -48,9 +48,8 @@ export class BlogService {
     });
   }
 
-  getReplyBlogs() {
-    return this.http.get(environment.apiUrl + '/reply', {
-      // params: { role: Role.Student },
+  getReplyBlogs(id) {
+    return this.http.get(environment.apiUrl + '/reply/detail/' + id, {
       headers: { Authorization: 'Bearer ' + this.token },
     });
   }
