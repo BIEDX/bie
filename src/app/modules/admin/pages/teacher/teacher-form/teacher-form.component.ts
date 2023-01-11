@@ -53,11 +53,11 @@ export class TeacherFormComponent implements OnInit {
 
   createForm(): void {
     this.teacherFrom = this.formBuilder.group({
-      phone: ['', Validators.required],
-      email: ['', Validators.email],
-      name: ['', Validators.required],
-      country: ['', Validators.required],
-      affiliation: ['', Validators.required]
+      phone: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      name: ['', [Validators.required]],
+      country: ['', [Validators.required]],
+      affiliation: ['', [Validators.required]]
     })
   }
 

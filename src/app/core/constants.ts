@@ -15,7 +15,8 @@ export interface CourseInterface {
     teacherId: string,
     video: any,
     image: string,
-    price: string,
+    price: number,
     id?: string,
     duration: string,
+    bodyParts: string
 }

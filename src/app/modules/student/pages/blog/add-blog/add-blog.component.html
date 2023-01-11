@@ -1,4 +1,5 @@
-<section class="overlay-cls section d-none d-md-block" data-stellar-background-ratio="0.2" style="height: 100vh;padding-top: 0;">
+<section class="overlay-cls section d-none d-md-block" data-stellar-background-ratio="0.2"
+    style="height: 100vh;padding-top: 0;">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-12">
@@ -9,32 +10,55 @@
                     </div>
 
                     <!-- Form -->
-                    <angular-editor [(ngModel)]="htmlContent" [config]="config"></angular-editor>
                     <!-- <div>
                         {{htmlContent}}
                     </div> -->
-                    <form class="form" action="#" style="padding-top: 18px">
-                        <div class="form-group">
-                            <label>Tile:- </label>
-                            <input name="title" type="text" placeholder="Enter your title" [(ngModel)]="blog.title" required />
+                    <form class="form" [formGroup]="formGroup" style="padding-top: 18px">
+                        <div>
+                            <angular-editor formControlName="htmlContent" [config]="config"></angular-editor>
+                            <p class="text-danger"
+                                *ngIf="formGroup.get('htmlContent').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                Blog content is required.
+                            </p>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label>Enter Title * </label>
+                            <input name="title" type="text" formControlName="title" />
+                            <p class="text-danger"
+                                *ngIf="formGroup.get('title').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                Title is required.
+                            </p>
                         </div>
                         <div class="form-group">
-                            <label>Created By:- </label>
-                            <input name="by" type="text" placeholder="Enter your username" [(ngModel)]="blog.by" required />
+                            <label>Enter Created By *</label>
+                            <input name="by" type="text" formControlName="createdBy" />
+                            <p class="text-danger"
+                                *ngIf="formGroup.get('createdBy').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                Created by is required.
+                            </p>
                         </div>
 
                         <div class="form-group">
-                            <label>Date:- </label>
-                            <input name="date" type="date" placeholder="Enter your date" [(ngModel)]="blog.date" required />
+                            <label>Enter Date *</label>
+                            <input name="date" type="date" formControlName="date" />
+                            <p class="text-danger"
+                                *ngIf="formGroup.get('date').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                Date is required.
+                            </p>
                         </div>
 
                         <div class="form-group">
-                            <label>Tag:-</label>
-                            <input name="tag" type="text" placeholder="Enter your tag" [(ngModel)]="blog.tag" required />
+                            <label>Enter Tag *</label>
+                            <input name="tag" type="text" formControlName="tag" />
+                            <p class="text-danger"
+                                *ngIf="formGroup.get('tag').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                Tag is required.
+                            </p>
                         </div>
                         <br />
                         <div class="form-group button text-center">
-                            <button type="submit" class="btn" (click)="createBlogHandler()">Create Blog</button>
+                            <button [disabled]="!formGroup.valid" type="submit" class="btn"
+                                (click)="createBlogHandler()">Create Blog</button>
                         </div>
                         <br />
                     </form>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { BlogService } from 'src/app/core/providers/apis/blog.service';
 import { Guid } from "guid-typescript";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-blog',
@@ -11,6 +12,7 @@ import { Guid } from "guid-typescript";
 export class AddBlogComponent implements OnInit {
   htmlContent = '';
   blog: any = {};
+  formGroup: FormGroup;
   config: AngularEditorConfig = {
     editable: true,
     spellcheck: true,
@@ -39,30 +41,46 @@ export class AddBlogComponent implements OnInit {
       },
     ]
   };
-  constructor(private blogService: BlogService) {
+  constructor(private blogService: BlogService,
+    private _formBuilder: FormBuilder
+  ) {
     this.blog = {
 
     }
   }
 
   ngOnInit(): void {
+    this.buildForm();
   }
-  createBlogHandler() {    
-    const blogId:any=Guid.create();    
-    const requestData={
-      title:this.blog.title,
-      description: this.htmlContent,
-      by:this.blog.by,
-      date:this.blog.date,
-      tag:this.blog.tag,
-      blogId:blogId.value
+
+
+  buildForm(): void {
+    this.formGroup = this._formBuilder.group({
+      title: ['', [Validators.required]],
+      htmlContent: ['', [Validators.required]],
+      createdBy: ['', [Validators.required]],
+      date: ['', [Validators.required]],
+      tag: ['', [Validators.required]],
+      id: ['', [Validators.required]],
+    })
+  }
+  createBlogHandler() {
+    const blogId: any = Guid.create();
+    let formData = this.formGroup.value;
+    const requestData = {
+      title: formData.title,
+      description: formData.htmlContent,
+      by: formData.createdBy,
+      date: formData.date,
+      tag: formData.tag,
+      blogId: formData.id
     }
-    console.log('requestData',requestData);
+    console.log('requestData', requestData);
     this.blogService.createBlog(requestData).subscribe(
       (data) => {
         console.log(data);
-      this.htmlContent='';
-      this.blog={};
+        this.htmlContent = '';
+        this.blog = {};
       },
       (err) => {
         console.log(err)

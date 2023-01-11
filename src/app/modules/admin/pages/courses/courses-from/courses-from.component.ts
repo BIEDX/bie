@@ -12,7 +12,7 @@ import { TeacherService } from 'src/app/core/providers/apis/teacher.service';
 })
 export class CoursesFromComponent implements OnInit {
   serviceSubscription: Subscription[] = [];
-  fromGroup: FormGroup;
+  formGroup: FormGroup;
   payload: CourseInterface;
   errorResponse: any = null;
   isEdit: boolean = false;
@@ -50,7 +50,7 @@ export class CoursesFromComponent implements OnInit {
 
 
   patchForm(): void {
-    this.fromGroup.patchValue({
+    this.formGroup.patchValue({
       name: this.patchFormValue.name ? this.patchFormValue.name : '',
       description: this.patchFormValue.description ? this.patchFormValue.description : '',
       tags: this.patchFormValue.tags ? this.patchFormValue.tags : '',
@@ -60,20 +60,22 @@ export class CoursesFromComponent implements OnInit {
       teacher: this.patchFormValue.teacher ? this.patchFormValue.teacher : '',
       video: this.patchFormValue.video ? this.patchFormValue.video : '',
       duration: this.patchFormValue.duration ? this.patchFormValue.duration : '',
+      bodyParts:this.patchFormValue.bodyParts ? this.patchFormValue.bodyParts: ''
     })
   }
 
   createForm(): void {
-    this.fromGroup = this.formBuilder.group({
-      name: ['', Validators.required],
-      description: ['', Validators.required],
-      tags: ['', Validators.required],
-      diagnosis: ['', Validators.required],
-      image: ['', Validators.required],
+    this.formGroup = this.formBuilder.group({
+      name: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+      tags: ['', [Validators.required]],
+      diagnosis: ['', [Validators.required]],
+      image: ['', [Validators.required]],
       price: ['', [Validators.required]],
       teacher: ['', [Validators.required]],
       video: ['', [Validators.required]],
       duration: ['', [Validators.required]],
+      bodyParts:['',[Validators.required]],
     })
   }
 
@@ -124,7 +126,7 @@ export class CoursesFromComponent implements OnInit {
       this._courseService.getImages(data).subscribe(
         (res: any) => {
           console.log('res', res);
-          this.fromGroup?.controls?.['image']?.setValue(res?.fileName ? res?.fileName : '');
+          this.formGroup?.controls?.['image']?.setValue(res?.fileName ? res?.fileName : '');
         }, (err) => {
           console.log('err', err);
         })
@@ -132,11 +134,11 @@ export class CoursesFromComponent implements OnInit {
   }
 
   signupHandler() {
-    if (!this.fromGroup.valid) {
+    if (!this.formGroup.valid) {
       alert('Please fill the all madentory fields');
       return;
     }
-    const formValues = this.fromGroup.value;
+    const formValues = this.formGroup.value;
     this.payload = {
       diagnosisId: formValues.diagnosis,
       name: formValues.name,
@@ -147,6 +149,7 @@ export class CoursesFromComponent implements OnInit {
       video: formValues.video,
       image: formValues.image,
       duration:formValues.duration,
+      bodyParts: formValues.bodyParts
     }
     if (this.patchFormValue?._id) {
       this.payload.id = this.patchFormValue?._id;

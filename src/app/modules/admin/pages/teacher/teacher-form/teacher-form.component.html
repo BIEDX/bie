@@ -4,41 +4,46 @@
         <div class="form-title">
             <h2>{{isEdit ? "Update": "Create" }} Teacher Account</h2>
         </div>
-
         <!-- Form -->
         <form class="form" [formGroup]="teacherFrom" action="#">
-            <div id="errorMessage" class="">
-                <p *ngIf="errorResponse" class="mt-2 text-danger">
-                    {{ errorResponse.header.message }}
+            <div class="form-group">
+                <label>Enter Teacher Name *</label>
+                <input name="name" type="text" formControlName="name" />
+                <p class="text-danger"
+                    *ngIf="teacherFrom.get('name').hasError('required') && (teacherFrom.dirty || teacherFrom.touched)">
+                    Teacher name is required.
                 </p>
             </div>
             <div class="form-group">
-                <label>Enter Teacher name</label>
-                <input name="name" type="text" formControlName="name" placeholder="Enter you name" required />
+                <label>Enter Teacher Email *</label>
+                <input type="email" formControlName="email" />
+                <p class="text-danger"
+                    *ngIf="teacherFrom.get('email').hasError('required') && (teacherFrom.dirty || teacherFrom.touched)">
+                    Teacher email is required.
+                </p>
             </div>
             <div class="form-group">
-                <label>Enter Teacher Email</label>
-                <input name="email" type="email" formControlName="email" placeholder="Enter Teacher email address"
-                    required />
+                <label>Enter Teacher Phone *</label>
+                <input type="text" formControlName="phone" />
+                <p class="text-danger"
+                    *ngIf="teacherFrom.get('phone').hasError('required') && (teacherFrom.dirty || teacherFrom.touched)">
+                    Teacher phone is required.
+                </p>
             </div>
             <div class="form-group">
-                <label>Enter Teacher Phone</label>
-                <input name="phone" type="text" formControlName="phone"
-                    placeholder="Enter Teacher phone with country code" required />
+                <label>Country *</label>
+                <input type="text" formControlName="country" />
+                <p class="text-danger"
+                    *ngIf="teacherFrom.get('country').hasError('required') && (teacherFrom.dirty || teacherFrom.touched)">
+                    Country is required.
+                </p>
             </div>
             <div class="form-group">
-                <label>Country</label>
-                <input name="phone" type="text" formControlName="country" placeholder="Enter Teacher country"
-                    required />
-            </div>
-            <div class="form-group">
-                <label>Affiliation</label>
-                <input name="phone" type="text" formControlName="affiliation" placeholder="Enter Teacher affiliation"
-                    required />
-            </div>
-            <div id="errorMessage" class="">
-                <p *ngIf="errorResponse" class="mt-2 text-danger">
-                    {{ errorResponse.header.message }}
+                <label>Affiliation *</label>
+                <input type="text" formControlName="affiliation" />
+                <p class="text-danger"
+                    *ngIf="teacherFrom.get('affiliation').hasError('required') && (teacherFrom.dirty || teacherFrom.touched)">
+                    Affiliation is required.
                 </p>
             </div>
             <div class="form-group button">
