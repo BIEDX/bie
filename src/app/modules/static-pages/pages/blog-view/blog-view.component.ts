@@ -28,7 +28,7 @@ export class BlogViewComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       this.blogId = params['blogId'];
       this.getBlog();
-      this.getReplyBlog();
+      this.getReplyBlog(this.blogId);
     });
     this.buildForm();
   }
@@ -45,8 +45,8 @@ export class BlogViewComponent implements OnInit {
     );
   }
 
-  getReplyBlog(): void {
-    this.blogService.getReplyBlogs().subscribe(
+  getReplyBlog(data): void {
+    this.blogService.getReplyBlogs(data).subscribe(
       (res) => {
         console.log(res)
         this.replies = res;
@@ -82,7 +82,7 @@ export class BlogViewComponent implements OnInit {
           console.log('res', res);
           if (res?.statusCode == 200) {
             this.formGroup.reset();
-            this.getReplyBlog();
+            this.getReplyBlog(this.blogId);
           }
         },
         (err) => {

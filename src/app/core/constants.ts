@@ -34,3 +34,10 @@ export interface BlogReplyInterface {
     name: string,
     comment: string,
 }
+
+
+export enum Role {
+    Admin = 'admin',
+    Student = 'student',
+    Teacher = 'teacher'
+}
