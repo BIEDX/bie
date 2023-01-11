@@ -20,3 +20,17 @@ export interface CourseInterface {
     duration: string,
     bodyParts: string
 }
+
+export interface BlogInterface {
+    title: string,
+    description: string,
+    by: string,
+    date: Date,
+    tag: string,
+    blogId?: string
+}
+
+export interface BlogReplyInterface {
+    name: string,
+    comment: string,
+}

@@ -58,12 +58,7 @@
       <div class="row">
         <div class="col-lg-3 col-md-3 col-12 py-2">
           <div class="logo">
-            <a href="/"
-              ><img
-                src="../../../../assets/image2/logo.png"
-                class="logo"
-                alt="#"
-            /></a>
+            <a href="/"><img src="../../../../assets/image2/logo.png" class="logo" alt="#" /></a>
           </div>
           <div class="mobile-menu"></div>
         </div>
@@ -99,7 +94,16 @@
               <!-- Main Menu -->
               <ul id="nav" class="nav menu navbar-nav" style="display: block">
                 <li class="active">
-                  <a>Home </a>
+                  <a href="/home">Home</a>
+                </li>
+                <li>
+                  <a href="/blog">Blog</a>
+                </li>
+                <li>
+                  <a href="/course-list">Courses</a>
+                </li>
+                <li>
+                  <a href="/about">About Us</a>
                 </li>
                 <!-- <li>
                                     <a href="#">Pages<i class="fa fa-angle-down"></i></a>
@@ -160,9 +164,7 @@
               <!-- End Main Menu -->
               <!-- button -->
               <div class="button" *ngIf="!user">
-                <a class="btn" (click)="goToItems('sign-in')"
-                  ><i class="fa fa-pencil"></i>Sign In / Register</a
-                >
+                <a class="btn" (click)="goToItems('sign-in')"><i class="fa fa-pencil"></i>Sign In / Register</a>
               </div>
               <div class="button" *ngIf="user" (click)="handleLogout()">
                 <a class="btn"><i class="fa fa-power-off"></i></a>

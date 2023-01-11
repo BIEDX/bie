@@ -5,7 +5,7 @@ import { ConstantsService } from './constants.service';
 
 export enum Role {
   Admin = 'admin',
-  Student= 'student',
+  Student = 'student',
   Teacher = 'teacher'
 }
 
@@ -31,13 +31,26 @@ export class BlogService {
     });
   }
   getBlogById(id) {
-    return this.http.get(environment.apiUrl + '/blog/'+id, {
+    return this.http.get(environment.apiUrl + '/blog/' + id, {
       params: { role: Role.Teacher },
       headers: { Authorization: 'Bearer ' + this.token },
     });
   }
   createBlog(values) {
     return this.http.post(environment.apiUrl + '/blog', { ...values }, {
+      headers: { Authorization: 'Bearer ' + this.token },
+    });
+  }
+
+  addBlogReply(values) {
+    return this.http.post(environment.apiUrl + '/reply', { ...values }, {
+      headers: { Authorization: 'Bearer ' + this.token },
+    });
+  }
+
+  getReplyBlogs() {
+    return this.http.get(environment.apiUrl + '/reply', {
+      // params: { role: Role.Student },
       headers: { Authorization: 'Bearer ' + this.token },
     });
   }

@@ -14,7 +14,8 @@ import { ConsultTopicComponent } from './pages/consult-topic/consult-topic.compo
 import { EducatorsComponent } from './pages/educators/educators.component';
 import { LearnTopicComponent } from './pages/learn-topic/learn-topic.component';
 import { ThankYouComponent } from './pages/thank-you/thank-you.component';
-import { AddCartComponent, BodyPartsComponent, CourseListComponent, DiagnosisComponent } from '.';
+import { AddCartComponent, BlogViewComponent, BodyPartsComponent, CourseListComponent, DiagnosisComponent } from '.';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -33,12 +34,14 @@ import { AddCartComponent, BodyPartsComponent, CourseListComponent, DiagnosisCom
     BodyPartsComponent,
     CourseListComponent,
     DiagnosisComponent,
-    AddCartComponent
+    AddCartComponent,
+    BlogViewComponent
   ],
   imports: [
     CommonModule,
     StaticRoutingModule,
-
+    ReactiveFormsModule,
+    FormsModule,
     SharedModule
   ]
 })
