@@ -30,7 +30,6 @@
                             <div class="single-feature" *ngFor="let video of videos; let i = index">
                                 <i class="fa fa-files-o" (click)="onVideoClick(video)"></i>
                                 <span class="label">{{video ? 'Video' : ''}} {{i+1}}</span>
-                                <span class="value">{{video.count}}</span>
                             </div>
                             <!--/ End Single Feature -->
                         </div>
@@ -75,6 +74,17 @@
                     <div class="content">
                         <h2><a href="#">{{coursesDetails?.tags}}</a></h2>
                         <p>{{coursesDetails?.description}}</p>
+                    </div>
+                </div>
+                <div class="col-12 mt-3">
+                    <div class="content">
+                        <h3>Video Detail</h3>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h6>{{currentVideoDetail?.name}}</h6>
+                            <span>{{currentVideoDetail.price}}</span>
+                        </div>
+                        <p [innerHtml]="currentVideoDetail?.topic"></p>
+
                     </div>
                 </div>
                 <!-- <div class="col-12">

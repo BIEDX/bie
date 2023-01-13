@@ -13,7 +13,7 @@ export interface CourseInterface {
     name: string,
     tags: string,
     teacherId: string,
-    video: any,
+    video: any[]
     image: string,
     price: number,
     id?: string,

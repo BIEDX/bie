@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { Subscription } from 'rxjs';
 import { CourseInterface } from 'src/app/core/constants';
 import { CourseService } from 'src/app/core/providers/apis/courses.service';
@@ -24,6 +25,34 @@ export class CoursesFromComponent implements OnInit {
   @Input() set data(value) {
     this.patchFormValue = value;
   };
+  config: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '15rem',
+    minHeight: '5rem',
+    placeholder: 'Enter text here...',
+    translate: 'no',
+    defaultParagraphSeparator: 'p',
+    defaultFontName: 'Arial',
+    toolbarHiddenButtons: [
+      ['bold']
+    ],
+    customClasses: [
+      {
+        name: "quote",
+        class: "quote",
+      },
+      {
+        name: 'redText',
+        class: 'redText'
+      },
+      {
+        name: "titleText",
+        class: "titleText",
+        tag: "h1",
+      },
+    ]
+  };
 
   constructor(
     private formBuilder: FormBuilder,
@@ -35,8 +64,8 @@ export class CoursesFromComponent implements OnInit {
   ngOnInit(): void {
     this.createForm();
     this.getBodyParts();
-    this.getDiagonis('');
     this.getTeachers();
+    this.getDiagonis('');
   }
 
   ngAfterViewInit(): void {
@@ -45,26 +74,31 @@ export class CoursesFromComponent implements OnInit {
         this.isEdit = true;
         this.patchForm();
       }
-    }, 700);
+    }, 1000);
   }
 
 
   patchForm(): void {
-    console.log('patchFormValue',this.patchFormValue);
-    
+    this.getDiagonis(this.patchFormValue?.bodyParts);
+    if (this.patchFormValue.hasOwnProperty('video')) {
+      let data = JSON.parse(JSON.stringify(this.patchFormValue));
+      data.video.forEach(element => {
+        element.topic.toString()
+        this.addNewVideos(element);
+      });
+    }
+
     this.formGroup.patchValue({
       name: this.patchFormValue.name ? this.patchFormValue.name : '',
       description: this.patchFormValue.description ? this.patchFormValue.description : '',
       tags: this.patchFormValue.tags ? this.patchFormValue.tags : '',
-      diagnosis: this.patchFormValue.diagnosisId ? this.patchFormValue.diagnosisId : '',
       price: this.patchFormValue.price ? this.patchFormValue.price : '',
       teacher: this.patchFormValue.teacherId ? this.patchFormValue.teacherId : '',
-      video: this.patchFormValue.video ? this.patchFormValue.video : '',
       duration: this.patchFormValue.duration ? this.patchFormValue.duration : '',
-      bodyParts:this.patchFormValue.bodyParts ? this.patchFormValue.bodyParts: '',
+      bodyParts: this.patchFormValue.bodyParts ? this.patchFormValue.bodyParts : '',
       image: this.patchFormValue.image ? this.patchFormValue.image : '',
-     
-    })
+
+    });
   }
 
   createForm(): void {
@@ -76,10 +110,41 @@ export class CoursesFromComponent implements OnInit {
       image: ['', [Validators.required]],
       price: ['', [Validators.required]],
       teacher: ['', [Validators.required]],
-      video: ['', [Validators.required]],
       duration: ['', [Validators.required]],
-      bodyParts:['',[Validators.required]],
-    })
+      bodyParts: ['', [Validators.required]],
+      videos: this.formBuilder.array([])
+    });
+    this.addNewVideos({});
+  }
+
+  // WILL RETURN ALL CONTACTS 
+  get videos(): FormArray {
+    return this.formGroup.get("videos") as FormArray
+  }
+
+  // WILL ADD NEW CONTACTS 
+  addNewVideos(data): void {
+    this.videos.push(this.newVideosCreate(data));
+    console.log("FormGroup", this.formGroup);
+
+  }
+
+  // NEW CONTACTS 
+  newVideosCreate(data: any = {}): FormGroup {
+    return this.formBuilder.group({
+      name: [data && data?.name ? data.name : '', [Validators.required]],
+      videoLink: [data && data?.videoLink ? data.videoLink : '', [Validators.required]],
+      price: [data && data?.price ? data.price : '', [Validators.required]],
+      date: [data && data?.date ? data.date : '', [Validators.required]],
+      topic: [data && data?.topic ? data.topic : '', [Validators.required]],
+    });
+
+
+  }
+
+  // WILL REMOVE SELECTED CONTACT
+  removeVideos(index: number): void {
+    this.videos.removeAt(index);
   }
 
   getBodyParts() {
@@ -96,6 +161,9 @@ export class CoursesFromComponent implements OnInit {
     this.serviceSubscription.push(
       this._courseService.getDiagnos(data ? data : null).subscribe((res) => {
         this.diagnosis = res;
+        if (this.patchFormValue?.bodyParts) {
+          this.formGroup.controls?.['diagnosis']?.setValue(this.diagnosis[0]?._id);
+        }
       }, (err) => {
         console.log('err', err);
       })
@@ -149,11 +217,13 @@ export class CoursesFromComponent implements OnInit {
       tags: formValues.tags,
       price: formValues.price,
       teacherId: formValues.teacher,
-      video: formValues.video,
       image: formValues.image,
-      duration:formValues.duration,
-      bodyParts: formValues.bodyParts
+      duration: formValues.duration,
+      bodyParts: formValues.bodyParts,
+      video: [...formValues.videos]
     }
+
+    console.log('payload', this.payload);
     if (this.patchFormValue?._id) {
       this.payload.id = this.patchFormValue?._id;
       console.log('payload', this.payload);

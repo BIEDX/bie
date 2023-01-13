@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CoursesRoutingModule } from './courses-routing.module';
 import { CourseDetailsComponent, CoursesAddComponent, CoursesComponent, CoursesEditComponent, CoursesFromComponent, CoursesListComponent } from '.';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
+    AngularEditorModule,
     CoursesRoutingModule
   ],
   exports: [CoursesFromComponent],
