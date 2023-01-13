@@ -31,8 +31,10 @@ export interface BlogInterface {
 }
 
 export interface BlogReplyInterface {
+    blogId: string,
     name: string,
     comment: string,
+    _id?: string,
 }
 
 
