@@ -16,6 +16,8 @@ export class BlogViewComponent implements OnInit {
   blog: any = {}
   replies: any;
   formGroup: FormGroup;
+  patchFormValue: any;
+  isEdit: boolean = false;
   payload: BlogReplyInterface;
 
   constructor(
@@ -34,27 +36,29 @@ export class BlogViewComponent implements OnInit {
   }
 
   getBlog(): void {
-    this.blogService.getBlogById(this.blogId).subscribe(
-      (data) => {
-        console.log(data)
-        this.blog = data;
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    this.serviceSubscription.push(
+      this.blogService.getBlogById(this.blogId).subscribe(
+        (data) => {
+          this.blog = data;
+        },
+        (err) => {
+          console.log(err);
+        }
+      )
+    )
   }
 
   getReplyBlog(data): void {
-    this.blogService.getReplyBlogs(data).subscribe(
-      (res) => {
-        console.log(res)
-        this.replies = res;
-      },
-      (err) => {
-        console.log('err', err);
-      }
-    );
+    this.serviceSubscription.push(
+      this.blogService.getReplyBlogs(data).subscribe(
+        (res) => {
+          this.replies = res;
+        },
+        (err) => {
+          console.log('err', err);
+        }
+      )
+    )
   }
 
   buildForm(): void {
@@ -71,15 +75,23 @@ export class BlogViewComponent implements OnInit {
     }
     let formData = this.formGroup.value;
     this.payload = {
+      blogId: this.blogId,
       name: formData.name,
       comment: formData.comment
     }
+    if (this.patchFormValue?._id) {
+      this.payload._id = this.patchFormValue?._id;
+      this.update(this.payload);
+    } else {
+      this.save(this.payload);
+    }
     console.log('payload', this.payload);
+  }
 
+  save(data): void {
     this.serviceSubscription.push(
-      this.blogService.addBlogReply(this.payload).subscribe(
+      this.blogService.addBlogReply(data).subscribe(
         (res: any) => {
-          console.log('res', res);
           if (res?.statusCode == 200) {
             this.formGroup.reset();
             this.getReplyBlog(this.blogId);
@@ -91,5 +103,61 @@ export class BlogViewComponent implements OnInit {
     )
   }
 
+  update(data): void {
+    this.serviceSubscription.push(
+      this.blogService.updateBlogReply(data).subscribe(
+        (res: any) => {
+          if (res?.statusCode == 200) {
+            this.formGroup.reset();
+            this.getReplyBlog(this.blogId);
+          }
+        },
+        (err) => {
+          console.log('err', err);
+        })
+    )
+  }
+
+  onEdit(id): void {
+    this.serviceSubscription.push(
+      this.blogService.getReplyBlogsById(id).subscribe(
+        (res) => {
+          this.patchFormValue = res;
+          console.log('patchFormValue', this.patchFormValue);
+          this.patchForm();
+        }, (err) => {
+          console.log('err', err);
+        })
+    )
+
+  }
+
+  onDelete(id): void {
+    this.serviceSubscription.push(
+      this.blogService.deleteReplyBlogs(id).subscribe(
+        (res: any) => {
+          if (res?.statusCode == 200) {
+            this.getReplyBlog(this.blogId);
+          }
+        },
+        (err) => {
+          console.log('err', err);
+        })
+    )
+  }
+
+  patchForm(): void {
+    this.isEdit = true;
+    this.formGroup.patchValue({
+      name: this.patchFormValue.name ? this.patchFormValue.name : '',
+      comment: this.patchFormValue.comment ? this.patchFormValue.comment : '',
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.serviceSubscription.forEach(service => {
+      service.unsubscribe();
+    });
+  }
 }
 

@@ -49,8 +49,16 @@
                             <h2>Replies:-</h2>
                         </div>
                         <div *ngFor="let reply of replies" class="mb-3">
-                            <h5>{{reply?.name}}</h5>
-                            <p>{{reply?.comment}}</p>
+                            <div class="row">
+                                <div class="col-10">
+                                    <h5>{{reply?.name}}</h5>
+                                    <p>{{reply?.comment}}</p>
+                                </div>
+                                <div class="col-2">
+                                    <i class="fa fa-pencil-square-o mr-2" (click)="onEdit(reply?._id)"></i>
+                                    <i class="fa fa-trash-o ml-2" (click)="onDelete(reply?._id)"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="comment-main">
@@ -87,7 +95,7 @@
                                     <div class="form-group">
                                         <div class="button">
                                             <button [disabled]="!formGroup.valid" type="submit" class="btn primary">
-                                                Post Comment
+                                                {{isEdit ? 'Update': 'Post'}} Comment
                                             </button>
                                         </div>
                                     </div>

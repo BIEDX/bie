@@ -48,8 +48,26 @@ export class BlogService {
     });
   }
 
+  updateBlogReply(values) {
+    return this.http.put(environment.apiUrl + '/reply', { ...values }, {
+      headers: { Authorization: 'Bearer ' + this.token },
+    });
+  }
+
   getReplyBlogs(id) {
     return this.http.get(environment.apiUrl + '/reply/detail/' + id, {
+      headers: { Authorization: 'Bearer ' + this.token },
+    });
+  }
+
+  getReplyBlogsById(id) {
+    return this.http.get(environment.apiUrl + '/reply/' + id, {
+      headers: { Authorization: 'Bearer ' + this.token },
+    });
+  }
+
+  deleteReplyBlogs(id) {
+    return this.http.delete(environment.apiUrl + '/reply/' + id, {
       headers: { Authorization: 'Bearer ' + this.token },
     });
   }
