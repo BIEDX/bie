@@ -79,12 +79,10 @@ export class CoursesFromComponent implements OnInit {
 
 
   patchForm(): void {
-    console.log('patchFormValue', this.patchFormValue);
     this.getDiagonis(this.patchFormValue?.bodyParts);
     if (this.patchFormValue.hasOwnProperty('video')) {
       let data = JSON.parse(JSON.stringify(this.patchFormValue));
       data.video.forEach(element => {
-        console.log("element", element);
         element.topic.toString()
         this.addNewVideos(element);
       });
@@ -134,6 +132,7 @@ export class CoursesFromComponent implements OnInit {
   // NEW CONTACTS 
   newVideosCreate(data: any = {}): FormGroup {
     return this.formBuilder.group({
+      name: [data && data?.name ? data.name : '', [Validators.required]],
       videoLink: [data && data?.videoLink ? data.videoLink : '', [Validators.required]],
       price: [data && data?.price ? data.price : '', [Validators.required]],
       date: [data && data?.date ? data.date : '', [Validators.required]],

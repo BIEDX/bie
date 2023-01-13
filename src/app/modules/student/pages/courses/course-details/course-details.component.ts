@@ -14,6 +14,7 @@ export class CourseDetailsComponent implements OnInit {
   coursesDetails: any;
   teacherDetails: any;
   diagnosisDetails: any;
+  currentVideoDetail: any;
   courseId: string;
   videos: any[] = [];
   videoLink: any;
@@ -42,8 +43,9 @@ export class CourseDetailsComponent implements OnInit {
     this.serviceSubscription.push(
       this._courseService.getCoursesDetails(this.courseId).subscribe((res) => {
         this.coursesDetails = res;
-        this.videos = this.coursesDetails.video.split(',');
-        this.videoLink = this.videos[0];
+        this.videos = this.coursesDetails.video;
+        this.currentVideoDetail = this.videos[0];
+        this.videoLink = this.videos[0]?.videoLink;
         this.getTeacher();
         this.getDiagnosis();
       }, (err) => {
@@ -77,10 +79,12 @@ export class CourseDetailsComponent implements OnInit {
   }
 
   onVideoClick(data) {
+    this.currentVideoDetail = data;
     if (data) {
-      this.videoLink = data;
+      this.videoLink = data?.videoLink;
     } else {
       this.videoLink = this.videos[0];
+      this.currentVideoDetail = this.videos;
     }
   }
 

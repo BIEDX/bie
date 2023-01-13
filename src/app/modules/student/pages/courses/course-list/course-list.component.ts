@@ -29,7 +29,7 @@ export class CourseListComponent implements OnInit {
           if (Array.isArray(res)) {
             this.courses = res;
             this.courses.forEach(element => {
-              this.image = environment.imgUrl + element?.image[0];
+              this.image = environment.imgUrl + element?.image;
             })
           }
         }, (err) => {
