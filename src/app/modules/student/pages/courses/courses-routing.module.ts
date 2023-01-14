@@ -18,6 +18,10 @@ const routes: Routes = [
         path: 'details',
         component: CourseDetailsComponent,
       },
+      {
+        path: 'details/:id',
+        component: CourseDetailsComponent,
+      },
     ],
   },
 ];

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { navigations, RoutePath } from 'src/app/core/navigation';
+import { ConstantsService } from 'src/app/core/providers/apis/constants.service';
 import { ProviderUserAuthService } from 'src/app/core/providers/auth/provider-user-auth.service';
 
 @Component({
@@ -12,10 +13,12 @@ export class HeaderComponent implements OnInit {
   user: any = null;
   phoneNo = '+6589525405';
   navigationsList: RoutePath[] = [];
+  cartDetails: any;
 
   constructor(
     private router: Router,
-    private userAuth: ProviderUserAuthService
+    private userAuth: ProviderUserAuthService,
+    private _constantService: ConstantsService
   ) { }
 
   ngOnInit(): void {
@@ -26,6 +29,13 @@ export class HeaderComponent implements OnInit {
       console.log('user', this.user);
     }
     this.navigationsList = navigations(this.user?.data?.role);
+    this._constantService.cartSubject.subscribe(
+      (res) => {
+        this.cartDetails = res;
+        console.log('cartDetails', this.cartDetails, this.cartDetails?.videos?.length);
+      }, (err) => {
+        console.log('err', err);
+      })
   }
 
   sendWhatsAppMessage() {
@@ -66,5 +76,9 @@ export class HeaderComponent implements OnInit {
   handleLogout() {
     localStorage.clear();
     this.router.navigateByUrl('/home');
+  }
+
+  viewCart(): void {
+    this.router.navigateByUrl('/student/view-cart')
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProviderUserAuthService } from '../../../../core/providers/auth/provider-user-auth.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -9,10 +9,21 @@ import { Router } from '@angular/router';
 export class SignInComponent implements OnInit {
   user: any = {};
   errorMessage: string = ''
-  constructor(private userAuth: ProviderUserAuthService, private router: Router) { }
+  courseId: string;
+  constructor(
+    private userAuth: ProviderUserAuthService,
+    private router: Router,
+    private _activatedRoute: ActivatedRoute,
+  ) { }
 
   ngOnInit(): void {
+    this.getId();
   }
+
+  getId(): void {
+    this.courseId = this._activatedRoute.snapshot.paramMap.get('id')
+  }
+
   signInHandler() {
     this.errorMessage = ''
     this.userAuth.userSignIn(this.user).subscribe(
@@ -21,7 +32,10 @@ export class SignInComponent implements OnInit {
           this.userAuth.userStorage(res);
           if (res?.data?.role === 'admin') {
             this.router.navigateByUrl('/admin');
-          } else if (res?.data?.role === 'student') {
+          } else if (res?.data?.role === 'student' && this.courseId) {
+            this.router.navigateByUrl('/student/course/details/' + this.courseId);
+          }
+          else if (res?.data?.role === 'student') {
             this.router.navigateByUrl('/student');
           } else if (res?.data?.role === 'teacher') {
             this.router.navigateByUrl('/teacher');

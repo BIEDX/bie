@@ -48,7 +48,7 @@ export class CourseListComponent implements OnInit {
   }
 
   seeDetails(_id): void {
-    this.router.navigateByUrl("/student/course/details" + '?id=' + _id)
+    this.router.navigateByUrl("/student/course/details/" + _id)
   }
 
   ngOnDestroy(): void {
