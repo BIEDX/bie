@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'el-popular-course',
@@ -21,7 +22,7 @@ export class PopularCourseComponent implements OnInit {
       inventoryStatus: 'INSTOCK',
       rating: 5,
       year:4
-     
+
     },
     {
       id: '1001',
@@ -96,9 +97,9 @@ export class PopularCourseComponent implements OnInit {
       year:3
      // images:'../../../../assets/images/slider/slider-bg3.jpg'
     },
-   
+
   ];
-  constructor() { 
+  constructor(private router :Router) {
     this.responsiveOptions = [
       {
         breakpoint: '1024px',
@@ -119,6 +120,9 @@ export class PopularCourseComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+  navigateToThankYou(){
+     this.router.navigate(['/thank-you']);
   }
 
 }
