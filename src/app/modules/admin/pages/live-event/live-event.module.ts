@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { LiveEventRoutingModule } from './live-event-routing.module';
-import { LiveEventDetailsComponent, LiveEventAddComponent, LiveEventComponent, LiveEventEditComponent, LiveEventFromComponent, LiveEventListComponent } from '.';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { LiveEventAddComponent, LiveEventComponent, LiveEventEditComponent, LiveEventFromComponent, LiveEventListComponent } from '.';
+import { LiveEventRoutingModule } from './live-event-routing.module';
 
 
 @NgModule({
@@ -14,7 +14,6 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     LiveEventAddComponent,
     LiveEventEditComponent,
     LiveEventListComponent,
-    LiveEventDetailsComponent
   ],
   imports: [
     CommonModule,

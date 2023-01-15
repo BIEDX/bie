@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CourseService } from 'src/app/core/providers/apis/courses.service';
-import { LiveEventDetailsComponent } from '..';
 
 @Component({
   selector: 'app-live-event-edit',
@@ -12,10 +11,6 @@ export class LiveEventEditComponent implements OnInit {
   serviceSubscription: Subscription[] = [];
   courseId: string;
   coursesDetails: any;
-  // extends CourseDetailsComponent
-  // ngAfterViewInit(): void {
-  //   this.getId();
-  // }
 
   constructor(
     private _activatedRoute: ActivatedRoute,

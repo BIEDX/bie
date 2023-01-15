@@ -48,7 +48,7 @@ export class LiveEventListComponent implements OnInit {
   }
 
   seeDetails(_id): void {
-    this.router.navigateByUrl("/admin/courses/edit" + '?id=' + _id)
+    this.router.navigateByUrl("/admin/live-event/edit" + '?id=' + _id)
   }
 
   ngOnDestroy(): void {

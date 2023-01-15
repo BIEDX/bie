@@ -106,12 +106,12 @@ export class LiveEventFromComponent implements OnInit {
       name: ['', [Validators.required]],
       description: ['', [Validators.required]],
       tags: ['', [Validators.required]],
-      diagnosis: ['', [Validators.required]],
+      diagnosis: [''],
       image: ['', [Validators.required]],
       price: ['', [Validators.required]],
-      teacher: ['', [Validators.required]],
+      teacher: [''],
       duration: ['', [Validators.required]],
-      bodyParts: ['', [Validators.required]],
+      bodyParts: [''],
       videos: this.formBuilder.array([])
     });
     this.addNewVideos({});
@@ -220,6 +220,7 @@ export class LiveEventFromComponent implements OnInit {
       image: formValues.image,
       duration: formValues.duration,
       bodyParts: formValues.bodyParts,
+      isLive: true,
       video: [...formValues.videos]
     }
 

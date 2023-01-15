@@ -8,17 +8,18 @@ export interface TeacherInterface {
 }
 
 export interface CourseInterface {
-    diagnosisId: string,
+    diagnosisId?: string,
     description: string,
     name: string,
     tags: string,
-    teacherId: string,
+    teacherId?: string,
     video: any[]
     image: string,
     price: number,
     id?: string,
     duration: string,
-    bodyParts: string
+    bodyParts?: string,
+    isLive: boolean
 }
 
 export interface BlogInterface {

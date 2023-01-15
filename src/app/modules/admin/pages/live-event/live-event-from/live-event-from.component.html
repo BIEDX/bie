@@ -6,16 +6,16 @@
                     <!-- Single Enroll -->
                     <div class="form-cls">
                         <div class="form-title">
-                            <h2>{{isEdit ? "Update": "Create" }} Course</h2>
+                            <h2>{{isEdit ? "Update": "Create" }} Live Event</h2>
                         </div>
 
                         <!-- Form -->
                         <form class="form" [formGroup]="formGroup">
                             <!-- {{formGroup}} -->
-                            <h6>Add Course</h6>
+                            <h6>Add Live Event</h6>
                             <hr />
                             <div class="form-group">
-                                <label>Enter Course name *</label>
+                                <label>Enter Event name *</label>
                                 <input name="name" type="text" formControlName="name" placeholder="Enter you name" />
                                 <p class="text-danger"
                                     *ngIf="formGroup.get('name').hasError('required') && (formGroup.dirty || formGroup.touched)">
@@ -24,7 +24,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Enter Description *</label>
-                                <textarea formControlName="description" placeholder="Enter Course Description">
+                                <textarea formControlName="description" placeholder="Enter Event Description">
                                     </textarea>
                                 <p class="text-danger"
                                     *ngIf="formGroup.get('description').hasError('required') && (formGroup.dirty || formGroup.touched)">
@@ -57,52 +57,40 @@
                                 </p>
                             </div>
                             <div class="form-group">
-                                <label>Enter Course Duration *</label>
-                                <input type="text" formControlName="duration" placeholder="Enter Course Duration" />
+                                <label>Enter Event Duration *</label>
+                                <input type="text" formControlName="duration" placeholder="Enter Event Duration" />
                                 <p class="text-danger"
                                     *ngIf="formGroup.get('duration').hasError('required') && (formGroup.dirty || formGroup.touched)">
-                                    Course duration is required.
+                                    Event duration is required.
                                 </p>
                             </div>
                             <div class="form-group">
-                                <label for="sel-body">Select Body Parts *</label>
+                                <label for="sel-body">Select Body Parts</label>
                                 <select class="form-control" id="sel-body" formControlName="bodyParts"
                                     (change)="onBodyPartsClick($event)">
                                     <option *ngFor="let bodypart of bodyParts" [value]="bodypart._id">
                                         {{bodypart.name}}</option>
                                 </select>
-                                <p class="text-danger"
-                                    *ngIf="formGroup.get('bodyParts').hasError('required') && (formGroup.dirty || formGroup.touched)">
-                                    Body parts is required.
-                                </p>
                             </div>
                             <div class="form-group">
-                                <label for="sel-diag">Select Diagnosis *</label>
+                                <label for="sel-diag">Select Diagnosis</label>
                                 <select class="form-control" id="sel-diag" formControlName="diagnosis">
                                     <option *ngFor="let diagnos of diagnosis" [value]="diagnos._id">
                                         {{diagnos.name}}
                                     </option>
                                 </select>
-                                <p class="text-danger"
-                                    *ngIf="formGroup.get('diagnosis').hasError('required') && (formGroup.dirty || formGroup.touched)">
-                                    Diagnosis is required.
-                                </p>
                             </div>
                             <div class="form-group">
-                                <label for="sel-teach">Select Teacher *</label>
+                                <label for="sel-teach">Select Teacher</label>
                                 <select class="form-control" id="sel-teach" formControlName="teacher">
                                     <option *ngFor="let teacher of teachers" [value]="teacher._id">
                                         {{teacher.name}}
                                     </option>
                                 </select>
-                                <p class="text-danger"
-                                    *ngIf="formGroup.get('teacher').hasError('required') && (formGroup.dirty || formGroup.touched)">
-                                    Teacher is required.
-                                </p>
                             </div>
                             <hr />
                             <ng-container *ngIf="videos?.controls.length > 0; else novideos">
-                                <h6>Add Videos:-</h6>
+                                <h6>Add Live Event Video:-</h6>
                                 <div (click)="addNewVideos('')" class="ml-2 cursor add-video-div">
                                     <i class="fa fa-plus add-video" aria-hidden="true"> &nbsp;Add</i>
                                 </div>

@@ -220,6 +220,7 @@ export class CoursesFromComponent implements OnInit {
       image: formValues.image,
       duration: formValues.duration,
       bodyParts: formValues.bodyParts,
+      isLive: false,
       video: [...formValues.videos]
     }
 

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LiveEventDetailsComponent, LiveEventAddComponent, LiveEventComponent, LiveEventEditComponent, LiveEventListComponent } from '.';
+import { LiveEventAddComponent, LiveEventComponent, LiveEventEditComponent, LiveEventListComponent } from '.';
 
 const routes: Routes = [
   {
@@ -21,10 +21,6 @@ const routes: Routes = [
       {
         path: 'list',
         component: LiveEventListComponent,
-      },
-      {
-        path: 'details',
-        component: LiveEventDetailsComponent,
       },
     ],
   },
