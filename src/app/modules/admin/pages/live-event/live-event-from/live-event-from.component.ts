@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { Subscription } from 'rxjs';
 import { CourseInterface } from 'src/app/core/constants';
-import { CourseService } from 'src/app/core/providers/apis/courses.service';
+import { LiveEventService } from 'src/app/core/providers/apis/live-event.service';
 import { TeacherService } from 'src/app/core/providers/apis/teacher.service';
 
 @Component({
@@ -56,7 +56,7 @@ export class LiveEventFromComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private _courseService: CourseService,
+    private _courseService: LiveEventService,
     private _teacherService: TeacherService,
     private _route: Router
   ) { }

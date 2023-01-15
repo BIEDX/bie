@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { CourseService } from 'src/app/core/providers/apis/courses.service';
+import { LiveEventService } from 'src/app/core/providers/apis/live-event.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -14,7 +14,7 @@ export class LiveEventListComponent implements OnInit {
   courses: any[] = [];
   image: string;
   constructor(
-    private _courseService: CourseService,
+    private _courseService: LiveEventService,
     private router: Router
   ) { }
 

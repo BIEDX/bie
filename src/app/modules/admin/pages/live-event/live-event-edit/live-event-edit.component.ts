@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { CourseService } from 'src/app/core/providers/apis/courses.service';
+import { LiveEventService } from 'src/app/core/providers/apis/live-event.service';
 
 @Component({
   selector: 'app-live-event-edit',
@@ -14,7 +14,7 @@ export class LiveEventEditComponent implements OnInit {
 
   constructor(
     private _activatedRoute: ActivatedRoute,
-    private _courseService: CourseService,
+    private _courseService: LiveEventService,
   ) {
 
   }
