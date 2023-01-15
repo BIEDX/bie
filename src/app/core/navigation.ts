@@ -10,6 +10,7 @@ const ADMIN = [
     { path: '/admin/dashboard', title: 'Dashboard' },
     { path: '/admin/courses', title: 'Courses' },
     { path: '/admin/teacher', title: 'Teacher' },
+    { path: '/admin/live-event', title: 'Live Event' },
 ];
 
 const STUDENT = [

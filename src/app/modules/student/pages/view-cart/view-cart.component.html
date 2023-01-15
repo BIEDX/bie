@@ -36,13 +36,11 @@
             <h6>Videos</h6>
             <hr />
 
-            <div class="common-table table-responsive">
+            <div class="common-table">
                 <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">Video Name</th>
-                            <th scope="col">Video Date</th>
-                            <th width="15%" scope="col">Video Topics</th>
                             <th scope="col">Video Link</th>
                             <th scope="col">Video Price</th>
                         </tr>
@@ -51,9 +49,7 @@
                         <ng-container *ngIf="cartDetails?.videos?.length > 0; else noData">
                             <tr *ngFor="let cart of cartDetails?.videos; let i = index">
                                 <td>{{ cart?.name }}</td>
-                                <td>{{ cart?.date | date:'dd-MM-yyyy' }}</td>
-                                <td [innerHtml]="cart?.topic"></td>
-                                <td>{{ cart?.videoLink }}</td>
+                                <td class="link-td">{{ cart?.videoLink }}</td>
                                 <td>{{ cart?.price }}</td>
                             </tr>
                         </ng-container>
@@ -64,6 +60,11 @@
                         </ng-template>
                     </tbody>
                 </table>
+            </div>
+
+            <hr />
+            <div class="course-price d-flex justify-content-end">
+                <a class="btn">Payment</a>
             </div>
         </div>
     </div>

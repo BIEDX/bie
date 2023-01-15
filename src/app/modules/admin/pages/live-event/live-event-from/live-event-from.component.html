@@ -1,0 +1,192 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-12 col-12">
+                    <!-- Single Enroll -->
+                    <div class="form-cls">
+                        <div class="form-title">
+                            <h2>{{isEdit ? "Update": "Create" }} Live Event</h2>
+                        </div>
+
+                        <!-- Form -->
+                        <form class="form" [formGroup]="formGroup">
+                            <!-- {{formGroup}} -->
+                            <h6>Add Live Event</h6>
+                            <hr />
+                            <div class="form-group">
+                                <label>Enter Event name *</label>
+                                <input name="name" type="text" formControlName="name" placeholder="Enter you name" />
+                                <p class="text-danger"
+                                    *ngIf="formGroup.get('name').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                    Name is required.
+                                </p>
+                            </div>
+                            <div class="form-group">
+                                <label>Enter Description *</label>
+                                <textarea formControlName="description" placeholder="Enter Event Description">
+                                    </textarea>
+                                <p class="text-danger"
+                                    *ngIf="formGroup.get('description').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                    Description is required.
+                                </p>
+                            </div>
+                            <div class="form-group">
+                                <label>Enter Tags *</label>
+                                <input type="text" formControlName="tags" placeholder="Enter Tags" />
+                                <p class="text-danger"
+                                    *ngIf="formGroup.get('tags').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                    Tags is required.
+                                </p>
+                            </div>
+                            <div class="form-group">
+                                <label>Upload Image *</label>
+                                <input type="file" formControlName="image" accept="image/*"
+                                    (change)="selectFiles($event)" />
+                                <p class="text-danger"
+                                    *ngIf="formGroup.get('image').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                    Image is required.
+                                </p>
+                            </div>
+                            <div class="form-group">
+                                <label>Enter Price *</label>
+                                <input type="text" formControlName="price" placeholder="Enter Price" />
+                                <p class="text-danger"
+                                    *ngIf="formGroup.get('price').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                    Price is required.
+                                </p>
+                            </div>
+                            <div class="form-group">
+                                <label>Enter Event Duration *</label>
+                                <input type="text" formControlName="duration" placeholder="Enter Event Duration" />
+                                <p class="text-danger"
+                                    *ngIf="formGroup.get('duration').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                    Event duration is required.
+                                </p>
+                            </div>
+                            <div class="form-group">
+                                <label for="sel-body">Select Body Parts</label>
+                                <select class="form-control" id="sel-body" formControlName="bodyParts"
+                                    (change)="onBodyPartsClick($event)">
+                                    <option *ngFor="let bodypart of bodyParts" [value]="bodypart._id">
+                                        {{bodypart.name}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="sel-diag">Select Diagnosis</label>
+                                <select class="form-control" id="sel-diag" formControlName="diagnosis">
+                                    <option *ngFor="let diagnos of diagnosis" [value]="diagnos._id">
+                                        {{diagnos.name}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="sel-teach">Select Teacher</label>
+                                <select class="form-control" id="sel-teach" formControlName="teacher">
+                                    <option *ngFor="let teacher of teachers" [value]="teacher._id">
+                                        {{teacher.name}}
+                                    </option>
+                                </select>
+                            </div>
+                            <hr />
+                            <ng-container *ngIf="videos?.controls.length > 0; else novideos">
+                                <h6>Add Live Event Video:-</h6>
+                                <div (click)="addNewVideos('')" class="ml-2 cursor add-video-div">
+                                    <i class="fa fa-plus add-video" aria-hidden="true"> &nbsp;Add</i>
+                                </div>
+                                <hr />
+                                <div formArrayName="videos"
+                                    *ngFor="let data of videos?.controls; let videosIndex=index">
+                                    <div class="row" [formGroupName]="videosIndex">
+                                        <div class="col-md-12 d-flex justify-content-end">
+                                            <div *ngIf="videos?.controls?.length > 1"
+                                                (click)="removeVideos(videosIndex)" class="mr-2 cursor">
+                                                <i class="fa fa-minus" aria-hidden="true"></i> Remove
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-12">
+                                            <div class="form-group">
+                                                <label>Enter Video Name *</label>
+                                                <input type="text" formControlName="name"
+                                                    placeholder="Enter Video Name" />
+                                                <p class="text-danger"
+                                                    *ngIf="videos?.controls[videosIndex].get('name').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                                    Video name is required.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-12">
+                                            <div class="form-group">
+                                                <label>Enter Video Price *</label>
+                                                <input type="text" formControlName="price"
+                                                    placeholder="Enter Video Price" />
+                                                <p class="text-danger"
+                                                    *ngIf="videos?.controls[videosIndex].get('price').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                                    Video price is required.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-12">
+                                            <div class="form-group">
+                                                <label>Enter Date *</label>
+                                                <input type="date" formControlName="date" placeholder="Enter Date" />
+                                                <p class="text-danger"
+                                                    *ngIf="videos?.controls[videosIndex].get('date').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                                    Date is required.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-12">
+                                            <div class="form-group">
+                                                <label>Enter Video Link *</label>
+                                                <input type="text" formControlName="videoLink"
+                                                    placeholder="Enter Video Link" />
+                                                <p class="text-danger"
+                                                    *ngIf="videos?.controls[videosIndex].get('videoLink').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                                    Video link is required.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-12">
+                                            <div>
+                                                <angular-editor formControlName="topic"
+                                                    [config]="config"></angular-editor>
+                                                <p class="text-danger"
+                                                    *ngIf="videos?.controls[videosIndex].get('topic').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                                    Video Topics is required.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                </div>
+                            </ng-container>
+                            <ng-template #novideos>
+                                <hr />
+                                <h6>Add Videos:-</h6>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <span class="dark-text">NO MORE VIDEOS</span>
+                                        <div (click)="addNewVideos('')" class="ml-2 cursor add-video-div">
+                                            <i class="fa fa-plus add-video" aria-hidden="true"> &nbsp;Add</i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr />
+                            </ng-template>
+
+                            <div class="form-group button">
+                                <button [disabled]="!formGroup.valid" type="submit" class="btn"
+                                    (click)="signupHandler()">
+                                    {{ isEdit ? "Update Now" : "Add Now" }}
+                                </button>
+                            </div>
+                        </form>
+                        <!--/ End Form -->
+                    </div>
+                    <!-- Single Enroll -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

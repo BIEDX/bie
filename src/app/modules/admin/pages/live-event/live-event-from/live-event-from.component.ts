@@ -8,10 +8,10 @@ import { CourseService } from 'src/app/core/providers/apis/courses.service';
 import { TeacherService } from 'src/app/core/providers/apis/teacher.service';
 
 @Component({
-  selector: 'app-courses-from',
-  templateUrl: './courses-from.component.html',
+  selector: 'app-live-event-from',
+  templateUrl: './live-event-from.component.html',
 })
-export class CoursesFromComponent implements OnInit {
+export class LiveEventFromComponent implements OnInit {
   serviceSubscription: Subscription[] = [];
   formGroup: FormGroup;
   payload: CourseInterface;
@@ -106,12 +106,12 @@ export class CoursesFromComponent implements OnInit {
       name: ['', [Validators.required]],
       description: ['', [Validators.required]],
       tags: ['', [Validators.required]],
-      diagnosis: ['', [Validators.required]],
+      diagnosis: [''],
       image: ['', [Validators.required]],
       price: ['', [Validators.required]],
-      teacher: ['', [Validators.required]],
+      teacher: [''],
       duration: ['', [Validators.required]],
-      bodyParts: ['', [Validators.required]],
+      bodyParts: [''],
       videos: this.formBuilder.array([])
     });
     this.addNewVideos({});
@@ -220,7 +220,7 @@ export class CoursesFromComponent implements OnInit {
       image: formValues.image,
       duration: formValues.duration,
       bodyParts: formValues.bodyParts,
-      isLive: false,
+      isLive: true,
       video: [...formValues.videos]
     }
 
