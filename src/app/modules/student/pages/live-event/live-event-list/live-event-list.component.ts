@@ -14,7 +14,7 @@ export class LiveEventListComponent implements OnInit {
   courses: any[] = [];
   image: string;
   constructor(
-    private _courseService: LiveEventService,
+    private _liveEventService: LiveEventService,
     private router: Router
   ) { }
 
@@ -24,7 +24,7 @@ export class LiveEventListComponent implements OnInit {
 
   getCourses(data): void {
     this.serviceSubscription.push(
-      this._courseService.getCourses(data ? data : null).subscribe(
+      this._liveEventService.getEvent(data ? data : null).subscribe(
         (res) => {
           if (Array.isArray(res)) {
             this.courses = res;
@@ -48,7 +48,7 @@ export class LiveEventListComponent implements OnInit {
   }
 
   seeDetails(_id): void {
-    this.router.navigateByUrl("/student/course/details/" + _id)
+    this.router.navigateByUrl("/student/live-event/details/" + _id)
   }
 
   ngOnDestroy(): void {

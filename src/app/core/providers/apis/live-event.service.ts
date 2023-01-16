@@ -39,7 +39,7 @@ export class LiveEventService {
 
     getEventDetails(data) {
         return this.http.get(environment.apiUrl + '/live-event/detail', {
-            params: { courseId: data },
+            params: { eventId: data },
             headers: { Authorization: 'Bearer ' + this.token },
         });
     }

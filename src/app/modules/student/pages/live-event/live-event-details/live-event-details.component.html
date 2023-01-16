@@ -1,124 +1,130 @@
-<!-- Courses -->
-<section class="courses single section">
-    <div class="container">
-        <div class="single-main">
-            <div class="row">
-                <div class="col-lg-8 col-12 pr-0">
-                    <!-- Single Course -->
-                    <div class="single-course">
-                        <div class="course-head">
-                            <!-- <video src="https://www.youtube.com/watch?v=ulF7pF5RWAE" controls="controls"></video> -->
-                            <!-- poster='http://video-js.zencoder.com/oceans-clip.jpg' -->
-                            <!-- <video controls="controls" preload="none"
-                                
-                                data-setup='{ "aspectRatio":"640:267", "playbackRates": [1, 1.5, 2] }'>
-                                <source [src]="videoLink" type='video/mp4' />
-                            </video> -->
-                            <video controls [src]="videoLink">
-                            </video>
-                            <!-- <iframe width="853" height="480" src="https://www.youtube.com/embed/vPsPqZxBsGA" title="Baby Mere Birthday Pe Goli Chalegi (Official Video)| Baby Tere Birthday Pe |Pranjal Dahiya Song 2022" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
-                        </div>
-                    </div>
-                    <!--/ End Single Course -->
-                </div>
-                <div class="col-lg-4 col-12">
-                    <!-- Course Features -->
-                    <div class="course-feature">
-                        <div class="feature-main">
-                            <h4>Course Features</h4>
-                            <!-- Single Feature -->
-                            <div class="single-feature" *ngFor="let video of videos; let i = index">
-                                <i class="fa fa-files-o" (click)="onVideoClick(video)"></i>
-                                <span class="label">{{video ? 'Video' : ''}} {{i+1}}</span>
+<ng-container *ngIf="data; else showDetail">
+
+</ng-container>
+<ng-template #showDetail>
+    <!-- Courses -->
+    <section class="courses single section">
+        <div class="container">
+            <div class="single-main">
+                <div class="row">
+                    <div class="col-lg-8 col-12 pr-0">
+                        <!-- Single Course -->
+                        <div class="single-course">
+                            <div class="course-head">
+                                <img [src]="imgBaseUrl + eventDetails?.image" alt="">
                             </div>
-                            <!--/ End Single Feature -->
                         </div>
+                        <!--/ End Single Course -->
                     </div>
-                    <!--/ End Course Features -->
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <!-- Course Meta -->
-                    <div class="course-meta px-0">
-                        <!-- Course Info -->
-                        <div class="course-info">
-                            <div class="single-info author">
-                                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                                <!-- <img src="../../../../../assets/images/testimonial2.jpg" alt="#"> -->
-                                <h4>Teacher<a><span>{{teacherDetails?.name}}</span></a></h4>
+                    <div class="col-lg-4 col-12">
+                        <!-- Course Features -->
+                        <div class="course-feature">
+                            <div class="feature-main">
+                                <h4>Event Name</h4>
+                                <!-- Single Feature -->
+                                <div class="single-feature" *ngFor="let video of eventDetails?.video">
+                                    <!-- <i class="fa fa-files-o" (click)="onVideoClick(video)"></i> -->
+                                    <span class="label">{{video?.name}}</span>
+                                </div>
+                                <!--/ End Single Feature -->
                             </div>
-                            <!-- <div class="single-info s-enroll">
+                        </div>
+                        <!--/ End Course Features -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Course Meta -->
+                        <div class="course-meta px-0">
+                            <!-- Course Info -->
+                            <div class="course-info">
+                                <div class="single-info author" *ngIf="teacherDetails">
+                                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                    <!-- <img src="../../../../../assets/images/testimonial2.jpg" alt="#"> -->
+                                    <h4>Teacher<a><span>{{teacherDetails?.name}}</span></a></h4>
+                                </div>
+                                <!-- <div class="single-info s-enroll">
                                 <i class="fa fa-shopping-cart"></i>
                                 <h4>Enrolled:<span>302 Student Enrolled</span></h4>
                             </div> -->
-                            <div class="single-info rattings">
-                                <i class="fa fa-clock-o"></i>
-                                <h4>Course Time<span>{{coursesDetails?.duration}}</span></h4>
+                                <div class="single-info rattings">
+                                    <i class="fa fa-clock-o"></i>
+                                    <h4>Event Duration<span>{{eventDetails?.duration}}</span></h4>
+                                </div>
                             </div>
+                            <!--/ End Course Info -->
+                            <!-- Course Price -->
+                            <div class="course-price d-flex">
+                                <strong class="price mr-2">{{eventDetails?.price | currency: 'SGD'}}</strong>
+                                <a class="btn" (click)="addCart(eventDetails?.video)"><i
+                                        class="fa fa-shopping-cart"></i>Buy
+                                    Event</a>
+                            </div>
+                            <!--/ End Course Price -->
                         </div>
-                        <!--/ End Course Info -->
-                        <!-- Course Price -->
-                        <div class="course-price d-flex">
-                            <strong class="price mr-2">{{coursesDetails?.price | currency: 'SGD'}}</strong>
-                            <a class="btn" (click)="addCart(videos)"><i class="fa fa-shopping-cart"></i>Buy Course</a>
-                        </div>
-                        <!--/ End Course Price -->
+                        <!--/ End Course Meta -->
                     </div>
-                    <!--/ End Course Meta -->
-                </div>
-                <div class="col-12">
-                    <hr />
-                    <h3>Course Detail</h3>
-                    <hr />
-                    <div class="content mt-2 d-flex flex-column">
-                        <div class="mb-3">
-                            <div class="single-info category mr-2">
-                                <i class="fa fa-bolt"></i>
-                                <h4>Category<a><span>{{diagnosisDetails?.name}}</span></a></h4>
+                    <div class="col-12">
+                        <hr />
+                        <h3>Event Detail</h3>
+                        <hr />
+                        <div class="content mt-2 d-flex flex-column">
+                            <div class="mb-3">
+                                <div class="single-info category ml-2">
+                                    <i class="fa fa-tags" aria-hidden="true"></i>
+                                    <h4>Tags<a><span>{{eventDetails?.tags}}</span></a></h4>
+                                </div>
                             </div>
-                            <div class="single-info category ml-2">
-                                <i class="fa fa-tags" aria-hidden="true"></i>
-                                <h4>Tags<a><span>{{coursesDetails?.tags}}</span></a></h4>
+                            <p>{{eventDetails?.description}}</p>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-3">
+                        <hr />
+                        <h3>Day Detail</h3>
+                        <hr />
+                        <div class="content mt-2" *ngFor="let video of eventDetails?.video">
+                            <div class="mb-3 border p-3">
+                                <div class="row">
+                                    <div class="col-md-6 mb-2">
+                                        <p class="text-dark m-0">Name</p>
+                                        <span class="text-grey">{{video?.name}}</span>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <p class="text-dark m-0">Date</p>
+                                        <span class="text-grey">{{video?.date | date: 'dd-MM-yyyy'}}</span>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <p class="text-dark m-0">Regular Price</p>
+                                        <span class="text-grey">{{video?.regularPrice | currency: 'SGD'}}</span>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <p class="text-dark m-0">Regular Date</p>
+                                        <span class="text-grey">{{video?.regularDate | date: 'dd-MM-yyyy'}}</span>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <p class="text-dark m-0">Early Bird Price</p>
+                                        <span class="text-grey">{{video?.earlyBirdPrice | currency: 'SGD'}}</span>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <p class="text-dark m-0">Early Bird Date</p>
+                                        <span class="text-grey">{{video?.earlyBirdDate | date: 'dd-MM-yyyy'}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 pl-0 mb-2">
+                                    <a (click)="addCart([video])" class="btn buy-it"><i
+                                            class="fa fa-shopping-cart mr-2"></i>Buy
+                                        It
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="p-3">
+                                <p class="m-0" [innerHtml]="video?.topic"></p>
                             </div>
                         </div>
-                        <p>{{coursesDetails?.description}}</p>
                     </div>
                 </div>
-                <div class="col-12 mt-3">
-                    <hr />
-                    <h3>Video Detail</h3>
-                    <hr />
-                    <div class="content mt-2">
-                        <div class="d-flex align-items-center justify-content-between mb-3 border p-2">
-                            <h6>{{currentVideoDetail?.name}}</h6>
-                            <div class="course-price d-flex align-items-center">
-                                <strong class="price">{{currentVideoDetail?.price | currency: 'SGD'}}</strong>
-                                <a (click)="addCart([currentVideoDetail])" class="btn ml-2"><i
-                                        class="fa fa-shopping-cart"></i>Buy Video
-                                </a>
-                            </div>
-                        </div>
-                        <p class="m-0" [innerHtml]="currentVideoDetail?.topic"></p>
-
-                    </div>
-                </div>
-                <!-- <div class="col-12">
-							<div class="course-required">
-								<h4>Course Requirement</h4>
-								<ul>
-									<li><span>02</span>World's Fast Online Courses.</li>
-									<li><span>01</span>Over 34 lectures and 99M hours of content!</li>
-									<li><span>03</span>Learn Web Programming at your home!</li>
-									<li><span>04</span>Best Online tutorial platform</li>
-									<li><span>05</span>With Available zero to hero course</li>
-									<li><span>06</span>We have 300M+ Active Student.</li>
-									<li><span>07</span>Improve your skill with learning our courses</li>
-								</ul>
-							</div>
-						</div> -->
             </div>
         </div>
-    </div>
-</section>
-<!--/ End Courses -->
+    </section>
+    <!--/ End Courses -->
+</ng-template>
