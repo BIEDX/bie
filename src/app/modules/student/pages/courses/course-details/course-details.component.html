@@ -3,7 +3,7 @@
     <div class="container">
         <div class="single-main">
             <div class="row">
-                <div class="col-lg-8 col-12">
+                <div class="col-lg-8 col-12 pr-0">
                     <!-- Single Course -->
                     <div class="single-course">
                         <div class="course-head">
@@ -40,50 +40,66 @@
             <div class="row">
                 <div class="col-12">
                     <!-- Course Meta -->
-                    <div class="course-meta">
+                    <div class="course-meta px-0">
                         <!-- Course Info -->
                         <div class="course-info">
                             <div class="single-info author">
-                                <img src="../../../../../assets/images/testimonial2.jpg" alt="#">
-                                <h4>Teacher:<a href="#"><span>{{teacherDetails?.name}}</span></a></h4>
-                            </div>
-                            <div class="single-info category">
-                                <i class="fa fa-bolt"></i>
-                                <h4>Category<a href="#"><span>{{diagnosisDetails?.name}}</span></a></h4>
+                                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                <!-- <img src="../../../../../assets/images/testimonial2.jpg" alt="#"> -->
+                                <h4>Teacher<a><span>{{teacherDetails?.name}}</span></a></h4>
                             </div>
                             <!-- <div class="single-info s-enroll">
-                                <i class="fa fa-users"></i>
+                                <i class="fa fa-shopping-cart"></i>
                                 <h4>Enrolled:<span>302 Student Enrolled</span></h4>
                             </div> -->
                             <div class="single-info rattings">
                                 <i class="fa fa-clock-o"></i>
-                                <h4>Course Time:<span>{{coursesDetails?.duration}}</span></h4>
+                                <h4>Course Time<span>{{coursesDetails?.duration}}</span></h4>
                             </div>
                         </div>
                         <!--/ End Course Info -->
                         <!-- Course Price -->
-                        <div class="course-price">
-                            <p>{{coursesDetails?.price}}</p>
-                            <a href="#" class="btn"><i class="fa fa-users"></i>Enroll Now</a>
+                        <div class="course-price d-flex">
+                            <strong class="price mr-2">{{coursesDetails?.price | currency: 'SGD'}}</strong>
+                            <a class="btn" (click)="addCart(videos)"><i class="fa fa-shopping-cart"></i>Buy Course</a>
                         </div>
                         <!--/ End Course Price -->
                     </div>
                     <!--/ End Course Meta -->
                 </div>
                 <div class="col-12">
-                    <div class="content">
-                        <h2><a href="#">{{coursesDetails?.tags}}</a></h2>
+                    <hr />
+                    <h3>Course Detail</h3>
+                    <hr />
+                    <div class="content mt-2 d-flex flex-column">
+                        <div class="mb-3">
+                            <div class="single-info category mr-2">
+                                <i class="fa fa-bolt"></i>
+                                <h4>Category<a><span>{{diagnosisDetails?.name}}</span></a></h4>
+                            </div>
+                            <div class="single-info category ml-2">
+                                <i class="fa fa-tags" aria-hidden="true"></i>
+                                <h4>Tags<a><span>{{coursesDetails?.tags}}</span></a></h4>
+                            </div>
+                        </div>
                         <p>{{coursesDetails?.description}}</p>
                     </div>
                 </div>
                 <div class="col-12 mt-3">
-                    <div class="content">
-                        <h3>Video Detail</h3>
-                        <div class="d-flex align-items-center justify-content-between">
+                    <hr />
+                    <h3>Video Detail</h3>
+                    <hr />
+                    <div class="content mt-2">
+                        <div class="d-flex align-items-center justify-content-between mb-3 border p-2">
                             <h6>{{currentVideoDetail?.name}}</h6>
-                            <span>{{currentVideoDetail.price}}</span>
+                            <div class="course-price d-flex align-items-center">
+                                <strong class="price">{{currentVideoDetail?.price | currency: 'SGD'}}</strong>
+                                <a (click)="addCart([currentVideoDetail])" class="btn ml-2"><i
+                                        class="fa fa-shopping-cart"></i>Buy Video
+                                </a>
+                            </div>
                         </div>
-                        <p [innerHtml]="currentVideoDetail?.topic"></p>
+                        <p class="m-0" [innerHtml]="currentVideoDetail?.topic"></p>
 
                     </div>
                 </div>

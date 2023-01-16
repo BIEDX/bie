@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { CourseService } from 'src/app/core/providers/apis/courses.service';
+import { LiveEventService } from 'src/app/core/providers/apis/live-event.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-course-list',
-  templateUrl: './course-list.component.html',
-  styleUrls: ['./course-list.component.scss']
+  selector: 'app-std-live-event-list',
+  templateUrl: './live-event-list.component.html',
+  styleUrls: ['./live-event-list.component.scss']
 })
-export class CourseListComponent implements OnInit {
+export class LiveEventListComponent implements OnInit {
   serviceSubscription: Subscription[] = [];
   courses: any[] = [];
   image: string;
   constructor(
-    private _courseService: CourseService,
+    private _liveEventService: LiveEventService,
     private router: Router
   ) { }
 
@@ -24,7 +24,7 @@ export class CourseListComponent implements OnInit {
 
   getCourses(data): void {
     this.serviceSubscription.push(
-      this._courseService.getCourses(data ? data : null).subscribe(
+      this._liveEventService.getEvent(data ? data : null).subscribe(
         (res) => {
           if (Array.isArray(res)) {
             this.courses = res;
@@ -48,7 +48,7 @@ export class CourseListComponent implements OnInit {
   }
 
   seeDetails(_id): void {
-    this.router.navigateByUrl("/student/course/details/" + _id)
+    this.router.navigateByUrl("/student/live-event/details/" + _id)
   }
 
   ngOnDestroy(): void {

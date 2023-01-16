@@ -18,6 +18,10 @@ const routes: Routes = [
         component: SignInComponent,        
       },
       {
+        path: 'sign-in/:id',
+        component: SignInComponent,        
+      },
+      {
         path: 'forgot-password',
         component: ForgotPasswordComponent,        
       }

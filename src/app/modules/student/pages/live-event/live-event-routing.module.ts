@@ -1,26 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CourseDetailsComponent, CourseListComponent, CoursesComponent } from '.';
+import { LiveEventDetailsComponent, LiveEventListComponent, LiveEventComponent } from '.';
 
 const routes: Routes = [
   {
     path: '',
-    component: CoursesComponent,
+    component: LiveEventComponent,
     children: [
       {
         path: '', redirectTo: 'list'
       },
       {
         path: 'list',
-        component: CourseListComponent,
+        component: LiveEventListComponent,
       },
       {
         path: 'details',
-        component: CourseDetailsComponent,
+        component: LiveEventDetailsComponent,
       },
       {
         path: 'details/:id',
-        component: CourseDetailsComponent,
+        component: LiveEventDetailsComponent,
       },
     ],
   },
@@ -30,4 +30,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CoursesRoutingModule { }
+export class LiveEventRoutingModule { }

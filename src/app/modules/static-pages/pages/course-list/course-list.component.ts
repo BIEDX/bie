@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CourseService } from 'src/app/core/providers/apis/courses.service';
+import { ProviderUserAuthService } from 'src/app/core/providers/auth/provider-user-auth.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -18,6 +19,7 @@ export class CourseListComponent implements OnInit {
   constructor(
     private _courseService: CourseService,
     private _activatedRoute: ActivatedRoute,
+    private _providerAuthService: ProviderUserAuthService,
     private _router: Router
   ) { }
 
@@ -53,7 +55,9 @@ export class CourseListComponent implements OnInit {
   }
 
   navigate(id): void {
-    this._router.navigateByUrl("/cart" + '?id=' + id);
+    if (this._providerAuthService.isUserLogedIn() === false) {
+      this._router.navigateByUrl("/auth/sign-in/" + id);
+    }
   }
 
   ngOnDestroy(): void {

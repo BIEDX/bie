@@ -15,7 +15,8 @@ const routes: Routes = [
       { path: 'users', component: UsersComponent },
       { path: 'newsletter', component: NewsletterComponent },
       { path: 'courses', loadChildren: () => import("./pages/courses/courses.module").then((m) => m.CoursesModule) },
-      { path: "teacher", loadChildren: () => import("./pages/teacher/teacher.module").then((m) => m.TeacherModule) }
+      { path: "teacher", loadChildren: () => import("./pages/teacher/teacher.module").then((m) => m.TeacherModule) },
+      { path: "live-event", loadChildren: () => import("./pages/live-event/live-event.module").then((m) => m.LiveEventModule) }
     ],
   },
 ];
