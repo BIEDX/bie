@@ -2,7 +2,7 @@
 <el-header></el-header>
 <!-- header -->
 <!-- Start Breadcrumbs -->
-<section class="breadcrumbs overlay">
+<section class="breadcrumbs overlay" *ngIf="!includeRoute && !includeRoute">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -20,10 +20,10 @@
 <section class="blog b-archives section">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-12">
+            <div class="col-lg-4 col-12" *ngIf="!includeRoute && !includeRoute">
                 <el-student-navigation></el-student-navigation>
             </div>
-            <div class="col-lg-8 col-12">
+            <div [ngClass]="includeRoute ? 'col-lg-12 col-12' :'col-lg-8 col-12'">
                 <router-outlet></router-outlet>
             </div>
         </div>

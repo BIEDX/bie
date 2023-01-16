@@ -37,8 +37,8 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Day Name</th>
-                            <th scope="col">Day Price</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -59,7 +59,7 @@
 
             <hr />
             <div class="course-price d-flex justify-content-end">
-                <a class="btn">Make Payment</a>
+                <a class="btn" (click)="makePayment(cartDetails?.videos)" target="_blank">Make Payment</a>
             </div>
         </div>
     </div>

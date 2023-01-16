@@ -138,7 +138,7 @@ export class LiveEventDetailsComponent implements OnInit {
       videos: [...data]
     }
     console.log('cartObj', cartObj);
-    // localStorage.setItem('cart', JSON.stringify(cartObj));
+    localStorage.setItem('cart', JSON.stringify(cartObj));
     this._constantService.cartSubject.next(cartObj);
     this._router.navigateByUrl('/student/view-cart')
   }
@@ -171,12 +171,14 @@ export class LiveEventDetailsComponent implements OnInit {
           console.log('res', res);
           if (res) {
             // this.template = true;
+            localStorage.removeItem('cart');
+            this._constantService.cartSubject.next(null);
             if (this.firstDayEventDetail) {
               this.addCart([this.firstDayEventDetail]);
             } else if (this.secondDayEventDetail) {
               this.addCart([this.secondDayEventDetail]);
             } else if (this.bothDayEventDetail) {
-              this.addCart([this.bothDayEventDetail])
+              this.addCart(this.bothDayEventDetail)
             }
           }
         }, (err) => {

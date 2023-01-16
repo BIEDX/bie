@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ConstantsService } from 'src/app/core/providers/apis/constants.service';
 
 @Component({
@@ -10,6 +11,7 @@ export class ViewCartComponent implements OnInit {
   cartDetails: any;
   constructor(
     private _constantService: ConstantsService,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
@@ -26,7 +28,14 @@ export class ViewCartComponent implements OnInit {
 
         })
     }
+  }
 
+  makePayment(data): void {
+    if (data?.length === 1) {
+      window.location.href="https://buy.stripe.com/test_6oEdRl5DXgc37zGfYZ";
+    } else if (data?.length > 1) {
+      window.location.href="https://buy.stripe.com/test_6oEdRl5DXgc37zGfYZ"
+    }
   }
 
 }
