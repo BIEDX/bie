@@ -6,3 +6,4 @@ export * from './diagnosis/diagnosis.component';
 export * from './body-parts/body-parts.component';
 export * from './add-cart/add-cart.component';
 export * from './blog-view/blog-view.component';
+export * from './bie-immerse/bie-immerse.component';

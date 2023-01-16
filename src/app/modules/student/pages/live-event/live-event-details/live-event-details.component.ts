@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { EventRegistration } from 'src/app/core/constants';
 import { ConstantsService } from 'src/app/core/providers/apis/constants.service';
 import { LiveEventService } from 'src/app/core/providers/apis/live-event.service';
 import { TeacherService } from 'src/app/core/providers/apis/teacher.service';
@@ -17,22 +19,48 @@ export class LiveEventDetailsComponent implements OnInit {
   teacherDetails: any;
   eventId: string;
   imgBaseUrl: string;
-  data:any;
+  formGroup: FormGroup;
+  userDetails: any;
+  template: boolean = false;
+  payload: EventRegistration;
+  cancelPolicyText = " Any cancellation or replacement must be conveyed to the Organizer in writing. A cancellation fee of 50% of the registration fee will be charged if the cancellation is received on or before 31st January 2023. There will be no refund of registration fee for cancellations made after 31st January 2023. The Organizer reserves the right to modify the programme and/or the terms. Full refund minus admin charges will be made should the course be cancelled due to unforeseen circumstances and all refunds will be made after the actual event date. Admin charges refer to any charges incurred to the organizers up until the point of cancellation."
+  userAgreementText = "By registering for the course, the participants fully understand and consent for the photographs / videos/ data collected before, during, and after the workshop to be used by the course organizers for teaching, research, and publicity purposes. Pursuant thereto, the participants agree not to hold the organizers liable for any consequences that may follow any such disclosures."
   constructor(
     private _activatedRoute: ActivatedRoute,
     private _liveEventService: LiveEventService,
     private _teacherService: TeacherService,
-    private _constantService: ConstantsService
+    private _constantService: ConstantsService,
+    private formBuilder: FormBuilder,
   ) { }
 
   ngOnInit(): void {
     this.imgBaseUrl = environment.imgUrl;
     this.getId();
     this.getCourse();
-  }
+    this.buildForm();
+    const result = localStorage.getItem('user-key');
+    if (result) {
+      const parse = JSON.parse(result);
+      this.userDetails = parse;
+      console.log('userDetails', this.userDetails?.data);
 
+    }
+  }
+  ngAfterViewInit(): void {
+    if (this.userDetails) {
+      this.patchFormData(this.userDetails?.data);
+    }
+  }
   getId(): void {
     this.eventId = this._activatedRoute.snapshot.paramMap.get('id');
+  }
+
+  patchFormData(data): void {
+    this.formGroup.patchValue({
+      name: data?.name ? data?.name : '',
+      email: data?.email ? data?.email : '',
+      phone: data?.phone ? data?.phone : '',
+    })
   }
 
   getCourse(): void {
@@ -72,6 +100,24 @@ export class LiveEventDetailsComponent implements OnInit {
   //   }
   // }
 
+  buildForm(): void {
+    this.formGroup = this.formBuilder.group({
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      alternateEmail: [''],
+      phone: ['', [Validators.required]],
+      companyName: ['', [Validators.required]],
+      address: ['', [Validators.required]],
+      mcrNumber: [''],
+      symposium: ['', [Validators.required]],
+      bieGlobalAmbassador: [''],
+      ambassadorName: [''],
+      specialRequest: [''],
+      cancelPolicy: ['', [Validators.required]],
+      userAgreement: ['', [Validators.required]],
+    })
+  }
+
   ngOnDestroy(): void {
     this.serviceSubscription.forEach(service => {
       service.unsubscribe();
@@ -90,6 +136,41 @@ export class LiveEventDetailsComponent implements OnInit {
     console.log('cartObj', cartObj);
     localStorage.setItem('cart', JSON.stringify(cartObj));
     this._constantService.cartSubject.next(cartObj);
+  }
+
+  onSubmit(): void {
+    if (!this.formGroup.valid) {
+      alert("Please fill the all mandetory fileds");
+      return;
+    }
+    let formData = this.formGroup.value;
+    this.payload = {
+      address: formData.address,
+      ambassadorName: formData.ambassadorName,
+      bieGlobalAmbassador: formData.bieGlobalAmbassador,
+      cancelPolicy: formData.cancelPolicy,
+      companyName: formData.companyName,
+      mcrNumber: formData.mcrNumber,
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      alternateEmail: formData.alternateEmail,
+      specialRequest: formData.specialRequest,
+      symposium: formData.symposium,
+      userAgreement: formData.userAgreement,
+    };
+    console.log('payload', this, this.payload);
+    this.serviceSubscription.push(
+      this._liveEventService.eventRegistration(this.payload).subscribe(
+        (res) => {
+          console.log('res', res);
+          if (res) {
+            this.template = true
+          }
+        }, (err) => {
+          console.log('err', err);
+        })
+    )
   }
 
 }

@@ -81,4 +81,11 @@ export class LiveEventService {
             headers: { Authorization: 'Bearer ' + this.token },
         });
     }
+
+    eventRegistration(values) {
+        return this.http.post(environment.apiUrl + '/live-event-register', { ...values }, {
+            params: { role: Role.Student },
+            headers: { Authorization: 'Bearer ' + this.token },
+        });
+    }
 }

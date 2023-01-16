@@ -14,9 +14,8 @@ import { ConsultTopicComponent } from './pages/consult-topic/consult-topic.compo
 import { EducatorsComponent } from './pages/educators/educators.component';
 import { LearnTopicComponent } from './pages/learn-topic/learn-topic.component';
 import { ThankYouComponent } from './pages/thank-you/thank-you.component';
-import { AddCartComponent, BlogViewComponent, BodyPartsComponent, CourseListComponent, DiagnosisComponent } from '.';
+import { AddCartComponent, BieImmerseComponent, BlogViewComponent, BodyPartsComponent, CourseListComponent, DiagnosisComponent } from '.';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BieImmerseComponent } from './bie-immerse/bie-immerse.component';
 import { CarouselModule } from 'primeng/carousel';
 
 @NgModule({

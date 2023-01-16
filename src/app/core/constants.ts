@@ -36,6 +36,22 @@ export interface LiveEventInterface {
     date: string,
 }
 
+export interface EventRegistration {
+    address: string,
+    alternateEmail?: string,
+    ambassadorName?: string,
+    bieGlobalAmbassador?: string,
+    cancelPolicy: boolean,
+    companyName: string,
+    email: string,
+    mcrNumber?: string,
+    name: string,
+    phone: string,
+    specialRequest?: string,
+    symposium: string,
+    userAgreement: boolean
+}
+
 
 
 export interface BlogInterface {
