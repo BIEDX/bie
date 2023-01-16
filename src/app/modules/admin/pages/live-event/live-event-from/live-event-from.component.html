@@ -16,7 +16,7 @@
                             <hr />
                             <div class="form-group">
                                 <label>Enter Event name *</label>
-                                <input name="name" type="text" formControlName="name" placeholder="Enter you name" />
+                                <input name="name" type="text" formControlName="name" />
                                 <p class="text-danger"
                                     *ngIf="formGroup.get('name').hasError('required') && (formGroup.dirty || formGroup.touched)">
                                     Name is required.
@@ -24,7 +24,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Enter Description *</label>
-                                <textarea formControlName="description" placeholder="Enter Event Description">
+                                <textarea formControlName="description">
                                     </textarea>
                                 <p class="text-danger"
                                     *ngIf="formGroup.get('description').hasError('required') && (formGroup.dirty || formGroup.touched)">
@@ -33,7 +33,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Enter Tags *</label>
-                                <input type="text" formControlName="tags" placeholder="Enter Tags" />
+                                <input type="text" formControlName="tags" />
                                 <p class="text-danger"
                                     *ngIf="formGroup.get('tags').hasError('required') && (formGroup.dirty || formGroup.touched)">
                                     Tags is required.
@@ -50,35 +50,35 @@
                             </div>
                             <div class="form-group">
                                 <label>Enter Price *</label>
-                                <input type="text" formControlName="price" placeholder="Enter Price" />
+                                <input type="text" formControlName="price" />
                                 <p class="text-danger"
                                     *ngIf="formGroup.get('price').hasError('required') && (formGroup.dirty || formGroup.touched)">
                                     Price is required.
                                 </p>
                             </div>
                             <div class="form-group">
+                                <label>Enter Early Bird Price *</label>
+                                <input type="text" formControlName="earlyBirdPrice" />
+                                <p class="text-danger"
+                                    *ngIf="formGroup.get('earlyBirdPrice').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                    Price is required.
+                                </p>
+                            </div>
+                            <div class="form-group">
+                                <label>Enter Date *</label>
+                                <input type="date" formControlName="date" />
+                                <p class="text-danger"
+                                    *ngIf="formGroup.get('date').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                    Price is required.
+                                </p>
+                            </div>
+                            <div class="form-group">
                                 <label>Enter Event Duration *</label>
-                                <input type="text" formControlName="duration" placeholder="Enter Event Duration" />
+                                <input type="text" formControlName="duration" />
                                 <p class="text-danger"
                                     *ngIf="formGroup.get('duration').hasError('required') && (formGroup.dirty || formGroup.touched)">
                                     Event duration is required.
                                 </p>
-                            </div>
-                            <div class="form-group">
-                                <label for="sel-body">Select Body Parts</label>
-                                <select class="form-control" id="sel-body" formControlName="bodyParts"
-                                    (change)="onBodyPartsClick($event)">
-                                    <option *ngFor="let bodypart of bodyParts" [value]="bodypart._id">
-                                        {{bodypart.name}}</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="sel-diag">Select Diagnosis</label>
-                                <select class="form-control" id="sel-diag" formControlName="diagnosis">
-                                    <option *ngFor="let diagnos of diagnosis" [value]="diagnos._id">
-                                        {{diagnos.name}}
-                                    </option>
-                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="sel-teach">Select Teacher</label>
@@ -90,7 +90,7 @@
                             </div>
                             <hr />
                             <ng-container *ngIf="videos?.controls.length > 0; else novideos">
-                                <h6>Add Live Event Video:-</h6>
+                                <h6>Add Live Event:-</h6>
                                 <div (click)="addNewVideos('')" class="ml-2 cursor add-video-div">
                                     <i class="fa fa-plus add-video" aria-hidden="true"> &nbsp;Add</i>
                                 </div>
@@ -104,43 +104,70 @@
                                                 <i class="fa fa-minus" aria-hidden="true"></i> Remove
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-12">
+                                        <div class="col-lg-6 col-12">
                                             <div class="form-group">
-                                                <label>Enter Video Name *</label>
-                                                <input type="text" formControlName="name"
-                                                    placeholder="Enter Video Name" />
+                                                <label>Enter Event Name *</label>
+                                                <input type="text" formControlName="name" />
                                                 <p class="text-danger"
                                                     *ngIf="videos?.controls[videosIndex].get('name').hasError('required') && (formGroup.dirty || formGroup.touched)">
-                                                    Video name is required.
+                                                    Event name is required.
                                                 </p>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-12">
+                                        <div class="col-lg-6 col-12">
                                             <div class="form-group">
-                                                <label>Enter Video Price *</label>
-                                                <input type="text" formControlName="price"
-                                                    placeholder="Enter Video Price" />
-                                                <p class="text-danger"
-                                                    *ngIf="videos?.controls[videosIndex].get('price').hasError('required') && (formGroup.dirty || formGroup.touched)">
-                                                    Video price is required.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-12">
-                                            <div class="form-group">
-                                                <label>Enter Date *</label>
-                                                <input type="date" formControlName="date" placeholder="Enter Date" />
+                                                <label>Enter Event Date *</label>
+                                                <input type="date" formControlName="date" />
                                                 <p class="text-danger"
                                                     *ngIf="videos?.controls[videosIndex].get('date').hasError('required') && (formGroup.dirty || formGroup.touched)">
-                                                    Date is required.
+                                                    Event Date is required.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-12">
+                                            <div class="form-group">
+                                                <label>Enter Regular Price *</label>
+                                                <input type="text" formControlName="regularPrice" />
+                                                <p class="text-danger"
+                                                    *ngIf="videos?.controls[videosIndex].get('regularPrice').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                                    Regular price is required.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-12">
+                                            <div class="form-group">
+                                                <label>Enter Regular Date *</label>
+                                                <input type="date" formControlName="regularDate" />
+                                                <p class="text-danger"
+                                                    *ngIf="videos?.controls[videosIndex].get('regularDate').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                                    Regular Date is required.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-12">
+                                            <div class="form-group">
+                                                <label>Enter Early Bird Price *</label>
+                                                <input type="text" formControlName="earlyBirdPrice" />
+                                                <p class="text-danger"
+                                                    *ngIf="videos?.controls[videosIndex].get('earlyBirdPrice').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                                    Early Bird price is required.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-12">
+                                            <div class="form-group">
+                                                <label>Enter Early Bird Date *</label>
+                                                <input type="date" formControlName="earlyBirdDate" />
+                                                <p class="text-danger"
+                                                    *ngIf="videos?.controls[videosIndex].get('earlyBirdDate').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                                    Early Bird Date is required.
                                                 </p>
                                             </div>
                                         </div>
                                         <div class="col-lg-12 col-12">
                                             <div class="form-group">
                                                 <label>Enter Video Link *</label>
-                                                <input type="text" formControlName="videoLink"
-                                                    placeholder="Enter Video Link" />
+                                                <input type="text" formControlName="videoLink" />
                                                 <p class="text-danger"
                                                     *ngIf="videos?.controls[videosIndex].get('videoLink').hasError('required') && (formGroup.dirty || formGroup.touched)">
                                                     Video link is required.

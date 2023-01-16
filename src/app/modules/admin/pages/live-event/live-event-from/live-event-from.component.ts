@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { Subscription } from 'rxjs';
-import { CourseInterface } from 'src/app/core/constants';
-import { CourseService } from 'src/app/core/providers/apis/courses.service';
+import { LiveEventInterface } from 'src/app/core/constants';
+import { LiveEventService } from 'src/app/core/providers/apis/live-event.service';
 import { TeacherService } from 'src/app/core/providers/apis/teacher.service';
 
 @Component({
@@ -14,7 +14,7 @@ import { TeacherService } from 'src/app/core/providers/apis/teacher.service';
 export class LiveEventFromComponent implements OnInit {
   serviceSubscription: Subscription[] = [];
   formGroup: FormGroup;
-  payload: CourseInterface;
+  payload: LiveEventInterface;
   errorResponse: any = null;
   isEdit: boolean = false;
   bodyParts: any;
@@ -56,7 +56,7 @@ export class LiveEventFromComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private _courseService: CourseService,
+    private _courseService: LiveEventService,
     private _teacherService: TeacherService,
     private _route: Router
   ) { }
@@ -106,12 +106,12 @@ export class LiveEventFromComponent implements OnInit {
       name: ['', [Validators.required]],
       description: ['', [Validators.required]],
       tags: ['', [Validators.required]],
-      diagnosis: [''],
       image: ['', [Validators.required]],
       price: ['', [Validators.required]],
+      earlyBirdPrice: ['', [Validators.required]],
+      date: ['', [Validators.required]],
       teacher: [''],
       duration: ['', [Validators.required]],
-      bodyParts: [''],
       videos: this.formBuilder.array([])
     });
     this.addNewVideos({});
@@ -133,9 +133,12 @@ export class LiveEventFromComponent implements OnInit {
   newVideosCreate(data: any = {}): FormGroup {
     return this.formBuilder.group({
       name: [data && data?.name ? data.name : '', [Validators.required]],
-      videoLink: [data && data?.videoLink ? data.videoLink : '', [Validators.required]],
-      price: [data && data?.price ? data.price : '', [Validators.required]],
       date: [data && data?.date ? data.date : '', [Validators.required]],
+      videoLink: [data && data?.videoLink ? data.videoLink : '', [Validators.required]],
+      regularPrice: [data && data?.regularprice ? data.regularprice : '', [Validators.required]],
+      regularDate: [data && data?.regulardate ? data.regulardate : '', [Validators.required]],
+      earlyBirdPrice: [data && data?.earlyBirdPrice ? data.earlyBirdPrice : '', [Validators.required]],
+      earlyBirdDate: [data && data?.earlyBirdDate ? data.earlyBirdDate : '', [Validators.required]],
       topic: [data && data?.topic ? data.topic : '', [Validators.required]],
     });
 
@@ -211,16 +214,15 @@ export class LiveEventFromComponent implements OnInit {
     }
     const formValues = this.formGroup.value;
     this.payload = {
-      diagnosisId: formValues.diagnosis,
       name: formValues.name,
       description: formValues.description,
       tags: formValues.tags,
       price: formValues.price,
+      earlyBirdPrice: formValues.earlyBirdPrice,
+      date: formValues.date,
       teacherId: formValues.teacher,
       image: formValues.image,
       duration: formValues.duration,
-      bodyParts: formValues.bodyParts,
-      isLive: true,
       video: [...formValues.videos]
     }
 
@@ -237,18 +239,18 @@ export class LiveEventFromComponent implements OnInit {
 
   addCourses(payload): void {
     this.serviceSubscription.push(
-      this._courseService.createCourses(payload).subscribe((res) => {
+      this._courseService.createEvent(payload).subscribe((res) => {
         console.log(res)
-        this._route.navigateByUrl('/admin/courses/list')
+        this._route.navigateByUrl('/admin/live-event/list')
       }, (error) => console.log(error))
     )
   }
 
   updateCourses(payload): void {
     this.serviceSubscription.push(
-      this._courseService.updateCourses(payload).subscribe((res) => {
+      this._courseService.updateEvent(payload).subscribe((res) => {
         console.log(res)
-        this._route.navigateByUrl('/admin/courses/list')
+        this._route.navigateByUrl('/admin/live-event/list')
       }, (error) => console.log(error))
     )
   }

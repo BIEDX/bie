@@ -24,6 +24,7 @@ import { SubscribeComponent } from './layout/subscribe/subscribe.component';
 import { StudentNavigationComponent } from './layout/student-navigation/student-navigation.component';
 import { AdminNavigationComponent } from './layout/admin-navigation/admin-navigation.component';
 
+
 @NgModule({
   declarations: [
     FooterComponent,
@@ -41,7 +42,8 @@ import { AdminNavigationComponent } from './layout/admin-navigation/admin-naviga
     ParallaxWeFocusComponent,
     SubscribeComponent,
     StudentNavigationComponent,
-    AdminNavigationComponent
+    AdminNavigationComponent,
+
   ],
   imports: [
     CommonModule,

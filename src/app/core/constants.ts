@@ -22,6 +22,22 @@ export interface CourseInterface {
     isLive: boolean
 }
 
+export interface LiveEventInterface {
+    description: string,
+    name: string,
+    tags: string,
+    teacherId?: string,
+    video: any[],
+    image: string,
+    price: string,
+    id?: string,
+    duration: string,
+    earlyBirdPrice: string,
+    date: string,
+}
+
+
+
 export interface BlogInterface {
     title: string,
     description: string,
