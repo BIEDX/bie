@@ -11,12 +11,6 @@
     margin: auto;
 }
 
-.input-icons i {
-    position: absolute;
-    // float: right;
-    margin-left: -30px;
-}
-
 .input-icons {
     width: 100%;
     margin-bottom: 10px;
@@ -31,4 +25,17 @@
     width: 100%;
     padding: 10px;
     margin-bottom: 3px;
+}
+
+.eye-icon {
+    position: absolute;
+    left: 374px !important;
+    top: 686px !important;
+}
+
+.eye-icon1 {
+    position: absolute;
+    left: 363px !important;
+    top: 678px !important;
+
 }

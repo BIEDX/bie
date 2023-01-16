@@ -56,22 +56,21 @@
                                     </p>
                                 </div>
                                 <div class="form-group">
-                                    <label>Enter Your Address *</label>
-                                    <input type="text" formControlName="address" />
+                                    <label>Enter Country *</label>
+                                    <input type="text" formControlName="country" />
                                     <p class="text-danger"
-                                        *ngIf="formGroup.get('address').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                        *ngIf="formGroup.get('country').hasError('required') && (formGroup.dirty || formGroup.touched)">
                                         Address is required.
                                     </p>
                                 </div>
 
                                 <div class="form-group">
-                                    <label>BIE Global Ambassador</label>
-                                    <input type="text" formControlName="bieGlobalAmbassador" />
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Referring BIE Global Ambassador name. NA if not applicable.</label>
+                                    <label>Referring BIE Global Ambassador Name. NA if not applicable. *</label>
                                     <input type="text" formControlName="ambassadorName" />
+                                    <p class="text-danger"
+                                        *ngIf="formGroup.get('ambassadorName').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                        BIE Global Ambassador name is required.
+                                    </p>
                                 </div>
 
                                 <div class="form-group">
@@ -80,7 +79,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <p>How did you learn about the symposium</p>
+                                    <p>How did you learn about the symposium *</p>
                                     <div class="form-check">
                                         <label class="form-check-label">
                                             <input type="radio" class="form-check-input" formControlName="symposium"
@@ -136,24 +135,124 @@
                                             <input type="checkbox" class="form-check-input" value="true"
                                                 formControlName="cancelPolicy">
                                             <a data-toggle="tooltip" [title]="cancelPolicyText">Cancellation
-                                                Policy</a>
+                                                Policy *</a> (Hover to see Policy)
                                         </label>
                                     </div>
+                                    <br />
                                     <div class="form-check-inline">
                                         <label class="form-check-label">
                                             <input type="checkbox" class="form-check-input" value="true"
                                                 formControlName="userAgreement">
                                             <a data-toggle="tooltip" [title]="userAgreementText">User
-                                                Agreement</a>
+                                                Agreement *</a> (Hover to see Agreement)
                                         </label>
                                     </div>
                                 </div>
-                                <div class="form-group button">
-                                    <button [disabled]="!formGroup.valid" type="submit" class="btn"
+
+                                <div class="mb-3">
+                                    <p>Fee Schedule and Offers *</p>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" formControlName="event"
+                                                (click)="onEvent($event)" value="CEM">CEM
+                                        </label>
+                                        <div class="row" *ngIf="firstDayEventDetail">
+                                            <div class="col-md-6 border-right">
+                                                <p class="text-grey">Early Bird:</p>
+                                                <div class="d-flex justify-content-between">
+                                                    <span class="text-dark"></span>
+                                                    <!-- {{firstDayEventDetail?.earlyBirdDate | date:
+                                                        'dd-MM-yyyy'}} -->
+                                                    <span class="text-dark">{{firstDayEventDetail?.earlyBirdPrice |
+                                                        currency:
+                                                        'SGD'}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="text-grey">Late:</p>
+                                                <div class="d-flex justify-content-between">
+                                                    <span class="text-dark">{{firstDayEventDetail?.regularDate | date:
+                                                        'dd-MM-yyyy'}}</span>
+                                                    <span class="text-dark">{{firstDayEventDetail?.regularPrice |
+                                                        currency:
+                                                        'SGD'}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" formControlName="event"
+                                                (click)="onEvent($event)" value="USG">USG
+                                        </label>
+                                        <div class="row" *ngIf="secondDayEventDetail">
+                                            <div class="col-md-6 border-right">
+                                                <p class="text-grey">Early Bird:</p>
+                                                <div class="d-flex justify-content-between">
+                                                    <span class="text-dark"></span>
+                                                    <!-- {{secondDayEventDetail?.earlyBirdDate |
+                                                        date:
+                                                        'dd-MM-yyyy'}} -->
+                                                    <span class="text-dark">{{secondDayEventDetail?.earlyBirdPrice |
+                                                        currency:
+                                                        'SGD'}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="text-grey">Late:</p>
+                                                <div class="d-flex justify-content-between">
+                                                    <span class="text-dark">{{secondDayEventDetail?.regularDate | date:
+                                                        'dd-MM-yyyy'}}</span>
+                                                    <span class="text-dark">{{secondDayEventDetail?.regularPrice |
+                                                        currency:
+                                                        'SGD'}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" formControlName="event"
+                                                (click)="onEvent($event)" value="CEM/USG">CEM/USG
+                                        </label>
+                                        <ng-container *ngIf="bothDayEventDetail">
+                                            <div class="row mb-2" *ngFor="let data of bothDayEventDetail">
+                                                <div class="col-md-6 border-right">
+                                                    <p class="text-grey">Early Bird:</p>
+                                                    <div class="d-flex justify-content-between">
+                                                        <span class="text-dark"></span>
+                                                        <!-- {{data?.earlyBirdDate | date:
+                                                            'dd-MM-yyyy'}} -->
+                                                        <span class="text-dark">{{data?.earlyBirdPrice |
+                                                            currency:
+                                                            'SGD'}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p class="text-grey">Late:</p>
+                                                    <div class="d-flex justify-content-between">
+                                                        <span class="text-dark">{{data?.regularDate | date:
+                                                            'dd-MM-yyyy'}}</span>
+                                                        <span class="text-dark">{{data?.regularPrice |
+                                                            currency:
+                                                            'SGD'}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                </div>
+
+                                <div class="course-price">
+                                    <!-- <button [disabled]="!formGroup.valid" type="submit" class="btn"
                                         (click)="onSubmit()">
-                                        Register
+                                        Buy It
+                                    </button> -->
+                                    <button class="btn buy-it" [disabled]="!formGroup.valid" (click)="onSubmit()">
+                                        <i class="fa fa-shopping-cart mr-2"></i>Buy It
                                     </button>
                                 </div>
+
                             </form>
                             <!--/ End Form -->
                         </div>
