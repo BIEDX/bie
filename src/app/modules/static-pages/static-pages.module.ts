@@ -16,7 +16,8 @@ import { LearnTopicComponent } from './pages/learn-topic/learn-topic.component';
 import { ThankYouComponent } from './pages/thank-you/thank-you.component';
 import { AddCartComponent, BlogViewComponent, BodyPartsComponent, CourseListComponent, DiagnosisComponent } from '.';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { BieImmerseComponent } from './bie-immerse/bie-immerse.component';
+import { CarouselModule } from 'primeng/carousel';
 
 @NgModule({
   declarations: [
@@ -35,14 +36,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CourseListComponent,
     DiagnosisComponent,
     AddCartComponent,
-    BlogViewComponent
+    BlogViewComponent,
+    BieImmerseComponent
   ],
   imports: [
     CommonModule,
     StaticRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    CarouselModule
   ]
 })
 export class StaticModule { }

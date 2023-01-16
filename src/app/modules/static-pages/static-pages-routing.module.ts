@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddCartComponent, BlogViewComponent, BodyPartsComponent, CourseListComponent, DiagnosisComponent } from '.';
 import { AboutComponent } from './pages/about/about.component';
+import { BieImmerseComponent } from './bie-immerse/bie-immerse.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { CourseComponent } from './pages/course/course.component';
@@ -60,6 +61,10 @@ const routes: Routes = [
       {
         path: 'course-list',
         component: CourseListComponent,
+      },
+      {
+        path: 'bie-immerse',
+        component: BieImmerseComponent,
       },
       {
         path: 'body-parts',

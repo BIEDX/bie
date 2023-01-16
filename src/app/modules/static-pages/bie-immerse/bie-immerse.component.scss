@@ -1,0 +1,48 @@
+.img-class {
+    display: grid;
+    // height: 100px;
+    grid-template-columns: repeat(3, 1fr);
+    // grid-template-columns: 100px;
+    gap: 10px
+}
+
+.heading {
+    font-size: 60px;
+    margin-bottom: 70px;
+    color: #FF2768
+}
+
+.text-size {
+    font-size: 16px;
+}
+
+.btnsize {
+    color: #42CED2!important;
+    ;
+    border: 3px solid #42CED2!important;
+    border-radius: 50px;
+    background: none;
+    font-size: 20px;
+    width: 200px;
+}
+
+.Director-Message .img-size {
+    width: 75px;
+    height: 75px;
+}
+
+.Director-Message {
+    background-color: #3a3a3a;
+}
+
+.Director-Message .section-title {
+    color: white;
+}
+
+ul {
+    list-style: disc!important;
+}
+
+.bie-color {
+    color: #FF2768;
+}
