@@ -24,7 +24,7 @@ export class LiveEventService {
         }
     }
 
-    getCourses(data: { value: any; type?: string; }) {
+    getEvent(data: { value: any; type?: string; }) {
         return this.http.get(environment.apiUrl + '/live-event', {
             // if(data.type==) {
             //     params: { searchText: data.value }
@@ -37,7 +37,7 @@ export class LiveEventService {
         });
     }
 
-    getCoursesDetails(data) {
+    getEventDetails(data) {
         return this.http.get(environment.apiUrl + '/live-event/detail', {
             params: { courseId: data },
             headers: { Authorization: 'Bearer ' + this.token },
@@ -56,13 +56,13 @@ export class LiveEventService {
         });
     }
 
-    createCourses(values) {
+    createEvent(values) {
         return this.http.post(environment.apiUrl + '/live-event', { ...values }, {
             headers: { Authorization: 'Bearer ' + this.token },
         });
     }
 
-    updateCourses(values) {
+    updateEvent(values) {
         return this.http.put(environment.apiUrl + '/courses', { ...values }, {
             headers: { Authorization: 'Bearer ' + this.token },
         });

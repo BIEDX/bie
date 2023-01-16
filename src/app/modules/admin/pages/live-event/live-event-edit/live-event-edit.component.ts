@@ -35,7 +35,7 @@ export class LiveEventEditComponent implements OnInit {
 
   getCourse(): void {
     this.serviceSubscription.push(
-      this._courseService.getCoursesDetails(this.courseId).subscribe((res) => {
+      this._courseService.getEventDetails(this.courseId).subscribe((res) => {
         this.coursesDetails = res;
       }, (err) => {
         console.log('err', err);

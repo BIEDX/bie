@@ -24,7 +24,7 @@ export class LiveEventListComponent implements OnInit {
 
   getCourses(data): void {
     this.serviceSubscription.push(
-      this._courseService.getCourses(data ? data : null).subscribe(
+      this._courseService.getEvent(data ? data : null).subscribe(
         (res) => {
           if (Array.isArray(res)) {
             this.courses = res;
