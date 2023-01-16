@@ -14,14 +14,19 @@ export class HeaderComponent implements OnInit {
   phoneNo = '+6589525405';
   navigationsList: RoutePath[] = [];
   cartDetails: any;
+  includeRoute: boolean;
+  includeDetailRoute: boolean;
 
   constructor(
     private router: Router,
     private userAuth: ProviderUserAuthService,
-    private _constantService: ConstantsService
+    private _constantService: ConstantsService,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
+    this.includeRoute = this._router.url.includes('view-cart');
+    this.includeDetailRoute = this._router.url.includes('event-detail');
     const result = localStorage.getItem('user-key');
     if (result) {
       const parse = JSON.parse(result);
@@ -29,6 +34,14 @@ export class HeaderComponent implements OnInit {
       console.log('user', this.user);
     }
     this.navigationsList = navigations(this.user?.data?.role);
+    // let navigation = this.navigationsList;
+    // if (this.includeRoute || this.includeDetailRoute) {
+    //  this.navigationsList= navigation.forEach(element => {
+    //     element.path = '';
+    //     element.title = '';
+    //   });
+    // }
+
     this._constantService.cartSubject.subscribe(
       (res) => {
         this.cartDetails = res;
