@@ -9,7 +9,6 @@
 .heading {
     font-size: 60px;
     margin-bottom: 70px;
-    color: #FF2768
 }
 
 .text-size {
@@ -17,13 +16,35 @@
 }
 
 .btnsize {
-    color: #42CED2!important;
-    ;
-    border: 3px solid #42CED2!important;
+    border: 3px solid black!important;
     border-radius: 50px;
+    color: black;
     background: none;
     font-size: 20px;
     width: 200px;
+}
+
+.f-24 {
+    font-size: 24px;
+}
+
+.icon-body {
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    border-color: 2px solid#DEB8FF;
+}
+
+.list-styling {
+    list-style-position: outside;
+}
+
+.f-15 {
+    font-size: 15px;
+}
+
+li {
+    font-size: 15px;
 }
 
 .Director-Message .img-size {
@@ -45,4 +66,8 @@ ul {
 
 .bie-color {
     color: #FF2768;
+}
+
+.icon-size {
+    font-size: 20px;
 }

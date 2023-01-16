@@ -14,11 +14,11 @@
                             </div>
 
                             <!-- Form -->
-                            <form class="form" [formGroup]="userForm" action="#">
+                            <form class="form inline" [formGroup]="userForm" action="#">
                                 <div id="errorMessage" class="">
                                     <p *ngIf="errorResponse" class="mt-2 text-danger">{{errorResponse.header.message}}</p>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group ">
                                     <label>Enter Your name</label>
                                     <input name="name" type="text" formControlName="name" placeholder="Enter you name" required>
                                 </div>
@@ -38,9 +38,10 @@
                                     <label>Affiliation</label>
                                     <input name="phone" type="text" formControlName="affiliation" placeholder="Enter your affiliation" required>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group input-icons ">
                                     <label>Enter Your Password</label>
-                                    <input name="password" type="password" formControlName="password" placeholder="Enter your password" required>
+                                    <input name="password" type="password" formControlName="password" class="input-field" placeholder="Enter your password" required>
+                                    <i class="fa fa-eye icon"></i>
                                 </div>
                                 <div id="errorMessage" class="">
                                     <p *ngIf="errorResponse" class="mt-2 text-danger">{{errorResponse.header.message}}</p>
@@ -161,7 +162,7 @@
                     </div>
 
                     <!-- Form -->
-                    <form class="form" [formGroup]="userForm" action="#">
+                    <form class="form inline" [formGroup]="userForm" action="#">
                         <div id="errorMessage" class="">
                             <p *ngIf="errorResponse" class="mt-2 text-danger">{{errorResponse.header.message}}</p>
                         </div>
@@ -185,9 +186,10 @@
                             <label>Affiliation</label>
                             <input name="phone" type="text" formControlName="affiliation" placeholder="Enter your affiliation" required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group input-icons">
                             <label>Enter Your Password</label>
-                            <input name="password" type="password" formControlName="password" placeholder="Enter your password" required>
+                            <input name="password" type="password" class="input-field" formControlName="password" placeholder="Enter your password" required>
+                            <i class="fa fa-eye icon"></i>
                         </div>
                         <div id="errorMessage" class="">
                             <p *ngIf="errorResponse" class="mt-2 text-danger">{{errorResponse.header.message}}</p>
