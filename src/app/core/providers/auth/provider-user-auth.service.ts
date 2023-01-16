@@ -11,7 +11,7 @@ export class ProviderUserAuthService {
   public currentUserObservable: Observable<any>;
   private currentUserKey = 'currentUserAuth';
   private rememberMeCredentialsKey = 'rememberMeCredentials';
-  private currentUserSubject: BehaviorSubject<any>=new BehaviorSubject({});
+  private currentUserSubject: BehaviorSubject<any> = new BehaviorSubject({});
 
   constructor(
     private http: HttpClient,
@@ -85,13 +85,13 @@ export class ProviderUserAuthService {
 
   userSignIn(params: any = {}): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/auth/sign-in`, params)
-      // .pipe(map((res:any) => {
-      //   if (res.header.code === 200) {
-      //     localStorage.setItem(this.currentUserKey, JSON.stringify(res));
-      //     this.currentUserSubject.next(res);
-      //   }
-      //   return res;
-      // }));
+    // .pipe(map((res:any) => {
+    //   if (res.header.code === 200) {
+    //     localStorage.setItem(this.currentUserKey, JSON.stringify(res));
+    //     this.currentUserSubject.next(res);
+    //   }
+    //   return res;
+    // }));
   }
 
   userSignUp(params: any = {}): Observable<any> {
@@ -142,11 +142,19 @@ export class ProviderUserAuthService {
   //   return this.http.post<any>(`${environment.apiUrl}/auth/reset-password`, params);
   // }
 
-  userStorage(value:any){
+  userStorage(value: any) {
     localStorage.setItem('user-key', JSON.stringify(value));
-         this.currentUserSubject.next(value);
+    this.currentUserSubject.next(value);
   }
-  getUserStorage(){    
-       return  this.currentUserSubject
+  getUserStorage() {
+    return this.currentUserSubject
+  }
+
+  isUserLogedIn() {
+    if (localStorage.getItem('user-key') && this.currentUserSubject.value) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ConstantsService } from 'src/app/core/providers/apis/constants.service';
 import { CourseService } from 'src/app/core/providers/apis/courses.service';
 import { TeacherService } from 'src/app/core/providers/apis/teacher.service';
 
@@ -21,7 +22,8 @@ export class CourseDetailsComponent implements OnInit {
   constructor(
     private _activatedRoute: ActivatedRoute,
     private _courseService: CourseService,
-    private _teacherService: TeacherService
+    private _teacherService: TeacherService,
+    private _constantService: ConstantsService
   ) { }
 
   ngOnInit(): void {
@@ -30,13 +32,7 @@ export class CourseDetailsComponent implements OnInit {
   }
 
   getId(): void {
-    this._activatedRoute.queryParams.subscribe((params) => {
-      try {
-        this.courseId = params['id'];
-      } catch (err) {
-        console.log('err..');
-      }
-    });
+    this.courseId = this._activatedRoute.snapshot.paramMap.get('id');
   }
 
   getCourse(): void {
@@ -92,6 +88,20 @@ export class CourseDetailsComponent implements OnInit {
     this.serviceSubscription.forEach(service => {
       service.unsubscribe();
     });
+  }
+
+  addCart(data): void {
+    console.log('data', data);
+    let cartObj = {
+      courseName: this.coursesDetails?.name,
+      coursePrice: this.coursesDetails?.price,
+      courseDuration: this.coursesDetails?.duration,
+      courseDescription: this.coursesDetails?.description,
+      videos: [...data]
+    }
+    console.log('cartObj', cartObj);
+    localStorage.setItem('cart', JSON.stringify(cartObj));
+    this._constantService.cartSubject.next(cartObj);
   }
 
 }

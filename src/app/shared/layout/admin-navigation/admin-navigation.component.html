@@ -9,8 +9,12 @@
     <div class="single-widget categories">
         <h3 class="title">Categories</h3>
         <ul>
-            <li><a href="/admin/courses/list"><i class="fa fa-angle-right"></i>Courses</a></li>
-            <li><a href="/admin/teacher/list"><i class="fa fa-angle-right"></i>Teacher</a></li>
+            <li><a href="/admin/courses/list" [routerLink]="'/admin/courses/list'"><i
+                        class="fa fa-angle-right"></i>Courses</a></li>
+            <li><a href="/admin/live-event/list" [routerLink]="'/admin/live-event/list'"><i
+                        class="fa fa-angle-right"></i>Live Event</a></li>
+            <li><a href="/admin/teacher/list" [routerLink]="'/admin/teacher/list'"><i
+                        class="fa fa-angle-right"></i>Teacher</a></li>
         </ul>
     </div>
     <!--/ End Categories -->
