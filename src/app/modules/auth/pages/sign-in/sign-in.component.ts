@@ -10,6 +10,8 @@ export class SignInComponent implements OnInit {
   user: any = {};
   errorMessage: string = ''
   courseId: string;
+  eventId: string;
+  passwordToggler: boolean;
   constructor(
     private userAuth: ProviderUserAuthService,
     private router: Router,
@@ -17,11 +19,24 @@ export class SignInComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.passwordToggler = true;
     this.getId();
   }
 
   getId(): void {
-    this.courseId = this._activatedRoute.snapshot.paramMap.get('id')
+    if (this._activatedRoute.snapshot.paramMap.get('id')) {
+      this.courseId = this._activatedRoute.snapshot.paramMap.get('id');
+      console.log('courseId', this.courseId);
+    } else {
+      this._activatedRoute.queryParams.subscribe((res) => {
+        this.eventId = res['eid'];
+        console.log('eventId', this.eventId);
+      })
+    }
+  }
+
+  passwordTogglerFun() {
+    this.passwordToggler = !this.passwordToggler;
   }
 
   signInHandler() {
@@ -34,6 +49,9 @@ export class SignInComponent implements OnInit {
             this.router.navigateByUrl('/admin');
           } else if (res?.data?.role === 'student' && this.courseId) {
             this.router.navigateByUrl('/student/course/details/' + this.courseId);
+          }
+          else if (res?.data?.role === 'student' && this.eventId) {
+            this.router.navigateByUrl('/student/live-event/details/' + this.eventId);
           }
           else if (res?.data?.role === 'student') {
             this.router.navigateByUrl('/student');

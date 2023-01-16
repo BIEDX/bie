@@ -5,52 +5,47 @@
             <div class="col-md-12">
                 <div class="section-title">
                     <h2><span>Cart</span> Information</h2>
-                    <p>Mauris at varius orci. Vestibulum interdum felis eu nisl pulvinar, quis ultricies nibh. Sed
-                        ultricies ante vitae laoreet sagittis. In pellentesque viverra purus. Sed risus est, molestie
-                        nec hendrerit hendrerit, sollicitudin nec ante. </p>
                 </div>
             </div>
         </div>
         <div class="contact-head">
-            <h6>Course</h6>
+            <h6>Event</h6>
             <hr />
             <div class="row">
                 <div class="col-md-4">
-                    <p class="text-dark">Course Name</p>
+                    <p class="text-dark">Event Name</p>
                     <p class="text-grey">{{cartDetails?.courseName}}</p>
                 </div>
                 <div class="col-md-4">
-                    <p class="text-dark">Course Duration</p>
+                    <p class="text-dark">Event Duration</p>
                     <p class="text-grey">{{cartDetails?.courseDuration}}</p>
                 </div>
                 <div class="col-md-4">
-                    <p class="text-dark">Course Price</p>
+                    <p class="text-dark">Event Price</p>
                     <p class="text-grey">{{cartDetails?.coursePrice}}</p>
                 </div>
                 <div class="col-md-12 mt-2">
-                    <p class="text-dark">Course Description</p>
+                    <p class="text-dark">Event Description</p>
                     <p class="text-grey">{{cartDetails?.courseDescription}}</p>
                 </div>
             </div>
             <hr />
-            <h6>Videos</h6>
+            <h6>Day Detail</h6>
             <hr />
 
             <div class="common-table">
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Video Name</th>
-                            <th scope="col">Video Link</th>
-                            <th scope="col">Video Price</th>
+                            <th scope="col">Day Name</th>
+                            <th scope="col">Day Price</th>
                         </tr>
                     </thead>
                     <tbody>
                         <ng-container *ngIf="cartDetails?.videos?.length > 0; else noData">
                             <tr *ngFor="let cart of cartDetails?.videos; let i = index">
                                 <td>{{ cart?.name }}</td>
-                                <td class="link-td">{{ cart?.videoLink }}</td>
-                                <td>{{ cart?.price }}</td>
+                                <td>{{ cart?.earlyBirdPrice }}</td>
                             </tr>
                         </ng-container>
                         <ng-template #noData>
@@ -64,7 +59,7 @@
 
             <hr />
             <div class="course-price d-flex justify-content-end">
-                <a class="btn">Payment</a>
+                <a class="btn">Make Payment</a>
             </div>
         </div>
     </div>

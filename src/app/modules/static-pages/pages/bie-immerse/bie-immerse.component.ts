@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bie-immerse',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bie-immerse.component.scss']
 })
 export class BieImmerseComponent implements OnInit {
-  responsiveOptions:any[]=[]
+  responsiveOptions: any[] = [];
+  eventId: string = '63c4ed418d164061ebd476dc';
   sponsers: any[] = [
     {
       id: '1000',
@@ -20,7 +22,7 @@ export class BieImmerseComponent implements OnInit {
       quantity: 24,
       inventoryStatus: 'INSTOCK',
       rating: 5,
-      year:4
+      year: 4
 
     },
     {
@@ -34,7 +36,7 @@ export class BieImmerseComponent implements OnInit {
       quantity: 61,
       inventoryStatus: 'INSTOCK',
       rating: 4,
-      year:2
+      year: 2
     },
     {
       id: '1002',
@@ -48,7 +50,7 @@ export class BieImmerseComponent implements OnInit {
       quantity: 2,
       inventoryStatus: 'LOWSTOCK',
       rating: 3,
-      year:3
+      year: 3
     },
     {
       id: '1003',
@@ -62,8 +64,8 @@ export class BieImmerseComponent implements OnInit {
       quantity: 25,
       inventoryStatus: 'INSTOCK',
       rating: 5,
-      year:1
-     // images:'../../../../assets/images/slider/slider-bg1.jpg'
+      year: 1
+      // images:'../../../../assets/images/slider/slider-bg1.jpg'
     },
     {
       id: '1004',
@@ -77,8 +79,8 @@ export class BieImmerseComponent implements OnInit {
       quantity: 73,
       inventoryStatus: 'INSTOCK',
       rating: 4,
-      year:4
-     // images:'../../../../assets/images/slider/slider-bg2.jpg'
+      year: 4
+      // images:'../../../../assets/images/slider/slider-bg2.jpg'
     },
     {
       id: '1005',
@@ -92,12 +94,12 @@ export class BieImmerseComponent implements OnInit {
       quantity: 0,
       inventoryStatus: 'OUTOFSTOCK',
       rating: 4,
-      year:3
-     // images:'../../../../assets/images/slider/slider-bg3.jpg'
+      year: 3
+      // images:'../../../../assets/images/slider/slider-bg3.jpg'
     },
 
   ];
-  constructor() {
+  constructor(private _router: Router) {
     this.responsiveOptions = [
       {
         breakpoint: '1024px',
@@ -115,9 +117,13 @@ export class BieImmerseComponent implements OnInit {
         numScroll: 1
       }
     ];
-   }
+
+  }
 
   ngOnInit(): void {
+  }
+  navigate(): void {
+    this._router.navigateByUrl('/auth/sign-up/' + this.eventId)
   }
 
 }

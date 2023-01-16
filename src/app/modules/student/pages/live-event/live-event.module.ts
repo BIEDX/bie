@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { LiveEventRoutingModule } from './live-event-routing.module';
-import { LiveEventDetailsComponent, LiveEventListComponent, LiveEventComponent } from '.';
+import { LiveEventComponent, LiveEventDetailsComponent, LiveEventListComponent,  } from '.';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,6 +14,8 @@ import { LiveEventDetailsComponent, LiveEventListComponent, LiveEventComponent }
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
     LiveEventRoutingModule
   ]
 })

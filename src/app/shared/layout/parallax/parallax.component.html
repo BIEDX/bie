@@ -1,5 +1,6 @@
 <!-- Enroll -->
-<section class="enroll overlay section d-none d-md-block" data-stellar-background-ratio="0.5" style="height: 1000px;" id="register">
+<section class="enroll overlay section d-none d-md-block" data-stellar-background-ratio="0.5" style="height: 1000px;"
+    id="register">
     <div class="container">
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
@@ -10,43 +11,53 @@
                         <div class="enroll-form">
                             <div class="form-title">
                                 <h2>Enroll Today to participate in pre launch beta testing.</h2>
-                                <p>For a <b>Free</b> and early access to educational content, hands-on training, and a lot more!</p>
+                                <p>For a <b>Free</b> and early access to educational content, hands-on training, and a
+                                    lot more!</p>
                             </div>
 
                             <!-- Form -->
-                            <form class="form" [formGroup]="userForm" action="#">
+                            <form class="form inline" [formGroup]="userForm" action="#">
                                 <div id="errorMessage" class="">
-                                    <p *ngIf="errorResponse" class="mt-2 text-danger">{{errorResponse.header.message}}</p>
+                                    <p *ngIf="errorResponse" class="mt-2 text-danger">{{errorResponse.header.message}}
+                                    </p>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group ">
                                     <label>Enter Your name</label>
-                                    <input name="name" type="text" formControlName="name" placeholder="Enter you name" required>
+                                    <input name="name" type="text" formControlName="name" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Enter Your Email</label>
-                                    <input name="email" type="email" formControlName="email" placeholder="Enter your email address" required>
+                                    <input name="email" type="email" formControlName="email" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Enter Your Phone</label>
-                                    <input name="phone" type="text" formControlName="phone" placeholder="Enter your phone with country code" required>
+                                    <input name="phone" type="text" formControlName="phone" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Country</label>
-                                    <input name="phone" type="text" formControlName="country" placeholder="Enter your country" required>
+                                    <input name="phone" type="text" formControlName="country" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Affiliation</label>
-                                    <input name="phone" type="text" formControlName="affiliation" placeholder="Enter your affiliation" required>
+                                    <input name="phone" type="text" formControlName="affiliation" required>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group input-icons ">
                                     <label>Enter Your Password</label>
-                                    <input name="password" type="password" formControlName="password" placeholder="Enter your password" required>
+                                    <input name="password" [type]="passwordToggler ? 'password': 'text'"
+                                        formControlName="password" class="input-field" required>
+                                    <div class="eye-icon-div">
+                                        <i (click)="passwordToggler = !passwordToggler" class="cursor"
+                                            [ngClass]=" passwordToggler ? 'fa fa-eye-slash eye-icon': 'fa fa-eye icon eye-icon1'">
+                                        </i>
+                                    </div>
                                 </div>
                                 <div id="errorMessage" class="">
-                                    <p *ngIf="errorResponse" class="mt-2 text-danger">{{errorResponse.header.message}}</p>
+                                    <p *ngIf="errorResponse" class="mt-2 text-danger">{{errorResponse.header.message}}
+                                    </p>
                                 </div>
                                 <div class="form-group button">
-                                    <button type="submit" class="btn" (click)="signupHandler()">{{ btnMessage.length > 0 ? btnMessage : 'Register Now' }}</button>
+                                    <button type="submit" class="btn" (click)="signupHandler()">{{ btnMessage.length > 0
+                                        ? btnMessage : 'Register Now' }}</button>
                                 </div>
                             </form>
                             <!--/ End Form -->
@@ -57,7 +68,8 @@
                         <div class="enroll-right">
                             <div class="section-title">
                                 <h2>More than 6000 doctors have benefitted, it’s your turn!</h2>
-                                <p>Whether you need to start from the basics or you need advanced radiology learning, we have you covered!</p>
+                                <p>Whether you need to start from the basics or you need advanced radiology learning, we
+                                    have you covered!</p>
                             </div>
                         </div>
                         <!-- Skill Main -->
@@ -103,14 +115,16 @@
         </div>
     </div>
 </section>
-<section class="enroll enroll-img overlay  section d-md-none " data-stellar-background-ratio="0.5" style="height: 1100px;" id="register">
+<section class="enroll enroll-img overlay  section d-md-none " data-stellar-background-ratio="0.5"
+    style="height: 1100px;" id="register">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-12 mb-0">
                 <div class="sk">
                     <div class="section-title">
                         <h2>More than 6000 doctors have benefitted, it’s your turn!</h2>
-                        <p>Whether you need to start from the basics or you need advanced radiology learning, we have you covered!</p>
+                        <p>Whether you need to start from the basics or you need advanced radiology learning, we have
+                            you covered!</p>
                     </div>
                 </div>
                 <!-- Skill Main -->
@@ -157,11 +171,12 @@
                 <div class="enroll-form">
                     <div class="form-title">
                         <h2>Enroll Today to participate in pre launch beta testing.</h2>
-                        <p>For a <b>Free</b> and early access to educational content, hands-on training, and a lot more!</p>
+                        <p>For a <b>Free</b> and early access to educational content, hands-on training, and a lot more!
+                        </p>
                     </div>
 
                     <!-- Form -->
-                    <form class="form" [formGroup]="userForm" action="#">
+                    <form class="form inline" [formGroup]="userForm" action="#">
                         <div id="errorMessage" class="">
                             <p *ngIf="errorResponse" class="mt-2 text-danger">{{errorResponse.header.message}}</p>
                         </div>
@@ -171,29 +186,36 @@
                         </div>
                         <div class="form-group">
                             <label>Enter Your Email</label>
-                            <input name="email" type="email" formControlName="email" placeholder="Enter your email address" required>
+                            <input name="email" type="email" formControlName="email"
+                                placeholder="Enter your email address" required>
                         </div>
                         <div class="form-group">
                             <label>Enter Your Phone</label>
-                            <input name="phone" type="text" formControlName="phone" placeholder="Enter your phone with country code" required>
+                            <input name="phone" type="text" formControlName="phone"
+                                placeholder="Enter your phone with country code" required>
                         </div>
                         <div class="form-group">
                             <label>Country</label>
-                            <input name="phone" type="text" formControlName="country" placeholder="Enter your country" required>
+                            <input name="phone" type="text" formControlName="country" placeholder="Enter your country"
+                                required>
                         </div>
                         <div class="form-group">
                             <label>Affiliation</label>
-                            <input name="phone" type="text" formControlName="affiliation" placeholder="Enter your affiliation" required>
+                            <input name="phone" type="text" formControlName="affiliation"
+                                placeholder="Enter your affiliation" required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group input-icons">
                             <label>Enter Your Password</label>
-                            <input name="password" type="password" formControlName="password" placeholder="Enter your password" required>
+                            <input name="password" type="password" class="input-field" formControlName="password"
+                                placeholder="Enter your password" required>
+                            <i class="fa fa-eye icon"></i>
                         </div>
                         <div id="errorMessage" class="">
                             <p *ngIf="errorResponse" class="mt-2 text-danger">{{errorResponse.header.message}}</p>
                         </div>
                         <div class="form-group button">
-                            <button type="submit" class="btn" (click)="signupHandler()">{{ btnMessage.length > 0 ? btnMessage : 'Register Now' }}</button>
+                            <button type="submit" class="btn" (click)="signupHandler()">{{ btnMessage.length > 0 ?
+                                btnMessage : 'Register Now' }}</button>
                         </div>
                     </form>
                     <!--/ End Form -->

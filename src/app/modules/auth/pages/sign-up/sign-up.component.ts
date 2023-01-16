@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProviderUserAuthService } from 'src/app/core/providers/auth/provider-user-auth.service';
 // import { Router } from '@angular/router';
 // import { ProviderUserAuthService } from '../../../../core/providers/auth/provider-user-auth.service';
@@ -10,12 +10,19 @@ import { ProviderUserAuthService } from 'src/app/core/providers/auth/provider-us
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
-  userForm:FormGroup;
+  userForm: FormGroup;
   errorResponse: any = null;
   btnMessage: string = ""
-  @ViewChild('errorMessageTemp', { static: false} ) errorMessageTem: ElementRef<HTMLElement>;
+  eventId: string;
+  passwordToggler: boolean;
+  @ViewChild('errorMessageTemp', { static: false }) errorMessageTem: ElementRef<HTMLElement>;
 
-  constructor(private userAuth:ProviderUserAuthService, private router: Router, private formBuilder: FormBuilder) {
+  constructor(
+    private userAuth: ProviderUserAuthService,
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private _activatedRoute: ActivatedRoute,
+  ) {
     this.userForm = this.formBuilder.group({
       email: ['', Validators.required],
       phone: ['', Validators.required],
@@ -24,28 +31,40 @@ export class SignUpComponent implements OnInit {
       affiliation: ['', Validators.required],
       password: ['', Validators.required]
     })
-   }
-
-  ngOnInit(): void {
-
   }
 
-  signupHandler(){
+  ngOnInit(): void {
+    this.passwordToggler = true;
+    this.getId();
+  }
+
+  getId(): void {
+    this.eventId = this._activatedRoute.snapshot.paramMap.get('id');
+  }
+
+  passwordTogglerFun() {
+    this.passwordToggler = !this.passwordToggler;
+  }
+
+  signupHandler() {
     const value = this.userForm.value;
     this.btnMessage = "";
     this.errorResponse = null;
-    this.userAuth.userSignUp(value).subscribe((res:any) => {
-      if(res.header.code === 200){
-        this.router.navigateByUrl('/auth/sign-in');
+    this.userAuth.userSignUp(value).subscribe((res: any) => {
+      if (res.header.code === 200) {
+        this.router.navigateByUrl('/auth/sign-in' + '?eid=' + this.eventId);
       } else {
         this.btnMessage = res.header.message;
         this.errorResponse = res;
-        setTimeout(()=>{
+        setTimeout(() => {
           this.btnMessage = ''
         }, 3000)
       }
     }, err => {
       //this.appMessageService.createBasicNotification('red', 'Something went wrong');
     });
+  }
+  navigate(): void {
+    this.router.navigateByUrl('/auth/sign-in' + '?eid=' + this.eventId);
   }
 }

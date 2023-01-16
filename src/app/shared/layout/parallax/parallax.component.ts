@@ -11,7 +11,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ParallaxComponent implements OnInit {
   userForm:FormGroup;
   errorResponse: any = null;
-  btnMessage: string = ""
+  btnMessage: string = "";
+  passwordToggler: boolean;
   @ViewChild('errorMessageTemp', { static: false} ) errorMessageTem: ElementRef<HTMLElement>;
 
   constructor(private userAuth:ProviderUserAuthService, private router: Router, private formBuilder: FormBuilder) {
@@ -26,8 +27,13 @@ export class ParallaxComponent implements OnInit {
    }
 
   ngOnInit(): void {
-
+    this.passwordToggler = true;
   }
+
+  passwordTogglerFun() {
+    this.passwordToggler = !this.passwordToggler;
+  }
+
 
   signupHandler(){
     const value = this.userForm.value;

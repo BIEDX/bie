@@ -6,7 +6,6 @@ export interface TeacherInterface {
     affiliation: string,
     id?: string,
 }
-
 export interface CourseInterface {
     diagnosisId?: string,
     description: string,
@@ -21,7 +20,6 @@ export interface CourseInterface {
     bodyParts?: string,
     isLive: boolean
 }
-
 export interface LiveEventInterface {
     description: string,
     name: string,
@@ -36,8 +34,21 @@ export interface LiveEventInterface {
     date: string,
 }
 
-
-
+export interface EventRegistration {
+    address: string,
+    alternateEmail?: string,
+    ambassadorName?: string,
+    cancelPolicy: boolean,
+    companyName: string,
+    email: string,
+    mcrNumber?: string,
+    name: string,
+    phone: string,
+    specialRequest?: string,
+    symposium: string,
+    userAgreement: boolean,
+    event: string,
+}
 export interface BlogInterface {
     title: string,
     description: string,
@@ -46,7 +57,6 @@ export interface BlogInterface {
     tag: string,
     blogId?: string
 }
-
 export interface BlogReplyInterface {
     blogId: string,
     name: string,

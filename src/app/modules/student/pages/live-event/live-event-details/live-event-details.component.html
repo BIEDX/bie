@@ -1,5 +1,267 @@
-<ng-container *ngIf="data; else showDetail">
+<ng-container *ngIf="!template; else showDetail">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-12 col-12">
+                        <!-- Single Enroll -->
+                        <div class="form-cls">
+                            <div class="form-title">
+                                <h2>Register for Live Event</h2>
+                            </div>
 
+                            <!-- Form -->
+                            <form class="form" [formGroup]="formGroup">
+                                <!-- {{formGroup}} -->
+                                <h6>Add Live Event</h6>
+                                <hr />
+                                <div class="form-group">
+                                    <label>Enter Name *</label>
+                                    <input name="name" type="text" formControlName="name" />
+                                    <p class="text-danger"
+                                        *ngIf="formGroup.get('name').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                        Name is required.
+                                    </p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Enter Email *</label>
+                                    <input type="text" formControlName="email" />
+                                    <p class="text-danger"
+                                        *ngIf="formGroup.get('email').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                        Email is required.
+                                    </p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Enter Alternate Email</label>
+                                    <input type="text" formControlName="alternateEmail" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Enter Phone Number *</label>
+                                    <input type="text" formControlName="phone" />
+                                    <p class="text-danger"
+                                        *ngIf="formGroup.get('phone').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                        Phone number is required.
+                                    </p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Enter MCR Number (if applicable)</label>
+                                    <input type="text" formControlName="mcrNumber" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Enter Company/Institute Name *</label>
+                                    <input type="text" formControlName="companyName" />
+                                    <p class="text-danger"
+                                        *ngIf="formGroup.get('companyName').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                        Company/Institute name is required.
+                                    </p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Enter Country *</label>
+                                    <input type="text" formControlName="country" />
+                                    <p class="text-danger"
+                                        *ngIf="formGroup.get('country').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                        Address is required.
+                                    </p>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Referring BIE Global Ambassador Name. NA if not applicable. *</label>
+                                    <input type="text" formControlName="ambassadorName" />
+                                    <p class="text-danger"
+                                        *ngIf="formGroup.get('ambassadorName').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                        BIE Global Ambassador name is required.
+                                    </p>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Any other special request?</label>
+                                    <input type="text" formControlName="specialRequest" />
+                                </div>
+
+                                <div class="mb-3">
+                                    <p>How did you learn about the symposium *</p>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" formControlName="symposium"
+                                                value="Email Blast">Email Blast
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" formControlName="symposium"
+                                                value="Colleague/Friend">Colleague/Friend
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" formControlName="symposium"
+                                                value="WhatsApp">WhatsApp
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" formControlName="symposium"
+                                                value="E-flyer">E-flyer
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" formControlName="symposium"
+                                                value="Biedx.com Website">Biedx.com Website
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" formControlName="symposium"
+                                                value="Facebook Post">Facebook Post
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" formControlName="symposium"
+                                                value="Linkedin Post">Linkedin Post
+                                        </label>
+                                    </div>
+                                    <p class="text-danger"
+                                        *ngIf="formGroup.get('symposium').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                        Symposium is required.
+                                    </p>
+                                </div>
+
+                                <div class="mb-3">
+                                    <p>Privacy Policy</p>
+                                    <div class="form-check-inline">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" value="true"
+                                                formControlName="cancelPolicy">
+                                            <a data-toggle="tooltip" [title]="cancelPolicyText">Cancellation
+                                                Policy *</a> (Hover to see Policy)
+                                        </label>
+                                    </div>
+                                    <br />
+                                    <div class="form-check-inline">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" value="true"
+                                                formControlName="userAgreement">
+                                            <a data-toggle="tooltip" [title]="userAgreementText">User
+                                                Agreement *</a> (Hover to see Agreement)
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <p>Fee Schedule and Offers *</p>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" formControlName="event"
+                                                (click)="onEvent($event)" value="CEM">CEM
+                                        </label>
+                                        <div class="row" *ngIf="firstDayEventDetail">
+                                            <div class="col-md-6 border-right">
+                                                <p class="text-grey">Early Bird:</p>
+                                                <div class="d-flex justify-content-between">
+                                                    <span class="text-dark"></span>
+                                                    <!-- {{firstDayEventDetail?.earlyBirdDate | date:
+                                                        'dd-MM-yyyy'}} -->
+                                                    <span class="text-dark">{{firstDayEventDetail?.earlyBirdPrice |
+                                                        currency:
+                                                        'SGD'}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="text-grey">Late:</p>
+                                                <div class="d-flex justify-content-between">
+                                                    <span class="text-dark">{{firstDayEventDetail?.regularDate | date:
+                                                        'dd-MM-yyyy'}}</span>
+                                                    <span class="text-dark">{{firstDayEventDetail?.regularPrice |
+                                                        currency:
+                                                        'SGD'}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" formControlName="event"
+                                                (click)="onEvent($event)" value="USG">USG
+                                        </label>
+                                        <div class="row" *ngIf="secondDayEventDetail">
+                                            <div class="col-md-6 border-right">
+                                                <p class="text-grey">Early Bird:</p>
+                                                <div class="d-flex justify-content-between">
+                                                    <span class="text-dark"></span>
+                                                    <!-- {{secondDayEventDetail?.earlyBirdDate |
+                                                        date:
+                                                        'dd-MM-yyyy'}} -->
+                                                    <span class="text-dark">{{secondDayEventDetail?.earlyBirdPrice |
+                                                        currency:
+                                                        'SGD'}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="text-grey">Late:</p>
+                                                <div class="d-flex justify-content-between">
+                                                    <span class="text-dark">{{secondDayEventDetail?.regularDate | date:
+                                                        'dd-MM-yyyy'}}</span>
+                                                    <span class="text-dark">{{secondDayEventDetail?.regularPrice |
+                                                        currency:
+                                                        'SGD'}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" formControlName="event"
+                                                (click)="onEvent($event)" value="CEM/USG">CEM/USG
+                                        </label>
+                                        <ng-container *ngIf="bothDayEventDetail">
+                                            <div class="row mb-2" *ngFor="let data of bothDayEventDetail">
+                                                <div class="col-md-6 border-right">
+                                                    <p class="text-grey">Early Bird:</p>
+                                                    <div class="d-flex justify-content-between">
+                                                        <span class="text-dark"></span>
+                                                        <!-- {{data?.earlyBirdDate | date:
+                                                            'dd-MM-yyyy'}} -->
+                                                        <span class="text-dark">{{data?.earlyBirdPrice |
+                                                            currency:
+                                                            'SGD'}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p class="text-grey">Late:</p>
+                                                    <div class="d-flex justify-content-between">
+                                                        <span class="text-dark">{{data?.regularDate | date:
+                                                            'dd-MM-yyyy'}}</span>
+                                                        <span class="text-dark">{{data?.regularPrice |
+                                                            currency:
+                                                            'SGD'}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                </div>
+
+                                <div class="course-price">
+                                    <!-- <button [disabled]="!formGroup.valid" type="submit" class="btn"
+                                        (click)="onSubmit()">
+                                        Buy It
+                                    </button> -->
+                                    <button class="btn buy-it" [disabled]="!formGroup.valid" (click)="onSubmit()">
+                                        <i class="fa fa-shopping-cart mr-2"></i>Buy It
+                                    </button>
+                                </div>
+
+                            </form>
+                            <!--/ End Form -->
+                        </div>
+                        <!-- Single Enroll -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </ng-container>
 <ng-template #showDetail>
     <!-- Courses -->

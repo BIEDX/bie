@@ -11,22 +11,28 @@ const routes: Routes = [
     path: '',
     component: AuthComponent,
     children: [
-      { path: 'sign-up', 
-        component:  SignUpComponent},
+      {
+        path: 'sign-up',
+        component: SignUpComponent
+      },
+      {
+        path: 'sign-up/:id',
+        component: SignUpComponent
+      },
       {
         path: 'sign-in',
-        component: SignInComponent,        
+        component: SignInComponent,
       },
       {
         path: 'sign-in/:id',
-        component: SignInComponent,        
+        component: SignInComponent,
       },
       {
         path: 'forgot-password',
-        component: ForgotPasswordComponent,        
+        component: ForgotPasswordComponent,
       }
     ],
-  }, 
+  },
 ];
 
 @NgModule({
