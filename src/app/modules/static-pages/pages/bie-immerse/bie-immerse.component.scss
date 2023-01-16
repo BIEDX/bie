@@ -79,7 +79,9 @@ li {
 }
 
 ul {
-    list-style: disc !important;
+    li {
+        list-style: disc !important;
+    }
 }
 
 .bie-color {

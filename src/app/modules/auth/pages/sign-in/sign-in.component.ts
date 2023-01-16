@@ -11,6 +11,7 @@ export class SignInComponent implements OnInit {
   errorMessage: string = ''
   courseId: string;
   eventId: string;
+  passwordToggler: boolean;
   constructor(
     private userAuth: ProviderUserAuthService,
     private router: Router,
@@ -18,6 +19,7 @@ export class SignInComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.passwordToggler = true;
     this.getId();
   }
 
@@ -31,6 +33,10 @@ export class SignInComponent implements OnInit {
         console.log('eventId', this.eventId);
       })
     }
+  }
+
+  passwordTogglerFun() {
+    this.passwordToggler = !this.passwordToggler;
   }
 
   signInHandler() {

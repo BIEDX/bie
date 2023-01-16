@@ -14,6 +14,7 @@ export class SignUpComponent implements OnInit {
   errorResponse: any = null;
   btnMessage: string = ""
   eventId: string;
+  passwordToggler: boolean;
   @ViewChild('errorMessageTemp', { static: false }) errorMessageTem: ElementRef<HTMLElement>;
 
   constructor(
@@ -33,11 +34,16 @@ export class SignUpComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.passwordToggler = true;
     this.getId();
   }
 
   getId(): void {
     this.eventId = this._activatedRoute.snapshot.paramMap.get('id');
+  }
+
+  passwordTogglerFun() {
+    this.passwordToggler = !this.passwordToggler;
   }
 
   signupHandler() {

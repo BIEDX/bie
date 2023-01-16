@@ -47,7 +47,13 @@
                 </div>
                 <div class="form-group">
                   <label>Enter Password</label>
-                  <input name="password" type="password" formControlName="password" required />
+                  <input name="password" [type]="passwordToggler ? 'password': 'text'" formControlName="password"
+                    required />
+                  <div class="eye-icon-div">
+                    <i (click)="passwordToggler = !passwordToggler" class="cursor"
+                      [ngClass]=" passwordToggler ? 'fa fa-eye-slash eye-icon': 'fa fa-eye icon eye-icon1'">
+                    </i>
+                  </div>
                 </div>
                 <div id="errorMessage" class="">
                   <p *ngIf="errorResponse" class="mt-2 text-danger">
