@@ -7,20 +7,28 @@
                         <!-- Single Enroll -->
                         <div class="form-cls">
                             <div class="form-title">
-                                <h2>Register for Live Event</h2>
+                                <h2>Register for BIE CEM/USG Symposium 2023</h2>
                             </div>
 
                             <!-- Form -->
                             <form class="form" [formGroup]="formGroup">
                                 <!-- {{formGroup}} -->
-                                <h6>Add Live Event</h6>
+                                <h6>Add Details</h6>
                                 <hr />
                                 <div class="form-group">
-                                    <label>Enter Name *</label>
-                                    <input name="name" type="text" formControlName="name" />
+                                    <label>Enter First Name *</label>
+                                    <input name="name" type="text" formControlName="firstName" />
                                     <p class="text-danger"
-                                        *ngIf="formGroup.get('name').hasError('required') && (formGroup.dirty || formGroup.touched)">
-                                        Name is required.
+                                        *ngIf="formGroup.get('firstName').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                        First Name is required.
+                                    </p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Enter Last Name *</label>
+                                    <input name="name" type="text" formControlName="lastName" />
+                                    <p class="text-danger"
+                                        *ngIf="formGroup.get('lastName').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                        Last Name is required.
                                     </p>
                                 </div>
                                 <div class="form-group">
@@ -216,14 +224,14 @@
                                                 (click)="onEvent($event)" value="CEM/USG">CEM/USG
                                         </label>
                                         <ng-container *ngIf="bothDayEventDetail">
-                                            <div class="row mb-2" *ngFor="let data of bothDayEventDetail">
+                                            <div class="row mb-2">
                                                 <div class="col-md-6 border-right">
                                                     <p class="text-grey">Early Bird:</p>
                                                     <div class="d-flex justify-content-between">
                                                         <span class="text-dark"></span>
                                                         <!-- {{data?.earlyBirdDate | date:
                                                             'dd-MM-yyyy'}} -->
-                                                        <span class="text-dark">{{data?.earlyBirdPrice |
+                                                        <span class="text-dark">{{119 |
                                                             currency:
                                                             'SGD'}}</span>
                                                     </div>
@@ -231,9 +239,8 @@
                                                 <div class="col-md-6">
                                                     <p class="text-grey">Late:</p>
                                                     <div class="d-flex justify-content-between">
-                                                        <span class="text-dark">{{data?.regularDate | date:
-                                                            'dd-MM-yyyy'}}</span>
-                                                        <span class="text-dark">{{data?.regularPrice |
+                                                        <span class="text-dark">1-02-2023</span>
+                                                        <span class="text-dark">{{149 |
                                                             currency:
                                                             'SGD'}}</span>
                                                     </div>

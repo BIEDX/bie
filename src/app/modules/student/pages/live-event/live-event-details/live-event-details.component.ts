@@ -61,9 +61,11 @@ export class LiveEventDetailsComponent implements OnInit {
 
   patchFormData(data): void {
     this.formGroup.patchValue({
-      name: data?.name ? data?.name : '',
+      firstName: data?.firstName ? data?.firstName : '',
+      lastName: data?.lastName ? data?.lastName : '',
       email: data?.email ? data?.email : '',
       phone: data?.phone ? data?.phone : '',
+      country: data?.country ? data?.country : '',
     })
   }
 
@@ -106,7 +108,8 @@ export class LiveEventDetailsComponent implements OnInit {
 
   buildForm(): void {
     this.formGroup = this.formBuilder.group({
-      name: ['', [Validators.required]],
+      firstName: ['', [Validators.required]],
+      lastName:['',[Validators.required]],
       email: ['', [Validators.required]],
       alternateEmail: [''],
       phone: ['', [Validators.required]],
@@ -155,7 +158,8 @@ export class LiveEventDetailsComponent implements OnInit {
       cancelPolicy: formData.cancelPolicy,
       companyName: formData.companyName,
       mcrNumber: formData.mcrNumber,
-      name: formData.name,
+      firstName: formData.firstName,
+      lastName: formData.lastName,
       email: formData.email,
       phone: formData.phone,
       alternateEmail: formData.alternateEmail,
