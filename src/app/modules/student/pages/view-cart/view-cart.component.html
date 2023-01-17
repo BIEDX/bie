@@ -66,6 +66,14 @@
 
 
             <hr />
+            <div class="d-flex flex-column align-items-end mb-3">
+                <p class="text-dark">+ 8% GST</p>
+                <div class="d-flex align-items-center">
+                    <p class="text-grey">Total Amount:</p>&nbsp;
+                    <span class="text-dark">{{cartDetails?.videos?.length > 1 ? '128.25' :'85.32' | currency:
+                        'SGD'}}</span>
+                </div>
+            </div>
             <div class="course-price d-flex justify-content-end">
                 <a class="btn" (click)="makePayment(cartDetails?.videos)" target="_blank">Make Payment</a>
             </div>
