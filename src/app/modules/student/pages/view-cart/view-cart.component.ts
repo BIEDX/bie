@@ -32,9 +32,9 @@ export class ViewCartComponent implements OnInit {
 
   makePayment(data): void {
     if (data?.length === 1) {
-      window.location.href="https://buy.stripe.com/test_6oEdRl5DXgc37zGfYZ";
+      window.location.href="https://buy.stripe.com/3csbIN7kw7Cy1J6dQQ";
     } else if (data?.length > 1) {
-      window.location.href="https://buy.stripe.com/test_6oEdRl5DXgc37zGfYZ"
+      window.location.href="https://buy.stripe.com/5kA5kp20c7CyafC001"
     }
   }
 
