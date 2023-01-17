@@ -49,11 +49,11 @@
               </ul>
               <!-- End Main Menu -->
               <!-- button -->
-              <div class="button cart-button" *ngIf="cartDetails?.videos?.length > 0">
+              <!-- <div class="button cart-button" *ngIf="cartDetails?.videos?.length > 0">
                 <a class="btn" (click)="viewCart()">
                   <i class="fa fa-shopping-cart"></i>View Cart {{cartDetails?.videos?.length}}
                 </a>
-              </div>
+              </div> -->
               <div class="button" *ngIf="!user">
                 <a class="btn" [routerLink]="'/auth/sign-in'"><i class="fa fa-pencil"></i>Sign In / Register</a>
               </div>

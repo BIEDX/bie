@@ -17,7 +17,7 @@ const STUDENT = [
     { path: '/student/dashboard', title: 'Home' },
     // { path: '/student/blog', title: 'Blog' },
     // { path: '/student/course', title: 'Course' },
-    { path: '/student/live-event', title: 'Live Event' },
+    { path: '/student/live-event', title: 'BIE CEM/USG Symposium 2023' },
 ];
 
 const HOME = [
