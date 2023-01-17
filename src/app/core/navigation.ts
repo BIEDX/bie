@@ -22,8 +22,8 @@ const STUDENT = [
 
 const HOME = [
     { path: '/home', title: 'Home' },
-    { path: '/blog', title: 'Blog' },
-    { path: '/course-list', title: 'Course' },
+    // { path: '/blog', title: 'Blog' },
+    // { path: '/course-list', title: 'Course' },
     { path: '/bie-event', title: 'CEM/USG' },
 ]
 
