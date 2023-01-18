@@ -40,7 +40,11 @@ export class SignUpComponent implements OnInit {
   }
 
   getId(): void {
-    this.eventId = this._activatedRoute.snapshot.paramMap.get('id');
+    if (this._activatedRoute.snapshot.paramMap.get('id')) {
+      this.eventId = this._activatedRoute.snapshot.paramMap.get('id');
+    } else {
+      this.eventId = '63c4ed418d164061ebd476dc'
+    }
   }
 
   passwordTogglerFun() {

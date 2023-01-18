@@ -47,6 +47,7 @@ export interface EventRegistration {
     phone: string,
     specialRequest?: string,
     symposium: string,
+    learnAbout: string,
     userAgreement: boolean,
     event: string,
 }

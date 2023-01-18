@@ -29,7 +29,11 @@ export class SignInComponent implements OnInit {
       console.log('courseId', this.courseId);
     } else {
       this._activatedRoute.queryParams.subscribe((res) => {
-        this.eventId = res['eid'];
+        if (res['eid']) {
+          this.eventId = res['eid'];
+        } else {
+          this.eventId = '63c4ed418d164061ebd476dc'
+        }
         console.log('eventId', this.eventId);
       })
     }

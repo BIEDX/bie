@@ -119,6 +119,7 @@ export class LiveEventDetailsComponent implements OnInit {
       symposium: ['', [Validators.required]],
       ambassadorName: ['', [Validators.required]],
       specialRequest: [''],
+      learnAbout:[''],
       cancelPolicy: ['', [Validators.required]],
       userAgreement: ['', [Validators.required]],
       event: ['', [Validators.required]],
@@ -165,6 +166,7 @@ export class LiveEventDetailsComponent implements OnInit {
       alternateEmail: formData.alternateEmail,
       specialRequest: formData.specialRequest,
       symposium: formData.symposium,
+      learnAbout:formData.learnAbout,
       userAgreement: formData.userAgreement,
       event: formData.event,
     };
