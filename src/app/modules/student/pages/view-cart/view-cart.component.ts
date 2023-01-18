@@ -46,11 +46,19 @@ export class ViewCartComponent implements OnInit {
   }
 
   makePayment(data): void {
-    // if (data?.length === 1) {
-    //   window.location.href = "https://buy.stripe.com/3csbIN7kw7Cy1J6dQQ";
-    // } else if (data?.length > 1) {
-    //   window.location.href = "https://buy.stripe.com/5kA5kp20c7CyafC001"
-    // }
+    let name;
+    data.forEach((element => {
+      name = element.name;
+    }))
+    console.log(name);
+
+    if (data?.length === 1 && name === 'USG') {
+      window.location.href = "https://book.stripe.com/9AQ9AF34gcWSafC6or";
+    } else if (data?.length === 1 && name === 'CEM') {
+      window.location.href = "https://book.stripe.com/14k7sx9sE1ea9by002";
+    } else if (data?.length > 1) {
+      window.location.href = "https://book.stripe.com/9AQ9AF48kf505Zm4gk"
+    }
   }
 
 }
