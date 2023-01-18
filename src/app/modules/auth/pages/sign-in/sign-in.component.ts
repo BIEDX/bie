@@ -55,7 +55,7 @@ export class SignInComponent implements OnInit {
             this.router.navigateByUrl('/student/course/details/' + this.courseId);
           }
           else if (res?.data?.role === 'student' && this.eventId) {
-            this.router.navigateByUrl('/student/live-event/details/' + this.eventId);
+            this.router.navigateByUrl('/student/usg-cem');
           }
           else if (res?.data?.role === 'student') {
             this.router.navigateByUrl('/student');

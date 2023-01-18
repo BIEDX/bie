@@ -1,15 +1,16 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { StudentRoutingModule } from './student-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { StudentComponent, StudentDashboardComponent, ViewCartComponent } from '.';
+import { StudentComponent, StudentDashboardComponent, UsgCemComponent, ViewCartComponent } from '.';
+import { StudentRoutingModule } from './student-routing.module';
 
 @NgModule({
   declarations: [
     StudentComponent,
     StudentDashboardComponent,
     ViewCartComponent,
+    UsgCemComponent,
   ],
   imports: [
     CommonModule,

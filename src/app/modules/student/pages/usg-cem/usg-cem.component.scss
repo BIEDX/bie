@@ -1,0 +1,97 @@
+.img-class {
+    display: grid;
+    // height: 100px;
+    grid-template-columns: repeat(3, 1fr);
+    // grid-template-columns: 100px;
+    gap: 10px
+}
+
+.heading {
+    font-size: 60px;
+    margin-bottom: 70px;
+}
+
+.text-size {
+    font-size: 16px;
+}
+
+.btnsize {
+    border: 3px solid #30052D !important;
+    border-radius: 50px;
+    color: #30052D;
+    background: none;
+    font-size: 20px;
+    width: 200px;
+    height: 42px;
+    padding: 0;
+}
+
+.btnsize:hover {
+    color: #ffffff;
+    background-color: #F6ACCD;
+    border-color: #dfc15e !important;
+}
+
+.f-24 {
+    font-size: 24px;
+}
+
+.icon-body {
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    border-color: 2px solid#DEB8FF !important;
+    background-color: #727272C2;
+    padding-left: 18px;
+    padding-top: 13px;
+    margin-right: 10px;
+}
+
+.list-styling {
+    list-style-position: outside;
+}
+
+.f-15 {
+    font-size: 15px;
+}
+
+li {
+    font-size: 15px;
+}
+
+.Director-Message .img-size {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.text-title {
+    font-family: "Shadows Into Light", Sans-serif;
+}
+
+.Director-Message {
+    background-color: #3a3a3a;
+}
+
+.Director-Message .section-title {
+    color: white;
+}
+
+ul {
+    li {
+        list-style: disc !important;
+    }
+}
+
+.bie-color {
+    color: #FF2768;
+}
+
+.icon-size {
+    font-size: 20px;
+}
+
+.section {
+    padding: 60px;
+}
