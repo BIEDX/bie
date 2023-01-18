@@ -109,7 +109,7 @@ export class LiveEventDetailsComponent implements OnInit {
   buildForm(): void {
     this.formGroup = this.formBuilder.group({
       firstName: ['', [Validators.required]],
-      lastName:['',[Validators.required]],
+      lastName: ['', [Validators.required]],
       email: ['', [Validators.required]],
       alternateEmail: [''],
       phone: ['', [Validators.required]],
@@ -117,9 +117,9 @@ export class LiveEventDetailsComponent implements OnInit {
       country: ['', [Validators.required]],
       mcrNumber: [''],
       symposium: ['', [Validators.required]],
-      ambassadorName: ['', [Validators.required]],
+      ambassadorName: [''],
       specialRequest: [''],
-      learnAbout:[''],
+      learnAbout: ['', [Validators.required]],
       cancelPolicy: ['', [Validators.required]],
       userAgreement: ['', [Validators.required]],
       event: ['', [Validators.required]],
@@ -166,7 +166,7 @@ export class LiveEventDetailsComponent implements OnInit {
       alternateEmail: formData.alternateEmail,
       specialRequest: formData.specialRequest,
       symposium: formData.symposium,
-      learnAbout:formData.learnAbout,
+      learnAbout: formData.learnAbout,
       userAgreement: formData.userAgreement,
       event: formData.event,
     };
