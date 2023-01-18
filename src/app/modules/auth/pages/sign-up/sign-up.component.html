@@ -42,8 +42,11 @@
                     placeholder="Enter your phone with country code" required />
                 </div>
                 <div class="form-group">
-                  <label>Country</label>
-                  <input name="phone" type="text" formControlName="country" required />
+                  <label>Select Country</label>
+                  <select class="form-control" id="sel1" formControlName="country">
+                    <option *ngFor="let data of countries" [value]="data.name">{{data.name}}
+                    </option>
+                  </select>
                 </div>
                 <div class="form-group">
                   <label>Affiliation</label>
@@ -221,7 +224,10 @@
             </div>
             <div class="form-group">
               <label>Country</label>
-              <input name="phone" type="text" formControlName="country" placeholder="Enter your country" required />
+              <select class="form-control" id="sel1" formControlName="country">
+                <option *ngFor="let data of countries" [value]="data.name">{{data.name}}
+                </option>
+              </select>
             </div>
             <div class="form-group">
               <label>Affiliation</label>

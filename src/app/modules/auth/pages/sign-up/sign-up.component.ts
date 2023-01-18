@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { COUNTRIES } from 'src/app/core/constants';
 import { ProviderUserAuthService } from 'src/app/core/providers/auth/provider-user-auth.service';
 // import { Router } from '@angular/router';
 // import { ProviderUserAuthService } from '../../../../core/providers/auth/provider-user-auth.service';
@@ -15,6 +16,7 @@ export class SignUpComponent implements OnInit {
   btnMessage: string = ""
   eventId: string;
   passwordToggler: boolean;
+  countries= COUNTRIES;
   @ViewChild('errorMessageTemp', { static: false }) errorMessageTem: ElementRef<HTMLElement>;
 
   constructor(

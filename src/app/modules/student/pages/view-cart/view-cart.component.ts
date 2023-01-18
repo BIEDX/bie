@@ -23,7 +23,7 @@ export class ViewCartComponent implements OnInit {
           this.eventName = element.name;
         });
       } else {
-        this.eventName = 'CEM/USG';
+        this.eventName = 'USG & CEM';
       }
       console.log('cartDetails', this.cartDetails);
     } else {
@@ -35,7 +35,7 @@ export class ViewCartComponent implements OnInit {
               this.eventName = element.name;
             });
           } else {
-            this.eventName = 'CEM/USG';
+            this.eventName = 'USG & CEM';
           }
           console.log('cartDetails', this.eventName);
         }, (err) => {
@@ -46,11 +46,11 @@ export class ViewCartComponent implements OnInit {
   }
 
   makePayment(data): void {
-    if (data?.length === 1) {
-      window.location.href = "https://buy.stripe.com/3csbIN7kw7Cy1J6dQQ";
-    } else if (data?.length > 1) {
-      window.location.href = "https://buy.stripe.com/5kA5kp20c7CyafC001"
-    }
+    // if (data?.length === 1) {
+    //   window.location.href = "https://buy.stripe.com/3csbIN7kw7Cy1J6dQQ";
+    // } else if (data?.length > 1) {
+    //   window.location.href = "https://buy.stripe.com/5kA5kp20c7CyafC001"
+    // }
   }
 
 }

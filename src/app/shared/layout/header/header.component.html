@@ -43,9 +43,6 @@
                 <li [routerLinkActive]="'active'" *ngFor="let item of navigationsList">
                   <a [routerLink]="[item.path]">{{item?.title}}</a>
                 </li>
-                <li *ngIf="user">
-                  <a>Welcome,&nbsp;{{ user.data.firstName }} {{ user.data.lastName }}</a>
-                </li>
               </ul>
               <!-- End Main Menu -->
               <!-- button -->

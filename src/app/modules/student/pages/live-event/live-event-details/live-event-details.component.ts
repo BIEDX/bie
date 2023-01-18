@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { EventRegistration } from 'src/app/core/constants';
+import { COUNTRIES, EventRegistration } from 'src/app/core/constants';
 import { ConstantsService } from 'src/app/core/providers/apis/constants.service';
 import { LiveEventService } from 'src/app/core/providers/apis/live-event.service';
 import { TeacherService } from 'src/app/core/providers/apis/teacher.service';
@@ -28,6 +28,9 @@ export class LiveEventDetailsComponent implements OnInit {
   bothDayEventDetail: any;
   cancelPolicyText = " Any cancellation or replacement must be conveyed to the Organizer in writing. A cancellation fee of 50% of the registration fee will be charged if the cancellation is received on or before 31st January 2023. There will be no refund of registration fee for cancellations made after 31st January 2023. The Organizer reserves the right to modify the programme and/or the terms. Full refund minus admin charges will be made should the course be cancelled due to unforeseen circumstances and all refunds will be made after the actual event date. Admin charges refer to any charges incurred to the organizers up until the point of cancellation."
   userAgreementText = "By registering for the course, the participants fully understand and consent for the photographs / videos/ data collected before, during, and after the workshop to be used by the course organizers for teaching, research, and publicity purposes. Pursuant thereto, the participants agree not to hold the organizers liable for any consequences that may follow any such disclosures."
+  otherTemplate: any;
+  otherData: any;
+  countries = COUNTRIES;
   constructor(
     private _activatedRoute: ActivatedRoute,
     private _liveEventService: LiveEventService,
@@ -111,7 +114,7 @@ export class LiveEventDetailsComponent implements OnInit {
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
       email: ['', [Validators.required]],
-      alternateEmail: [''],
+      alternateEmail: ['', [Validators.required]],
       phone: ['', [Validators.required]],
       companyName: ['', [Validators.required]],
       country: ['', [Validators.required]],
@@ -119,7 +122,6 @@ export class LiveEventDetailsComponent implements OnInit {
       symposium: ['', [Validators.required]],
       ambassadorName: [''],
       specialRequest: [''],
-      learnAbout: ['', [Validators.required]],
       cancelPolicy: ['', [Validators.required]],
       userAgreement: ['', [Validators.required]],
       event: ['', [Validators.required]],
@@ -166,7 +168,6 @@ export class LiveEventDetailsComponent implements OnInit {
       alternateEmail: formData.alternateEmail,
       specialRequest: formData.specialRequest,
       symposium: formData.symposium,
-      learnAbout: formData.learnAbout,
       userAgreement: formData.userAgreement,
       event: formData.event,
     };
@@ -197,23 +198,31 @@ export class LiveEventDetailsComponent implements OnInit {
     console.log('event', event.target.value);
     let data = event.target.value;
     if (data === 'CEM') {
-      this.firstDayEventDetail = this.eventDetails?.video[0];
+      this.secondDayEventDetail = this.eventDetails?.video[0];
       console.log('firstDayEventDetail', this.firstDayEventDetail);
-      this.secondDayEventDetail = null;
-      this.bothDayEventDetail = null;
-    } else if (data === 'USG') {
-      this.secondDayEventDetail = this.eventDetails?.video[1];
-      console.log('secondDayEventDetail', this.secondDayEventDetail);
       this.firstDayEventDetail = null;
       this.bothDayEventDetail = null;
+    } else if (data === 'USG') {
+      this.firstDayEventDetail = this.eventDetails?.video[1];
+      console.log('secondDayEventDetail', this.secondDayEventDetail);
+      this.secondDayEventDetail = null;
+      this.bothDayEventDetail = null;
     }
-    else if (data === 'CEM/USG') {
+    else if (data === 'USG & CEM') {
       this.bothDayEventDetail = this.eventDetails?.video;
       console.log('bothDayEventDetail', this.bothDayEventDetail);
       this.firstDayEventDetail = null;
       this.secondDayEventDetail = null;
     }
 
+  }
+
+  onOther(event): void {
+    if (event.target.value) {
+      this.otherTemplate = true;
+    } else {
+      this.otherTemplate = false;
+    }
   }
 
 }

@@ -7,14 +7,9 @@
                         <!-- Single Enroll -->
                         <div class="form-cls">
                             <div class="form-title">
-                                <h2>Register for BIE CEM/USG Symposium 2023</h2>
+                                <h2>Register for BIE USG & CEM Symposium 2023</h2>
                             </div>
-
-                            <!-- Form -->
                             <form class="form" [formGroup]="formGroup">
-                                <!-- {{formGroup}} -->
-                                <h6>Add Details</h6>
-                                <hr />
                                 <div class="form-group">
                                     <label>Enter First Name *</label>
                                     <input name="name" type="text" formControlName="firstName" />
@@ -40,8 +35,12 @@
                                     </p>
                                 </div>
                                 <div class="form-group">
-                                    <label>Enter Alternate Email</label>
+                                    <label>Enter Alternate Email *</label>
                                     <input type="text" formControlName="alternateEmail" />
+                                    <p class="text-danger"
+                                        *ngIf="formGroup.get('alternateEmail').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                        Alternate email is required.
+                                    </p>
                                 </div>
                                 <div class="form-group">
                                     <label>Enter Phone Number *</label>
@@ -56,16 +55,19 @@
                                     <input type="text" formControlName="mcrNumber" />
                                 </div>
                                 <div class="form-group">
-                                    <label>Enter Company/Institute Name *</label>
+                                    <label>Enter Hospital/Institute Name *</label>
                                     <input type="text" formControlName="companyName" />
                                     <p class="text-danger"
                                         *ngIf="formGroup.get('companyName').hasError('required') && (formGroup.dirty || formGroup.touched)">
-                                        Company/Institute name is required.
+                                        Hospital/Institute name is required.
                                     </p>
                                 </div>
                                 <div class="form-group">
-                                    <label>Enter Country *</label>
-                                    <input type="text" formControlName="country" />
+                                    <label for="sel1">Select Country *</label>
+                                    <select class="form-control" id="sel1" formControlName="country">
+                                        <option *ngFor="let data of countries" [value]="data.name">{{data.name}}
+                                        </option>
+                                    </select>
                                     <p class="text-danger"
                                         *ngIf="formGroup.get('country').hasError('required') && (formGroup.dirty || formGroup.touched)">
                                         Country is required.
@@ -80,15 +82,6 @@
                                 <div class="form-group">
                                     <label>Any other special request?</label>
                                     <input type="text" formControlName="specialRequest" />
-                                </div>
-
-                                <div class="form-group">
-                                    <label>How did you learn about this course *</label>
-                                    <input type="text" formControlName="learnAbout" />
-                                    <p class="text-danger"
-                                        *ngIf="formGroup.get('learnAbout').hasError('required') && (formGroup.dirty || formGroup.touched)">
-                                        Learn about is required.
-                                    </p>
                                 </div>
 
                                 <div class="mb-3">
@@ -135,10 +128,19 @@
                                                 value="Linkedin Post">Linkedin Post
                                         </label>
                                     </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" (click)="onOther($event)">Other
+                                        </label>
+                                    </div>
+                                    <div class="form-group mt-3" *ngIf="otherTemplate">
+                                        <input type="text" formControlName="symposium" />
+                                    </div>
                                     <p class="text-danger"
                                         *ngIf="formGroup.get('symposium').hasError('required') && (formGroup.dirty || formGroup.touched)">
                                         Symposium is required.
                                     </p>
+
                                 </div>
 
                                 <div class="mb-3">
@@ -167,7 +169,7 @@
                                     <div class="form-check">
                                         <label class="form-check-label">
                                             <input type="radio" class="form-check-input" formControlName="event"
-                                                (click)="onEvent($event)" value="CEM">CEM
+                                                (click)="onEvent($event)" value="USG">USG Only
                                         </label>
                                         <div class="row" *ngIf="firstDayEventDetail">
                                             <div class="col-md-6 border-right">
@@ -185,7 +187,7 @@
                                                 <p class="text-grey">Late:</p>
                                                 <div class="d-flex justify-content-between">
                                                     <span class="text-dark">{{firstDayEventDetail?.regularDate | date:
-                                                        'dd-MM-yyyy'}}</span>
+                                                        'MMM d, y'}}</span>
                                                     <span class="text-dark">{{firstDayEventDetail?.regularPrice |
                                                         currency:
                                                         'SGD'}}</span>
@@ -196,7 +198,7 @@
                                     <div class="form-check">
                                         <label class="form-check-label">
                                             <input type="radio" class="form-check-input" formControlName="event"
-                                                (click)="onEvent($event)" value="USG">USG
+                                                (click)="onEvent($event)" value="CEM">CEM Only
                                         </label>
                                         <div class="row" *ngIf="secondDayEventDetail">
                                             <div class="col-md-6 border-right">
@@ -215,7 +217,7 @@
                                                 <p class="text-grey">Late:</p>
                                                 <div class="d-flex justify-content-between">
                                                     <span class="text-dark">{{secondDayEventDetail?.regularDate | date:
-                                                        'dd-MM-yyyy'}}</span>
+                                                        'MMM d, y'}}</span>
                                                     <span class="text-dark">{{secondDayEventDetail?.regularPrice |
                                                         currency:
                                                         'SGD'}}</span>
@@ -226,7 +228,7 @@
                                     <div class="form-check">
                                         <label class="form-check-label">
                                             <input type="radio" class="form-check-input" formControlName="event"
-                                                (click)="onEvent($event)" value="CEM/USG">CEM/USG
+                                                (click)="onEvent($event)" value="USG & CEM">USG & CEM
                                         </label>
                                         <ng-container *ngIf="bothDayEventDetail">
                                             <div class="row mb-2">
@@ -244,7 +246,7 @@
                                                 <div class="col-md-6">
                                                     <p class="text-grey">Late:</p>
                                                     <div class="d-flex justify-content-between">
-                                                        <span class="text-dark">1-02-2023</span>
+                                                        <span class="text-dark">Feb 1, 2023</span>
                                                         <span class="text-dark">{{149 |
                                                             currency:
                                                             'SGD'}}</span>
@@ -264,7 +266,6 @@
                                         Proceed to Register
                                     </button>
                                 </div>
-
                             </form>
                             <!--/ End Form -->
                         </div>
