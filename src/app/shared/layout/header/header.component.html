@@ -39,23 +39,20 @@
           <nav class="navbar navbar-default">
             <div class="navbar-collapse">
               <!-- Main Menu -->
-              <ul id="nav" class="nav menu navbar-nav" style="display: block">
+              <ul id="nav" class="nav menu navbar-nav mr-auto" style="display: block">
                 <li [routerLinkActive]="'active'" *ngFor="let item of navigationsList">
                   <a [routerLink]="[item.path]">{{item?.title}}</a>
                 </li>
               </ul>
-              <!-- End Main Menu -->
-              <!-- button -->
-              <!-- <div class="button cart-button" *ngIf="cartDetails?.videos?.length > 0">
-                <a class="btn" (click)="viewCart()">
-                  <i class="fa fa-shopping-cart"></i>View Cart {{cartDetails?.videos?.length}}
-                </a>
-              </div> -->
-              <div class="button" *ngIf="!user">
-                <a class="btn" [routerLink]="'/auth/sign-in'"><i class="fa fa-pencil"></i>Sign In / Register</a>
-              </div>
-              <div class="button" *ngIf="user" (click)="handleLogout()">
-                <a class="btn"><i class="fa fa-power-off"></i></a>
+              <div class="d-flex justify-content-end pt-3">
+                <button *ngIf="!user" class="btn bg-theme text-white" [routerLink]="'/auth/sign-in'"><i
+                    class="fa fa-pencil"></i> Sign
+                  In /
+                  Register
+                </button>
+                <button *ngIf="user" (click)="handleLogout()" class="btn bg-theme text-white"><i
+                    class="fa fa-power-off"></i>
+                </button>
               </div>
               <!--/ End Button -->
             </div>

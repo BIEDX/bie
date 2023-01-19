@@ -2,15 +2,38 @@
 @import url("./assets/css/normalize.scss");
 @import url("./assets/css/main.scss");
 @import url("./assets/css/color/color1.scss");
+
+.text-theme {
+    color: #a99eb6;
+}
+
+.bg-theme {
+    background-color: #a99eb6;
+}
+
+.text-white {
+    color: #fff;
+}
+
+.f-14 {
+    font-size: 14px;
+}
+
+.fw-mdm {
+    font-weight: 500;
+}
+
 .form-cls {
     margin-top: 30px;
     text-align: left;
     background: #fff;
     border-radius: 5px;
+
     .form-title {
         padding: 20px 35px;
         border-radius: 5px 5px 0px 0px;
-        background: #ff2768;
+        background: #a99eb6;
+
         h2 {
             padding: 0;
             font-size: 25px;
@@ -19,16 +42,20 @@
             color: #fff;
         }
     }
+
     form {
         padding: 35px;
     }
+
     .form-group {
         margin-bottom: 30px;
+
         .form-group label {
             font-size: 14px;
             font-weight: 500;
             margin-bottom: 5px;
         }
+
         input {
             width: 100%;
             height: 40px;
@@ -39,40 +66,35 @@
             font-weight: 600;
             border-radius: 0px;
             padding: 0px 10px;
+
             &:hover {
                 padding-left: 15px;
-            }
-        }
-        .btn {
-            width: 100%;
-            background: #252525;
-            color: #fff;
-            text-align: center;
-            transition: all 0.4s ease;
-            display: block;
-            padding: 18px 0;
-            border-radius: 3px;
-            border: none;
-            &:hover {
-                background: #ff2768;
-                color: #000;
             }
         }
     }
 }
 
 .btn {
-    width: 100%;
-    background: #252525;
-    color: #fff;
-    text-align: center;
-    transition: all 0.4s ease;
-    display: block;
-    padding: 18px 0;
-    border-radius: 3px;
-    border: none;
+    border-radius: 6px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 36px;
+    padding-top: 5px;
+
+    &:focus {
+        box-shadow: none;
+    }
+}
+
+.btn-link {
+    text-decoration: none;
+
     &:hover {
-        background: #ff2768;
-        color: #fff;
+        color: #a99eb6;
+        text-decoration: none;
+    }
+
+    &:focus {
+        box-shadow: none;
     }
 }
