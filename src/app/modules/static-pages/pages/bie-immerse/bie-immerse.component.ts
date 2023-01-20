@@ -213,6 +213,7 @@ export class BieImmerseComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
   navigate(): void {
     this._router.navigateByUrl('/auth/sign-up/' + this.eventId)
   }

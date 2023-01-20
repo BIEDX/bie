@@ -37,5 +37,17 @@
     position: absolute;
     left: 365px !important;
     top: 682px !important;
+}
 
+@media (max-width: 767px) {
+    .eye-icon {
+        position: absolute;
+        left: 312px !important;
+        top: 716px !important;
+    }
+    .eye-icon1 {
+        position: absolute;
+        left: 306px !important;
+        top: 709px !important;
+    }
 }

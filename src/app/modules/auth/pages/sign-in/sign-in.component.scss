@@ -18,3 +18,16 @@
     padding: 10px;
     margin-bottom: 3px;
 }
+
+@media (max-width: 767px) {
+    .eye-icon {
+        position: absolute;
+        left: 183px !important;
+        top: 266px !important;
+    }
+    .eye-icon1 {
+        position: absolute;
+        left: 177px !important;
+        top: 256px !important;
+    }
+}

@@ -1,87 +1,93 @@
 .cursor {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .m-scroll {
-  display: flex;
-  position: relative;
-  width: 100vw;
-  height: 50px;
-  margin: auto;
-  background-color: #252525;
-  overflow: hidden;
-  z-index: 1;
-
-  &__title {
     display: flex;
-    position: absolute;
-    top: 0;
-    left: 0;
-    align-items: center;
-    justify-content: flex-start;
-    width: 100%;
-    height: 100%;
-    white-space: nowrap;
-    transform: scale(2);
-    transition: all 1s ease;
-
-    &>div {
-      display: flex;
-      animation: scrollText 10s infinite linear;
+    position: relative;
+    width: 100vw;
+    height: 50px;
+    margin: auto;
+    background-color: #252525;
+    overflow: hidden;
+    z-index: 1;
+    &__title {
+        display: flex;
+        position: absolute;
+        top: 0;
+        left: 0;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        height: 100%;
+        white-space: nowrap;
+        transform: scale(2);
+        transition: all 1s ease;
+        &>div {
+            display: flex;
+            animation: scrollText 10s infinite linear;
+        }
+        h1 {
+            margin: 0;
+            font-size: 140px;
+            color: rgba(255, 255, 255, 1);
+            transition: all 2s ease;
+        }
+        a {
+            text-decoration: none;
+            color: white;
+        }
+        a:hover {
+            -webkit-text-stroke: 1px white;
+            color: transparent;
+        }
     }
-
-    h1 {
-      margin: 0;
-      font-size: 140px;
-      color: rgba(255, 255, 255, 1);
-      transition: all 2s ease;
-    }
-
-    a {
-      text-decoration: none;
-      color: white;
-    }
-
-    a:hover {
-      -webkit-text-stroke: 1px white;
-      color: transparent;
-    }
-  }
 }
 
 @keyframes scrollText {
-  from {
-    transform: translateX(0%);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(-50%);
+    }
 }
 
 .logo {
-  width: 80px;
-  margin-top: 0px;
+    width: 80px;
+    margin-top: 0px;
 }
 
 .fa-whatsapp:hover {
-  background-color: #25D366;
-  color: #fff;
+    background-color: #25d366;
+    color: #fff;
 }
 
 .fa-whatsapp {
-  background-color: #25D366;
-  color: #fff !important;
+    background-color: #25d366;
+    color: #fff !important;
 }
 
 .single-widget {
-  position: fixed;
-  right: 20px;
-  z-index: 1000;
-  top: 600px;
-  box-shadow: 0px 18px 30px #00000014;
+    position: fixed;
+    right: 20px;
+    z-index: 1000;
+    top: 600px;
+    box-shadow: 0px 18px 30px #00000014;
 }
 
 .cart-button {
-  right: 100px;
+    right: 100px;
+}
+
+@media (max-width: 767px) {
+    .navbar-nav {
+        display: inline-block;
+    }
+    .btn-div {
+        margin-bottom: 10px;
+    }
+    .single-widget {
+        top: 772px;
+    }
 }

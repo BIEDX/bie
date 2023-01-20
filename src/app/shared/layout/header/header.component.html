@@ -1,22 +1,22 @@
 <header class="header">
-  <!-- Header Inner -->
-  <div class="header-inner">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-md-3 col-12 py-2">
-          <div class="logo">
-            <a href="/"><img src="../../../../assets/image2/logo.png" class="logo" alt="#" /></a>
-          </div>
-          <div class="mobile-menu"></div>
-        </div>
-        <div class="col-lg-9 col-md-9 col-12">
-          <!-- Header Widget -->
-          <div class="header-widget">
-            <div class="single-widget cursor" (click)="sendWhatsAppMessage()">
-              <i class="fa fa-whatsapp"></i>
-              <!-- <h4>Whatsapp Us<span>(+65) 89525405</span></h4> -->
-            </div>
-            <!-- <div class="single-widget cursor" (click)="mailTo()">
+    <!-- Header Inner -->
+    <div class="header-inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-12 py-2">
+                    <div class="logo">
+                        <a href="/"><img src="../../../../assets/image2/logo.png" class="logo" alt="#" /></a>
+                    </div>
+                    <div class="mobile-menu"></div>
+                </div>
+                <div class="col-lg-9 col-md-9 col-12">
+                    <!-- Header Widget -->
+                    <div class="header-widget">
+                        <div class="single-widget cursor" (click)="sendWhatsAppMessage()">
+                            <i class="fa fa-whatsapp"></i>
+                            <!-- <h4>Whatsapp Us<span>(+65) 89525405</span></h4> -->
+                        </div>
+                        <!-- <div class="single-widget cursor" (click)="mailTo()">
               <i class="fa fa-envelope-o"></i>
               <h4>Send Mail<span>ask@biedx.com</span></h4>
             </div>
@@ -24,43 +24,43 @@
               <i class="fa fa-map-marker"></i>
               <h4>Our Location<span>37 Kallang Pudding Rd, Singapore</span></h4>
             </div> -->
-          </div>
-          <!--/ End Header Widget -->
+                    </div>
+                    <!--/ End Header Widget -->
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-  <!--/ End Header Inner -->
-  <!-- Header Menu -->
-  <div class="header-menu">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <nav class="navbar navbar-default">
-            <div class="navbar-collapse">
-              <!-- Main Menu -->
-              <ul id="nav" class="nav menu navbar-nav mr-auto" style="display: block">
-                <li [routerLinkActive]="'active'" *ngFor="let item of navigationsList">
-                  <a [routerLink]="[item.path]">{{item?.title}}</a>
-                </li>
-              </ul>
-              <div class="d-flex justify-content-end pt-3">
-                <button *ngIf="!user" class="btn bg-theme text-white" [routerLink]="'/auth/sign-in'"><i
+    <!--/ End Header Inner -->
+    <!-- Header Menu -->
+    <div class="header-menu">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="navbar navbar-default">
+                        <div class="navbar-collapse">
+                            <!-- Main Menu -->
+                            <ul id="nav" class="nav menu navbar-nav mr-auto">
+                                <li [routerLinkActive]="'active'" *ngFor="let item of navigationsList">
+                                    <a [routerLink]="[item.path]">{{item?.title}}</a>
+                                </li>
+                            </ul>
+                            <div class="d-lg-flex justify-content-end pt-lg-3 btn-div">
+                                <button *ngIf="!user" class="btn bg-theme text-white" [routerLink]="'/auth/sign-in'"><i
                     class="fa fa-pencil"></i> Sign
                   In /
                   Register
                 </button>
-                <button *ngIf="user" (click)="handleLogout()" class="btn bg-theme text-white"><i
+                                <button *ngIf="user" (click)="handleLogout()" class="btn bg-theme text-white"><i
                     class="fa fa-power-off"></i>
                 </button>
-              </div>
-              <!--/ End Button -->
+                            </div>
+                            <!--/ End Button -->
+                        </div>
+                    </nav>
+                </div>
             </div>
-          </nav>
         </div>
-      </div>
     </div>
-  </div>
-  <!--/ End Header Menu -->
+    <!--/ End Header Menu -->
 </header>
 <!-- End Header -->

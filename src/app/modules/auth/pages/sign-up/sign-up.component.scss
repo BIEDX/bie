@@ -7,5 +7,18 @@
 .eye-icon1 {
     position: absolute;
     left: 300px !important;
-    top: 931px !important
+    top: 931px !important;
+}
+
+@media (max-width: 767px) {
+    .eye-icon {
+        position: absolute;
+        left: 190px !important;
+        top: 929px !important;
+    }
+    .eye-icon1 {
+        position: absolute;
+        left: 194px !important;
+        top: 906px !important;
+    }
 }
