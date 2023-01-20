@@ -23,7 +23,7 @@ export class ViewCartComponent implements OnInit {
           this.eventName = element.name;
         });
       } else {
-        this.eventName = 'USG & CEM';
+        this.eventName = 'BIE USG & CEM Symposium 2023';
       }
       console.log('cartDetails', this.cartDetails);
     } else {
@@ -35,7 +35,7 @@ export class ViewCartComponent implements OnInit {
               this.eventName = element.name;
             });
           } else {
-            this.eventName = 'USG & CEM';
+            this.eventName = 'BIE USG & CEM Symposium 2023';
           }
           console.log('cartDetails', this.eventName);
         }, (err) => {
@@ -52,9 +52,9 @@ export class ViewCartComponent implements OnInit {
     }))
     console.log(name);
 
-    if (data?.length === 1 && name === 'USG') {
+    if (data?.length === 1 && name === 'BIE USG Symposium 2023 Only') {
       window.location.href = "https://book.stripe.com/9AQ9AF34gcWSafC6or";
-    } else if (data?.length === 1 && name === 'CEM') {
+    } else if (data?.length === 1 && name === 'BIE CEM Symposium 2023 Only') {
       window.location.href = "https://book.stripe.com/14k7sx9sE1ea9by002";
     } else if (data?.length > 1) {
       window.location.href = "https://book.stripe.com/9AQ9AF48kf505Zm4gk"

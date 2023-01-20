@@ -9,32 +9,32 @@
             </div>
         </div>
         <div class="contact-head">
-            <h6>Event</h6>
+            <h6>Event Details</h6>
             <hr />
             <div class="row">
                 <div class="col-md-4">
-                    <p class="text-dark">Event Name</p>
-                    <p class="text-grey">{{eventName}}</p>
+                    <p class="text-grey">Event Description</p>
+                    <p class="text-dark fw-6">{{eventName}}</p>
                 </div>
                 <div class="col-md-4">
-                    <p class="text-dark">Event Duration</p>
-                    <p class="text-grey">{{cartDetails?.videos?.length > 1 ? '12 Hour':cartDetails?.courseDuration}}s
+                    <p class="text-grey">Event Duration</p>
+                    <p class="text-dark fw-6">{{cartDetails?.videos?.length > 1 ? '12 Hour':cartDetails?.courseDuration}}s
                     </p>
                 </div>
                 <div class="col-md-4">
-                    <p class="text-dark">Event Price</p>
-                    <p class="text-grey">{{cartDetails?.videos?.length > 1 ? '119' : '79' | currency:'SGD'}}</p>
+                    <p class="text-grey">Event Price</p>
+                    <p class="text-dark fw-6">{{cartDetails?.videos?.length > 1 ? '119' : '79' | currency:'SGD'}}</p>
                 </div>
                 <!-- <div class="col-md-12 mt-2">
                     <p class="text-dark">Event Description</p>
-                    <p class="text-grey">{{cartDetails?.courseDescription}}</p>
+                    <p class="text-dark">{{cartDetails?.courseDescription}}</p>
                 </div> -->
             </div>
             <hr />
             <div class="d-flex flex-column align-items-end mb-3">
                 <p class="text-dark">+ 8% GST</p>
                 <div class="d-flex align-items-center">
-                    <p class="text-grey">Total Amount:</p>&nbsp; &nbsp;
+                    <p class="text-dark">Total Amount:</p>&nbsp; &nbsp;
                     <span class="text-dark">{{cartDetails?.videos?.length > 1 ? '128.25' :'85.32' | currency:
                         'SGD'}}</span>
                 </div>

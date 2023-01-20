@@ -59,8 +59,9 @@
                                     <p *ngIf="errorResponse" class="mt-2 text-danger">{{errorResponse.header.message}}
                                     </p>
                                 </div>
-                                <div class="form-group button">
-                                    <button type="submit" class="btn" (click)="signupHandler()">{{ btnMessage.length > 0
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" class="btn bg-theme text-white f-14"
+                                        (click)="signupHandler()">{{ btnMessage.length > 0
                                         ? btnMessage : 'Register Now' }}</button>
                                 </div>
                             </form>
@@ -71,7 +72,7 @@
                     <div class="col-lg-6 col-12">
                         <div class="enroll-right">
                             <div class="section-title">
-                                <h2>More than 6000 doctors have benefittedfrom BIEDX courses, it's your turn now!</h2>
+                                <h2>More than 6000 doctors have benefitted from BIEDX courses, it's your turn now!</h2>
                                 <p>Whether you need to start from the basics or you need advanced radiology learning, we
                                     have you covered!</p>
                             </div>

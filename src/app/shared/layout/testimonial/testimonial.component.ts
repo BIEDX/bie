@@ -48,7 +48,7 @@ Definitely useful for those starting out or those who wish to learn more about t
       description: `I had an opportunity to attend this truly intensive and interactive breast MRI course in Singapore. It's was very well conducted with excellent lectures and case discussions by Dr. Supriya and Dr. Niketa and all the other faculty members. Personalized workstations and limited participants from all over the world, further added to the experience. A lot of course material was also provided to carry back to home and what's more is a special Whatsaap group of MRI breast where everyone is so helpful with solving cases and sharing cases. Highly recommend the course.`,
       image: '../../../../assets/image2/testimonials/5.png',
       price: 79,
-      location: 'Educational',
+      location: 'India',
       subCategory: ' & Courses Website',
       quantity: 2,
       inventoryStatus: 'LOWSTOCK',
@@ -100,21 +100,6 @@ Definitely useful for those starting out or those who wish to learn more about t
       year:3
      // images:'../../../../assets/images/slider/slider-bg3.jpg'
     },
-    {
-      id: '1006',
-      code: 'bib36pfvm',
-      name: 'Dr. Vish Reynolds',
-      description: 'Excellent choice of cases. I attended in Singapore. Learned a lot, gained confidence in reading MRI breast. Learned MRI biopsy technique. Nice and friendly approach by the faculty Give you the freedom to ask all the problems which you may have.',
-      image: '../../../../assets/images/course/course2.jpg',
-      price: 32,
-      location: 'Singapore',
-      subCategory: ' & Courses Website',
-      quantity: 5,
-      inventoryStatus: 'LOWSTOCK',
-      rating: 3,
-      year:6
-    //  // images:'../../../../assets/images/slider/slider-bg1.jpg'
-     },
   ];
   constructor() { 
     this.responsiveOptions = [

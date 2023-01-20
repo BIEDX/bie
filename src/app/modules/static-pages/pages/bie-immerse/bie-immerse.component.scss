@@ -1,83 +1,171 @@
-.main-section {
-    background-color: #eeeeee;
-}
-
 .meeting {
     background-color: #fff;
+
+    .seprator {
+        padding: 11px 0;
+
+        div {
+            border: 2px solid #cccccc;
+            border-radius: 6px;
+            width: 14%;
+        }
+    }
+
+    .para-div {
+        margin: 15px 0px;
+
+        p {
+            margin-bottom: 1.6em;
+            font-size: 13px;
+            font-weight: 400;
+            color: #4D4D4D;
+        }
+    }
 }
 
-.single-testimonial {
-    background-color: #fff;
-    padding: 20px;
-    margin: 0px 5px;
+.symposium-div {
+    background-color: #3a3a3a;
+
+    .inner-div {
+        margin: 0px 100px;
+        min-height: 500px;
+        text-align: center;
+        padding: 50px 0;
+
+        h2 {
+            color: #DEB8FF;
+            font-family: "Shadows Into Light", Sans-serif !important;
+            font-size: 50px;
+            text-align: center;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        p {
+            color: #fff;
+            margin-bottom: 1.8em;
+            color: #bababa;
+            font-size: 17px;
+            line-height: 1.6em;
+            letter-spacing: -0.6px;
+            font-weight: 400;
+        }
+
+        img {
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            margin-bottom: 20px;
+        }
+
+        .doctor-name {
+            color: #dfc15e;
+            font-family: "Ovo", Sans-serif;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 9px;
+        }
+    }
 }
 
-.objectives {
-    background-color: #fff;
+.bg-color {
+    background-color: #eeeeee;
+    padding: 50px 0px;
+
+    .objective-div {
+        padding: 50px 0px;
+        padding-top: 0 !important;
+        h2 {
+            color: #30052D;
+            font-family: "Shadows Into Light", Sans-serif;
+            font-size: 31px;
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 1.6em;
+        }
+
+        .main-section {
+            background-color: #fff;
+
+            .objective-description {
+                display: flex;
+                justify-content: center;
+                padding: 10% 0px;
+
+                .seprator {
+                    padding: 11px 0;
+
+                    div {
+                        border: 2px solid #cccccc;
+                        border-radius: 6px;
+                        width: 18%;
+                    }
+                }
+
+                .objective-titile {
+                    margin-bottom: 1.6em;
+                    color: #000;
+                }
+
+                ul {
+                    margin-left: 35px;
+                    margin-top: 20px;
+
+                    li {
+                        list-style: disc;
+                    }
+                }
+            }
+        }
+
+        .obj-img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    .testimonial-div {
+        padding: 50px 0px;
+
+        h2 {
+            color: #30052D;
+            font-family: "Shadows Into Light", Sans-serif;
+            font-size: 31px;
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 1.6em;
+        }
+
+        .single-testimonial {
+            background-color: #fff;
+            padding: 20px;
+            margin: 0px 5px;
+            border-radius: 6px;
+            min-height: 320px;
+            text-align: center;
+
+            img {
+                border: 1px solid #30052D;
+                border-radius: 50%;
+                margin-bottom: 1.2em;
+            }
+
+            .main-content {
+                b {
+                    margin-bottom: 1.2em;
+                }
+
+                p {
+                    font-size: 12px;
+                    text-align: justify;
+                }
+            }
+        }
+    }
 }
 
-.img-class {
-    display: grid;
-    // height: 100px;
-    grid-template-columns: repeat(3, 1fr);
-    // grid-template-columns: 100px;
-    gap: 10px
-}
-
-.heading {
-    color: #30052D;
-    font-family: "Ovo", Sans-serif;
-    font-size: 51px;
-    text-transform: uppercase;
-    letter-spacing: -2px;
-}
-
-.seprator {
-    width: 14%;
-    border-top: var(--divider-border-width) var(--divider-border-style) var(--divider-color)
-}
-
-.para-text {
-    color: #4D4D4D;
-    margin-bottom: 1.6em;
-    font-size: 13px;
-}
-
-.doctor-name {
-    color: #dfc15e;
-    font-family: "Ovo", Sans-serif;
-    font-size: 18px;
-    text-transform: uppercase;
-    letter-spacing: 9px;
-}
-
-.text-size {
-    font-size: 16px;
-}
-
-.btnsize {
-    font-family: "Roboto", Sans-serif;
-    font-size: 19px;
-    font-weight: 600;
-    text-transform: uppercase;
-    line-height: 1em;
-    fill: #30052D;
-    color: #30052D;
-    background-color: rgba(223, 193, 94, 0);
-    border-style: solid;
-    border-width: 2px 2px 2px 2px;
-    border-radius: 50px 50px 50px 50px;
-    border-color: #30052D;
-}
-
-.btnsize:hover {
-    color: #ffffff;
-    background-color: #F6ACCD;
-    border-color: #dfc15e !important;
-}
-
-.f-24 {
-    font-size: 24px;
+.icon-size {
+    font-size: 20px;
 }
 
 .icon-body {
@@ -91,58 +179,30 @@
     margin-right: 10px;
 }
 
-.list-styling {
-    list-style-position: outside;
+.img-class {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px
 }
 
-.f-15 {
-    font-size: 15px;
+.btnsize {
+    font-family: "Roboto", Sans-serif;
+    font-size: 19px;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 1em;
+    fill: #30052D;
+    color: #30052D;
+    padding: 0px 25px;
+    background-color: rgba(223, 193, 94, 0);
+    border-style: solid;
+    border-width: 2px 2px 2px 2px;
+    border-radius: 50px 50px 50px 50px;
+    border-color: #30052D;
 }
 
-li {
-    font-size: 15px;
-}
-
-.Director-Message .img-size {
-    width: 75px;
-    height: 75px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-    border: 1px solid #58214f;
-}
-
-.test-img {
-    border: 1px solid #58214f;
-    border-radius: 50%;
-    margin-bottom: 1.2em;
-}
-
-.text-title {
-    font-family: "Shadows Into Light", Sans-serif;
-}
-
-.Director-Message {
-    background-color: #3a3a3a;
-}
-
-.Director-Message .section-title {
-    color: white;
-}
-
-ul {
-    li {
-        list-style: disc !important;
-    }
-}
-
-.bie-color {
-    color: #a99eb6;
-}
-
-.icon-size {
-    font-size: 20px;
-}
-
-.section {
-    padding: 60px;
+.btnsize:hover {
+    color: #ffffff;
+    background-color: #F6ACCD;
+    border-color: #dfc15e !important;
 }

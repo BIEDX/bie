@@ -1,10 +1,12 @@
 <!-- Button trigger modal -->
-<button #btn type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="display: none;">
+<button #btn type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+    style="display: none;">
     Launch demo modal
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered to .modal-dialog" role="document">
         <div class="modal-content">
             <!-- <div class="modal-header">
@@ -18,24 +20,33 @@
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-6">
-                                <img class="img" src="../../../../assets/image2/subscription.jpeg" style="object-fit: cover;" alt="#">
+                                <img class="img" src="../../../../assets/image2/subscription.jpeg"
+                                    style="object-fit: cover;" alt="#">
                             </div>
                             <div class="col-md-6  px-0 mx-0 py-3 position-relative">
                                 <h6 class=" subscribe mt-1 pl-4">Subscribe to our newsletter!</h6>
-                                <p class="subscribeText mt-1 w-75  pl-4">Want to know how? Join our free lectures and webinars to skyrocket your skills!</p>
+                                <p class="subscribeText mt-1 w-75  pl-4">Want to know how? Join our free lectures and
+                                    webinars to skyrocket your skills!</p>
                                 <form class="mt-2 pl-4" (submit)="submit($event)">
                                     <div class="form-group">
-                                        <input [ngModelOptions]="{standalone: true}" [(ngModel)]="name" class="form-control form-control-sm p-1 w-75" type="text" placeholder="  Your Name" required>
+                                        <input [ngModelOptions]="{standalone: true}" [(ngModel)]="name"
+                                            class="form-control form-control-sm p-1 w-75" type="text"
+                                            placeholder="  Your Name" required>
                                     </div>
                                     <div class="form-group mb-1">
-                                        <input [ngModelOptions]="{standalone: true}" [(ngModel)]="email" class="form-control form-control-sm p-1  w-75" type="email" placeholder="  Your E-mail" required>
+                                        <input [ngModelOptions]="{standalone: true}" [(ngModel)]="email"
+                                            class="form-control form-control-sm p-1  w-75" type="email"
+                                            placeholder="  Your E-mail" required>
                                     </div>
                                     <div class="form-check w-75" style="font-size: 11px;">
-                                        <input (change)="onChange()" [checked]="checked" type="checkbox" class="form-check-input" id="exampleCheck1">
-                                        <label class="form-check-label term" for="exampleCheck1" style="font-size: 11px;">I accept the Terms and the Privacy Policy. </label>
+                                        <input (change)="onChange()" [checked]="checked" type="checkbox"
+                                            class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label term" for="exampleCheck1"
+                                            style="font-size: 11px;">I accept the Terms and the Privacy Policy. </label>
                                     </div>
-                                    <button type="submit" [disabled]="!checked" class="btn mt-1">Submit</button>
-                                    <button #close type="button" class="btn mt-1" data-dismiss="modal">
+                                    <button type="submit" [disabled]="!checked"
+                                        class="btn bg-theme text-white mt-1">Submit</button>
+                                    <button #close type="button" class="btn btn-link mt-1" data-dismiss="modal">
                                         <span aria-hidden="true">Close</span>
                                     </button>
                                 </form>
