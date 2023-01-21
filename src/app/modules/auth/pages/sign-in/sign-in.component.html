@@ -33,12 +33,18 @@
                                         </i>
                                     </div>
                                 </div>
-                                <div class="d-lg-flex justify-content-center">
+                                <div class="d-lg-flex justify-content-center mb-4">
                                     <button type="submit" class="btn bg-theme f-14 fw-mdm text-white" (click)="signInHandler()">
                                         Log In
                                     </button>
+                                </div>
+                                <div class="d-lg-flex justify-content-center">
+
                                     <button type="button" class="btn btn-link text-theme f-14 fw-mdm" [routerLink]="'/auth/sign-up'">
                                         Register
+                                    </button>
+                                    <button type="button" class="btn btn-link text-theme f-14 fw-mdm" [routerLink]="'/auth/forgot-password'">
+                                        Forgot Password
                                     </button>
                                 </div>
                             </form>
