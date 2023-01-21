@@ -38,7 +38,7 @@ export class LiveEventDetailsComponent implements OnInit {
     private _teacherService: TeacherService,
     private _constantService: ConstantsService,
     private formBuilder: FormBuilder,
-    private _router: Router
+    private _router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -50,14 +50,28 @@ export class LiveEventDetailsComponent implements OnInit {
     if (result) {
       const parse = JSON.parse(result);
       this.userDetails = parse;
+      if (this.userDetails) {
+        this.patchFormData(this.userDetails?.data);
+      }
       console.log('userDetails', this.userDetails?.data);
 
     }
   }
   ngAfterViewInit(): void {
-    if (this.userDetails) {
-      this.patchFormData(this.userDetails?.data);
-    }
+    let data: any;
+    this._constantService.eventSubject.subscribe(
+      (res: any) => {
+        console.log('res', res);
+        data = res;
+        if (Object.keys(data).length > 0) {
+          this.patchFormData(data);
+        } else {
+          this.patchFormData(this.userDetails?.data)
+        }
+      }, (err) => {
+        console.log('err', err);
+      })
+
   }
   getId(): void {
     this.eventId = this._activatedRoute.snapshot.paramMap.get('id');
@@ -70,6 +84,15 @@ export class LiveEventDetailsComponent implements OnInit {
       email: data?.email ? data?.email : '',
       phone: data?.phone ? data?.phone : '',
       country: data?.country ? data?.country : '',
+      alternateEmail: data?.alternateEmail ? data?.alternateEmail : '',
+      companyName: data?.companyName ? data?.companyName : '',
+      mcrNumber: data?.mcrNumber ? data?.mcrNumber : '',
+      symposium: data?.symposium ? data?.symposium : '',
+      ambassadorName: data?.ambassadorName ? data?.ambassadorName : '',
+      specialRequest: data?.specialRequest ? data?.specialRequest : '',
+      cancelPolicy: data?.cancelPolicy ? data?.cancelPolicy : '',
+      userAgreement: data?.userAgreement ? data?.userAgreement : '',
+      event: data?.event ? data?.event : '',
     })
   }
 
@@ -179,6 +202,7 @@ export class LiveEventDetailsComponent implements OnInit {
           console.log('res', res);
           if (res) {
             // this.template = true;
+            this._constantService.eventSubject.next(this.payload);
             localStorage.removeItem('cart');
             this._constantService.cartSubject.next(null);
             if (this.firstDayEventDetail) {

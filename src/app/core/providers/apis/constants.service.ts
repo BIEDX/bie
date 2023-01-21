@@ -10,6 +10,8 @@ export class ConstantsService {
   }
   cartSubject = new BehaviorSubject<any>({});
   cartSubjectAsObservable = this.cartSubject.asObservable();
+  eventSubject = new BehaviorSubject<any>({});
+  eventSubjectAsObservable = this.eventSubject.asObservable();
 
   constructor() { }
 }
