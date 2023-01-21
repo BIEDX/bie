@@ -12,6 +12,8 @@ export class SignInComponent implements OnInit {
   courseId: string;
   eventId: string;
   passwordToggler: boolean;
+  message:string='';
+  isError:boolean | undefined
   constructor(
     private userAuth: ProviderUserAuthService,
     private router: Router,
@@ -44,7 +46,7 @@ export class SignInComponent implements OnInit {
   }
 
   signInHandler() {
-    this.errorMessage = ''
+    this.errorMessage=undefined;
     this.userAuth.userSignIn(this.user).subscribe(
       (res: any) => {
         if (res.header.code === 200) {
@@ -62,7 +64,7 @@ export class SignInComponent implements OnInit {
           } else if (res?.data?.role === 'teacher') {
             this.router.navigateByUrl('/teacher');
           }
-        } else {
+        } else if(res.header.code === 401) {
           this.errorMessage = res.header.message ? res.header.message : 'Invalid Credentials '
         }
         // if (res.header.code === 200) {

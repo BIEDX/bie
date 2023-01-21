@@ -13,17 +13,28 @@ export class ForgotPasswordComponent implements OnInit {
   courseId: string;
   eventId: string;
   passwordToggler: boolean;
-  constructor( private userAuth: ProviderUserAuthService,
+  message: string = '';
+  isError: boolean |undefined;
+  constructor(private userAuth: ProviderUserAuthService,
     private router: Router,
     private _activatedRoute: ActivatedRoute,) { }
 
   ngOnInit(): void {
   }
-  forgotPasswordHandler(){
+  forgotPasswordHandler() {
     this.errorMessage = ''
     this.userAuth.forgotPassword(this.user).subscribe(
       (res: any) => {
-       console.log('password has been changed')
+        if (res.message === 'Email Not Found.') {
+          this.message = 'No such email was found'
+          this.isError = true
+        }
+        else if (res.message === 'Password Changed Successfully.') {
+          this.message = 'Password has been changed successfully'
+          this.isError = false
+        }
+        console.log('password has been changed')
+
       }, err => {
         //this.appMessageService.createBasicNotification('red', 'Something went wrong');
       });
