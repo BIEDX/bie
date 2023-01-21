@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Enter Phone Number *</label>
-                                    <input type="text" formControlName="phone" />
+                                    <input type="text" formControlName="phone" placeholder="Enter your number with country code" />
                                     <p class="text-danger" *ngIf="formGroup.get('phone').hasError('required') && (formGroup.dirty || formGroup.touched)">
                                         Phone number is required.
                                     </p>

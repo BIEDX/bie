@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Enter Your Phone Number</label>
-                                    <input name="phone" type="text" formControlName="phone" />
+                                    <input name="phone" type="text" formControlName="phone" placeholder="Enter your number with country code" />
                                     <p *ngIf="!userForm.get('phone').valid" class="text-danger">
                                         Phone number is required
                                     </p>

@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Enter Your Phone</label>
-                                    <input name="phone" type="text" formControlName="phone" required />
+                                    <input name="phone" type="text" formControlName="phone" placeholder="Enter your number with country code" required />
                                 </div>
                                 <div class="form-group">
                                     <label>Select Country</label>
@@ -69,7 +69,9 @@
                                     <button type="submit" class="btn bg-theme text-white f-14" (click)="signupHandler()">
                     {{ btnMessage.length > 0 ? btnMessage : "Register Now" }}
                   </button>
-                                    <button type="submit" class="btn btn-link text-theme f-14" [routerLink]="'/auth/sign-in'">Sign In</button>
+                                    <button type="submit" class="btn btn-link text-theme f-14" [routerLink]="'/auth/sign-in'">
+                    Sign In
+                  </button>
                                 </div>
                             </form>
                             <!--/ End Form -->
@@ -206,7 +208,7 @@
                         </div>
                         <div class="form-group">
                             <label>Enter Your Phone</label>
-                            <input name="phone" type="text" formControlName="phone" placeholder="Enter your phone with country code" required />
+                            <input name="phone" type="text" formControlName="phone" placeholder="Enter your number with country code" required />
                         </div>
                         <div class="form-group">
                             <label>Select Country</label>
@@ -236,7 +238,9 @@
                             <button type="submit" class="btn bg-theme text-white" (click)="signupHandler()">
                 {{ btnMessage.length > 0 ? btnMessage : "Register Now" }}
               </button>
-                            <button type="submit" class="btn btn-link text-theme f-14" [routerLink]="'/auth/sign-in'">SIgn In</button>
+                            <button type="submit" class="btn btn-link text-theme f-14" [routerLink]="'/auth/sign-in'">
+                SIgn In
+              </button>
                         </div>
                     </form>
                     <!--/ End Form -->
