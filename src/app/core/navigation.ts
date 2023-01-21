@@ -24,7 +24,7 @@ const HOME = [
     { path: '/home', title: 'Home' },
     // { path: '/blog', title: 'Blog' },
     // { path: '/course-list', title: 'Course' },
-    { path: '/bie-event', title: 'BIE USG & CEM Symposium 2023' },
+    { path: '/usg-cem-symposium-2023', title: 'BIE USG & CEM Symposium 2023' },
 ]
 
 export const navigations = (adminType: string): RoutePath[] => {

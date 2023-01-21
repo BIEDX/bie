@@ -23,9 +23,10 @@
             <!-- <div class="col-lg-4 col-12" *ngIf="!includeRoute && !includeRoute">
                 <el-student-navigation></el-student-navigation>
             </div> -->
-            <div class="col-lg-12" [ngClass]="includeRoute ? 'col-lg-12 col-12' :'col-lg-8 col-12'">
+            <div class="col-lg-12" [ngClass]="includeRoute ? 'col-lg-12 col-12' : 'col-lg-8 col-12'">
                 <div class="d-flex justify-content-center welcome-text" *ngIf="user.data.firstName">
-                    <span>Welcome&nbsp;{{ user.data.firstName }},</span>
+                    <p>Welcome&nbsp;</p>
+                    <span>{{ user.data.firstName }}</span>
                 </div>
                 <router-outlet></router-outlet>
             </div>

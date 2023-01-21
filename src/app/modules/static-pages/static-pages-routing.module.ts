@@ -62,7 +62,7 @@ const routes: Routes = [
         component: CourseListComponent,
       },
       {
-        path: 'bie-event',
+        path: 'usg-cem-symposium-2023',
         component: BieImmerseComponent,
       },
       {

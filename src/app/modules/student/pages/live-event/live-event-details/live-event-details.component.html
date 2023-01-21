@@ -1,7 +1,7 @@
 <ng-container *ngIf="!template; else showDetail">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
+        <div class="d-flex justify-content-center">
+            <div class="col-lg-8">
                 <div class="row">
                     <div class="col-lg-12 col-12">
                         <!-- Single Enroll -->
@@ -13,40 +13,35 @@
                                 <div class="form-group">
                                     <label>Enter First Name *</label>
                                     <input name="name" type="text" formControlName="firstName" />
-                                    <p class="text-danger"
-                                        *ngIf="formGroup.get('firstName').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                    <p class="text-danger" *ngIf="formGroup.get('firstName').hasError('required') && (formGroup.dirty || formGroup.touched)">
                                         First Name is required.
                                     </p>
                                 </div>
                                 <div class="form-group">
                                     <label>Enter Last Name *</label>
                                     <input name="name" type="text" formControlName="lastName" />
-                                    <p class="text-danger"
-                                        *ngIf="formGroup.get('lastName').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                    <p class="text-danger" *ngIf="formGroup.get('lastName').hasError('required') && (formGroup.dirty || formGroup.touched)">
                                         Last Name is required.
                                     </p>
                                 </div>
                                 <div class="form-group">
                                     <label>Enter Email *</label>
                                     <input type="text" formControlName="email" />
-                                    <p class="text-danger"
-                                        *ngIf="formGroup.get('email').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                    <p class="text-danger" *ngIf="formGroup.get('email').hasError('required') && (formGroup.dirty || formGroup.touched)">
                                         Email is required.
                                     </p>
                                 </div>
                                 <div class="form-group">
                                     <label>Enter Alternate Email *</label>
                                     <input type="text" formControlName="alternateEmail" />
-                                    <p class="text-danger"
-                                        *ngIf="formGroup.get('alternateEmail').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                    <p class="text-danger" *ngIf="formGroup.get('alternateEmail').hasError('required') && (formGroup.dirty || formGroup.touched)">
                                         Alternate email is required.
                                     </p>
                                 </div>
                                 <div class="form-group">
                                     <label>Enter Phone Number *</label>
                                     <input type="text" formControlName="phone" />
-                                    <p class="text-danger"
-                                        *ngIf="formGroup.get('phone').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                    <p class="text-danger" *ngIf="formGroup.get('phone').hasError('required') && (formGroup.dirty || formGroup.touched)">
                                         Phone number is required.
                                     </p>
                                 </div>
@@ -57,8 +52,7 @@
                                 <div class="form-group">
                                     <label>Enter Hospital/Institute Name *</label>
                                     <input type="text" formControlName="companyName" />
-                                    <p class="text-danger"
-                                        *ngIf="formGroup.get('companyName').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                    <p class="text-danger" *ngIf="formGroup.get('companyName').hasError('required') && (formGroup.dirty || formGroup.touched)">
                                         Hospital/Institute name is required.
                                     </p>
                                 </div>
@@ -68,8 +62,7 @@
                                         <option *ngFor="let data of countries" [value]="data.name">{{data.name}}
                                         </option>
                                     </select>
-                                    <p class="text-danger"
-                                        *ngIf="formGroup.get('country').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                    <p class="text-danger" *ngIf="formGroup.get('country').hasError('required') && (formGroup.dirty || formGroup.touched)">
                                         Country is required.
                                     </p>
                                 </div>
@@ -136,8 +129,7 @@
                                     <div class="form-group mt-3" *ngIf="otherTemplate">
                                         <input type="text" formControlName="symposium" />
                                     </div>
-                                    <p class="text-danger"
-                                        *ngIf="formGroup.get('symposium').hasError('required') && (formGroup.dirty || formGroup.touched)">
+                                    <p class="text-danger" *ngIf="formGroup.get('symposium').hasError('required') && (formGroup.dirty || formGroup.touched)">
                                         Symposium is required.
                                     </p>
 
@@ -262,8 +254,7 @@
                                         (click)="onSubmit()">
                                         Buy It
                                     </button> -->
-                                    <button class="btn bg-theme text-white f-14 w-100" [disabled]="!formGroup.valid"
-                                        (click)="onSubmit()">
+                                    <button class="btn bg-theme text-white f-14 w-100" [disabled]="!formGroup.valid" (click)="onSubmit()">
                                         Proceed to Register
                                     </button>
                                 </div>

@@ -46,7 +46,8 @@
                                 <div class="form-group">
                                     <label>Select Country</label>
                                     <select class="form-control" id="sel1" formControlName="country">
-                    <option *ngFor="let data of countries" [value]="data.name">{{data.name}}
+                    <option *ngFor="let data of countries" [value]="data.name">
+                      {{ data.name }}
                     </option>
                   </select>
                                     <p *ngIf="!userForm.get('country').valid" class="text-danger">
@@ -62,12 +63,16 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Enter Password</label>
-                                    <input name="password" [type]="passwordToggler ? 'password': 'text'" formControlName="password" />
+                                    <input name="password" [type]="passwordToggler ? 'password' : 'text'" formControlName="password" />
                                     <p *ngIf="!userForm.get('password').valid" class="text-danger">
                                         Password is required
                                     </p>
                                     <div class="eye-icon-div">
-                                        <i (click)="passwordToggler = !passwordToggler" class="cursor" [ngClass]=" passwordToggler ? 'fa fa-eye-slash eye-icon': 'fa fa-eye icon eye-icon1'">
+                                        <i (click)="passwordToggler = !passwordToggler" class="cursor" [ngClass]="
+                        passwordToggler
+                          ? 'fa fa-eye-slash eye-icon'
+                          : 'fa fa-eye icon eye-icon1'
+                      ">
                     </i>
                                     </div>
                                 </div>
@@ -87,7 +92,9 @@
                     <div class="col-lg-6 col-12">
                         <div class="enroll-right">
                             <div class="section-title">
-                                <h2>More Than 6K Doctors Have Benefitted from BIEDX courses, it's your turn now!</h2>
+                                <h2>
+                                    More Than 6K Doctors Have Benefitted from BIEDX courses, it's your turn now!
+                                </h2>
                                 <p>
                                     Whether you need to start from the basics or you need advanced learning, we have you covered!.
                                 </p>

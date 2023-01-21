@@ -13,7 +13,7 @@
                             <!-- Form -->
                             <form class="form inline" action="#" style="padding-top: 18px;">
                                 <div class="form-group">
-                                    <label>Enter Your Email/Phone</label>
+                                    <label>Enter Your Email *</label>
                                     <input name="email" type="text" [(ngModel)]="user.email" required />
                                     <!-- <p *ngIf="errorMessage.length > 0" style="margin-left: 2.2rem;"
                                         class="text-danger my-3">{{
@@ -22,7 +22,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Enter Password</label>
+                                    <label>Enter Password *</label>
                                     <input name="password" class="input-field" [type]="passwordToggler ? 'password' : 'text'" [(ngModel)]="user.password" required />
                                     <!-- <p *ngIf="errorMessage.length > 0" style="margin-left: 2.2rem;"
                                         class="text-danger my-3">{{

@@ -999,9 +999,11 @@
 
 .welcome-text {
     font-size: 39px;
-    font-weight: 600;
-    color: #e30967;
     margin-bottom: 15px;
+    span {
+        font-weight: 500;
+        color: #e30967 !important;
+    }
 }
 
 .courses.single .single-info h4 {
