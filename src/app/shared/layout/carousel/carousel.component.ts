@@ -8,30 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class CarouselComponent implements OnInit {
   products: any[] = [
     {
-      id: '1000',
-      code: 'f230fh0g3',
-      name: 'One-stop solution',
-      name2:"for radiology learning",
-      description: 'Our mission is to empower radiologists and surgeons with state-of-the-art',
-      description2: 'radiology knowledge for a deep and lasting impact on the last patient',
+      name: 'BIE USG Symposium 2023',
       image: '../../../../assets/image2/carousel1.jpeg',
     },
     {
-      id: '1001',
-      name: 'State-of-the-art',
-      name2: 'with personalized attention',
-      description: 'We focus on providing the state-of-the-art knowledge along with ',
-      description2: 'a lot of personalized attention in order for you to grow faster',
-      image: '../../../../assets/images/slider/slider-bg3.jpg',
-
-    },
-    {
-      id: '1003',
-      name: 'Sharing is caring',
-      description: 'We trust that the more we share with the doctors,',
-      description2: 'the more it will help the patients',
-      image: '../../../../assets/image2/carousel3.gif',
-
+      name: 'BIE CEM Symposium 2023',
+      image: '../../../../assets/image2/carousel1.jpeg',
     },
   ];
 

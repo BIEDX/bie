@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ProviderUserAuthService } from '../../../core/providers/auth/provider-user-auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { COUNTRIES } from 'src/app/core/constants';
 
 @Component({
   selector: 'el-parallax',
@@ -9,13 +10,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./parallax.component.scss']
 })
 export class ParallaxComponent implements OnInit {
-  userForm:FormGroup;
+  userForm: FormGroup;
   errorResponse: any = null;
   btnMessage: string = "";
   passwordToggler: boolean;
-  @ViewChild('errorMessageTemp', { static: false} ) errorMessageTem: ElementRef<HTMLElement>;
+  countries = COUNTRIES;
+  @ViewChild('errorMessageTemp', { static: false }) errorMessageTem: ElementRef<HTMLElement>;
 
-  constructor(private userAuth:ProviderUserAuthService, private router: Router, private formBuilder: FormBuilder) {
+  constructor(private userAuth: ProviderUserAuthService, private router: Router, private formBuilder: FormBuilder) {
     this.userForm = this.formBuilder.group({
       email: ['', Validators.required],
       phone: ['', Validators.required],
@@ -25,7 +27,7 @@ export class ParallaxComponent implements OnInit {
       affiliation: ['', Validators.required],
       password: ['', Validators.required]
     })
-   }
+  }
 
   ngOnInit(): void {
     this.passwordToggler = true;
@@ -36,17 +38,17 @@ export class ParallaxComponent implements OnInit {
   }
 
 
-  signupHandler(){
+  signupHandler() {
     const value = this.userForm.value;
     this.btnMessage = "";
     this.errorResponse = null;
-    this.userAuth.userSignUp(value).subscribe((res:any) => {
-      if(res.header.code === 200){
+    this.userAuth.userSignUp(value).subscribe((res: any) => {
+      if (res.header.code === 200) {
         this.router.navigateByUrl('/auth/sign-in');
       } else {
         this.btnMessage = res.header.message;
         this.errorResponse = res;
-        setTimeout(()=>{
+        setTimeout(() => {
           this.btnMessage = ''
         }, 3000)
       }

@@ -14,7 +14,7 @@
             margin-bottom: 1.6em;
             font-size: 13px;
             font-weight: 400;
-            color: #4D4D4D;
+            color: #4d4d4d;
         }
     }
 }
@@ -25,9 +25,10 @@
         margin: 0px 100px;
         min-height: 500px;
         text-align: center;
-        padding: 50px 0;
+        padding: 5% 0;
+        padding-bottom: 0;
         h2 {
-            color: #DEB8FF;
+            color: #deb8ff;
             font-family: "Shadows Into Light", Sans-serif !important;
             font-size: 40px;
             text-align: center;
@@ -66,7 +67,7 @@
         padding: 50px 0px;
         padding-top: 0 !important;
         h2 {
-            color: #30052D;
+            color: #30052d;
             font-family: "Shadows Into Light", Sans-serif;
             font-size: 31px;
             text-align: center;
@@ -78,6 +79,7 @@
                 display: flex;
                 justify-content: center;
                 padding: 10% 0px;
+                padding-bottom: 10px;
                 .seprator {
                     padding: 11px 0;
                     div {
@@ -106,8 +108,9 @@
     }
     .testimonial-div {
         padding: 50px 0px;
+        padding-top: 0;
         h2 {
-            color: #30052D;
+            color: #30052d;
             font-family: "Shadows Into Light", Sans-serif;
             font-size: 31px;
             text-align: center;
@@ -118,10 +121,10 @@
             padding: 20px;
             margin: 0px 5px;
             border-radius: 6px;
-            min-height: 450px;
+            min-height: 500px;
             text-align: center;
             img {
-                border: 1px solid #30052D;
+                border: 1px solid #30052d;
                 border-radius: 50%;
                 margin-bottom: 1.2em;
             }
@@ -147,7 +150,7 @@
     width: 50px;
     border-radius: 100%;
     border-color: 2px solid#DEB8FF !important;
-    background-color: #727272C2;
+    background-color: #727272c2;
     padding-left: 18px;
     padding-top: 13px;
     margin-right: 10px;
@@ -156,7 +159,7 @@
 .img-class {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px
+    gap: 10px;
 }
 
 .btnsize {
@@ -165,18 +168,18 @@
     font-weight: 600;
     text-transform: uppercase;
     line-height: 1em;
-    fill: #30052D;
-    color: #30052D;
+    fill: #30052d;
+    color: #30052d;
     padding: 0px 25px;
     background-color: rgba(223, 193, 94, 0);
     border-style: solid;
     border-width: 2px 2px 2px 2px;
     border-radius: 50px 50px 50px 50px;
-    border-color: #30052D;
+    border-color: #30052d;
 }
 
 .btnsize:hover {
     color: #ffffff;
-    background-color: #F6ACCD;
+    background-color: #f6accd;
     border-color: #dfc15e !important;
 }

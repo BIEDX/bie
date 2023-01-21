@@ -57,7 +57,8 @@ export class ViewCartComponent implements OnInit {
     } else if (data?.length === 1 && name === 'BIE CEM Symposium 2023 Only') {
       window.location.href = "https://book.stripe.com/14k7sx9sE1ea9by002";
     } else if (data?.length > 1) {
-      window.location.href = "https://book.stripe.com/9AQ9AF48kf505Zm4gk"
+      // window.location.href = "https://book.stripe.com/9AQ9AF48kf505Zm4gk"
+      window.location.href = "https://buy.stripe.com/00g5kp34gf500F27sx";
     }
   }
 
