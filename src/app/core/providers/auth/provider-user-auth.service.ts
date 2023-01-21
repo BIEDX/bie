@@ -157,4 +157,15 @@ export class ProviderUserAuthService {
       return false;
     }
   }
+
+  forgotPassword(params: any = {}): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/auth/forgot-password`, params)
+    // .pipe(map((res:any) => {
+    //   if (res.header.code === 200) {
+    //     localStorage.setItem(this.currentUserKey, JSON.stringify(res));
+    //     this.currentUserSubject.next(res);
+    //   }
+    //   return res;
+    // }));
+  }
 }
