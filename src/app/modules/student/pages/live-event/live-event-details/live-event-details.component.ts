@@ -178,7 +178,6 @@ export class LiveEventDetailsComponent implements OnInit {
         (res) => {
           console.log('res', res);
           if (res) {
-            alert('Congratulations you are successfully register for BIE' + this.data + 'Symposium 2023');
             // this.template = true;
             localStorage.removeItem('cart');
             this._constantService.cartSubject.next(null);
