@@ -51,3 +51,12 @@
         top: 709px !important;
     }
 }
+
+:host ::ng-deep .iti {
+    top: 32px;
+    left: -105px;
+}
+
+.phoneInput {
+    padding-left: 60px !important;
+}

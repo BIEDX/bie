@@ -23,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SubscribeComponent } from './layout/subscribe/subscribe.component';
 import { StudentNavigationComponent } from './layout/student-navigation/student-navigation.component';
 import { AdminNavigationComponent } from './layout/admin-navigation/admin-navigation.component';
+import { Ng2TelInputModule } from 'ng2-tel-input';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { AdminNavigationComponent } from './layout/admin-navigation/admin-naviga
     ReactiveFormsModule,
     FormsModule,
     CarouselModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2TelInputModule
   ],
   exports: [HeaderComponent,
     FooterComponent,

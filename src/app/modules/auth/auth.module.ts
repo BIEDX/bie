@@ -9,7 +9,7 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { Ng2TelInputModule } from 'ng2-tel-input';
 
 @NgModule({
   declarations: [
@@ -26,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     SharedModule,
     FormsModule,
     HttpClientModule,
+    Ng2TelInputModule
   ]
 })
 export class AuthModule { }

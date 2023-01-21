@@ -23,29 +23,40 @@
 
                                 <div class="form-group">
                                     <label>Enter Password *</label>
-                                    <input name="password" class="input-field" [type]="passwordToggler ? 'password' : 'text'" [(ngModel)]="user.password" required />
+                                    <input name="password" class="input-field"
+                                        [type]="passwordToggler ? 'password' : 'text'" [(ngModel)]="user.password"
+                                        required />
                                     <!-- <p *ngIf="errorMessage.length > 0" style="margin-left: 2.2rem;"
                                         class="text-danger my-3">{{
                                         errorMessage }}
                                     </p> -->
                                     <div class="eye-icon-div">
-                                        <i (click)="passwordToggler = !passwordToggler" class="cursor" [ngClass]=" passwordToggler ? 'fa fa-eye-slash eye-icon': 'fa fa-eye icon eye-icon1'">
+                                        <i (click)="passwordToggler = !passwordToggler" class="cursor"
+                                            [ngClass]=" passwordToggler ? 'fa fa-eye-slash eye-icon': 'fa fa-eye icon eye-icon1'">
                                         </i>
                                     </div>
                                 </div>
                                 <div class="d-lg-flex justify-content-center mb-4">
-                                    <button type="submit" class="btn bg-theme f-14 fw-mdm text-white" (click)="signInHandler()">
+                                    <button type="submit" class="btn bg-theme f-14 fw-mdm text-white"
+                                        (click)="signInHandler()">
                                         Log In
                                     </button>
                                 </div>
-                                <div class="d-lg-flex justify-content-center">
-
-                                    <button type="button" class="btn btn-link text-theme f-14 fw-mdm" [routerLink]="'/auth/sign-up'">
-                                        Register
-                                    </button>
-                                    <button type="button" class="btn btn-link text-theme f-14 fw-mdm" [routerLink]="'/auth/forgot-password'">
-                                        Forgot Password
-                                    </button>
+                                <div class="d-lg-flex flex-column align-items-center justify-content-center">
+                                    <div class="mt-2">
+                                        <span>Don't have an account? </span>
+                                        <button type="button" class="btn p-0 btn-link text-theme f-14 fw-mdm"
+                                            [routerLink]="'/auth/sign-up'">
+                                            Register
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <span>Forgot password? </span>
+                                        <button type="button" class="btn p-0 btn-link text-theme f-14 fw-mdm"
+                                            [routerLink]="'/auth/forgot-password'">
+                                            Reset Password
+                                        </button>
+                                    </div>
                                 </div>
                                 <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
                             </form>
@@ -58,7 +69,8 @@
                             <div class="section-title">
                                 <h2>More Than 6K Doctors Have Benefitted From BIEDX Courses, It's Your Turn Now!</h2>
                                 <p>
-                                    Whether you need to start from the basics or you need advanced learning, we have you covered!.
+                                    Whether you need to start from the basics or you need advanced learning, we have you
+                                    covered!.
                                 </p>
                             </div>
                         </div>

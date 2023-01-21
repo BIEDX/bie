@@ -38,9 +38,19 @@
     font-weight: 500;
     color: #BCBCBC;
 }
-.buy-it{
+
+.buy-it {
     color: #fff;
     padding: 10px 20px;
     border-radius: 50px;
     background-color: #e30967;
+}
+
+:host ::ng-deep .iti {
+    top: 35px;
+    left: -130px;
+}
+
+.phoneInput {
+    padding-left: 60px !important;
 }

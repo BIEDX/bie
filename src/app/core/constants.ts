@@ -48,7 +48,9 @@ export interface EventRegistration {
     specialRequest?: string,
     symposium: string,
     userAgreement: boolean,
+    country: string,
     event: string,
+    country_flag: string,
 }
 export interface BlogInterface {
     title: string,
@@ -71,6 +73,12 @@ export enum Role {
     Student = 'student',
     Teacher = 'teacher'
 }
+
+export const dial_SG = {
+    dialCode: '+65',
+    countryName: 'sg',
+    countryNameFull: 'SINGAPORE',
+};
 
 export const COUNTRIES = [
     { name: 'Afghanistan', code: 'AF' },

@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { COUNTRIES } from 'src/app/core/constants';
+import { COUNTRIES, dial_SG } from 'src/app/core/constants';
 import { ProviderUserAuthService } from 'src/app/core/providers/auth/provider-user-auth.service';
 // import { Router } from '@angular/router';
 // import { ProviderUserAuthService } from '../../../../core/providers/auth/provider-user-auth.service';
@@ -16,7 +16,8 @@ export class SignUpComponent implements OnInit {
   btnMessage: string = ""
   eventId: string;
   passwordToggler: boolean;
-  countries= COUNTRIES;
+  countries = COUNTRIES;
+  iso2: string = dial_SG.countryName;
   @ViewChild('errorMessageTemp', { static: false }) errorMessageTem: ElementRef<HTMLElement>;
 
   constructor(
@@ -32,7 +33,8 @@ export class SignUpComponent implements OnInit {
       lastName: ['', Validators.required],
       country: ['', Validators.required],
       affiliation: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      country_flag: [''],
     })
   }
 
@@ -53,11 +55,57 @@ export class SignUpComponent implements OnInit {
     this.passwordToggler = !this.passwordToggler;
   }
 
+  onCountryChange(event) {
+    let data = event.hasOwnProperty('s') ? event.s : event;
+    if (data && data.hasOwnProperty('dialCode')) {
+      data.dial_code = data.dialCode;
+    }
+    this.userForm.controls['country_flag'].patchValue(data);
+    this.iso2 = data.iso2;
+  }
+
+  onLoadCountryChange(event) {
+    setTimeout(() => {
+      event.setCountry(this.iso2);
+      let data: any = event.hasOwnProperty('s') ? event.s : event;
+      if (data && data.hasOwnProperty('dialCode')) {
+        data.dial_code = data.dialCode;
+      }
+      this.userForm.controls['country_flag'].patchValue(data);
+    }, 500);
+  }
+
+  filterCountryFlag(data: any) {
+    let object = {
+      name: dial_SG.countryNameFull,
+      iso2: dial_SG.countryName,
+      dial_code: dial_SG.dialCode,
+    };
+    if (data) {
+      let checkdialcode = data.hasOwnProperty('dial_code') ? true : false;
+      checkdialcode = checkdialcode ? data.dial_code.replace('+', '') : false;
+      object.name = data.hasOwnProperty('name') ? data.name : object.name;
+      object.iso2 = data.hasOwnProperty('iso2') ? data.iso2 : object.iso2;
+      object.dial_code = checkdialcode ? '+' + checkdialcode : object.dial_code;
+    }
+    return object;
+  }
+
   signupHandler() {
-    const value = this.userForm.value;
+    const formData = this.userForm.value;
     this.btnMessage = "";
     this.errorResponse = null;
-    this.userAuth.userSignUp(value).subscribe((res: any) => {
+    const countryAndMobile = this.filterCountryFlag(formData.country_flag);
+    let payload = {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      phone: countryAndMobile.dial_code + formData.phone,
+      country: formData.country,
+      password: formData.password,
+      country_flag: countryAndMobile.dial_code,
+    }
+    this.userAuth.userSignUp(payload).subscribe((res: any) => {
       if (res.header.code === 200) {
         this.router.navigateByUrl('/auth/sign-in' + '?eid=' + this.eventId);
       } else {

@@ -24,6 +24,7 @@
     "bootstrap": "^4.0.0",
     "guid-typescript": "^1.0.9",
     "ng-bootstrap": "^1.6.3",
+    "ng2-tel-input": "^2.3.0",
     "primeng": "13.4.1",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",

@@ -10,12 +10,22 @@
     top: 931px !important;
 }
 
+:host ::ng-deep .iti {
+    top: 32px;
+    left: -156px;
+}
+
+.phoneInput {
+    padding-left: 60px !important;
+}
+
 @media (max-width: 767px) {
     .eye-icon {
         position: absolute;
         left: 190px !important;
         top: 929px !important;
     }
+
     .eye-icon1 {
         position: absolute;
         left: 194px !important;

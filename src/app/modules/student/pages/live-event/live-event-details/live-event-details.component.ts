@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { COUNTRIES, EventRegistration } from 'src/app/core/constants';
+import { COUNTRIES, dial_SG, EventRegistration } from 'src/app/core/constants';
 import { ConstantsService } from 'src/app/core/providers/apis/constants.service';
 import { LiveEventService } from 'src/app/core/providers/apis/live-event.service';
 import { TeacherService } from 'src/app/core/providers/apis/teacher.service';
@@ -32,6 +32,7 @@ export class LiveEventDetailsComponent implements OnInit {
   otherData: any;
   countries = COUNTRIES;
   data: any;
+  iso2: string = dial_SG.countryName;
   constructor(
     private _activatedRoute: ActivatedRoute,
     private _liveEventService: LiveEventService,
@@ -111,6 +112,43 @@ export class LiveEventDetailsComponent implements OnInit {
     )
   }
 
+
+  onLoadCountryChange(event) {
+    setTimeout(() => {
+      event.setCountry(this.iso2);
+      let data: any = event.hasOwnProperty('s') ? event.s : event;
+      if (data && data.hasOwnProperty('dialCode')) {
+        data.dial_code = data.dialCode;
+      }
+      this.formGroup.controls['country_flag'].patchValue(data);
+    }, 500)
+  }
+
+  filterCountryFlag(data: any) {
+    let object = {
+      name: dial_SG.countryNameFull,
+      iso2: dial_SG.countryName,
+      dial_code: dial_SG.dialCode,
+    };
+    if (data) {
+      let checkdialcode = data.hasOwnProperty('dial_code') ? true : false;
+      checkdialcode = checkdialcode ? data.dial_code.replace('+', '') : false;
+      object.name = data.hasOwnProperty('name') ? data.name : object.name;
+      object.iso2 = data.hasOwnProperty('iso2') ? data.iso2 : object.iso2;
+      object.dial_code = checkdialcode ? '+' + checkdialcode : object.dial_code;
+    }
+    return object;
+  }
+
+  onCountryChange(event) {
+    let data = event.hasOwnProperty('s') ? event.s : event;
+    if (data && data.hasOwnProperty('dialCode')) {
+      data.dial_code = data.dialCode;
+    }
+    this.formGroup.controls['country_flag'].patchValue(data);
+    this.iso2 = data.iso2;
+  }
+
   getTeacher(): void {
     this.serviceSubscription.push(
       this._teacherService.getTeachersData(this.eventDetails?.teacherId).subscribe(
@@ -149,6 +187,7 @@ export class LiveEventDetailsComponent implements OnInit {
       cancelPolicy: ['', [Validators.required]],
       userAgreement: ['', [Validators.required]],
       event: ['', [Validators.required]],
+      country_flag: [''],
     })
   }
 
@@ -179,6 +218,7 @@ export class LiveEventDetailsComponent implements OnInit {
       return;
     }
     let formData = this.formGroup.value;
+    const countryAndMobile = this.filterCountryFlag(formData.country_flag);
     this.payload = {
       address: formData.address,
       ambassadorName: formData.ambassadorName,
@@ -188,11 +228,13 @@ export class LiveEventDetailsComponent implements OnInit {
       firstName: formData.firstName,
       lastName: formData.lastName,
       email: formData.email,
-      phone: formData.phone,
+      phone: countryAndMobile.dial_code + formData.phone,
+      country_flag: countryAndMobile.dial_code,
       alternateEmail: formData.alternateEmail,
       specialRequest: formData.specialRequest,
       symposium: formData.symposium,
       userAgreement: formData.userAgreement,
+      country: formData.country,
       event: formData.event,
     };
     console.log('payload', this, this.payload);

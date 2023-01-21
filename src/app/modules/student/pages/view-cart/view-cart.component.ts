@@ -53,12 +53,12 @@ export class ViewCartComponent implements OnInit {
     console.log(name);
 
     if (data?.length === 1 && name === 'BIE USG Symposium 2023 Only') {
-      window.location.href = "https://book.stripe.com/9AQ9AF34gcWSafC6or";
+      window.location.href = "https://buy.stripe.com/5kA3cOftBh0H9rydQQ";
     } else if (data?.length === 1 && name === 'BIE CEM Symposium 2023 Only') {
-      window.location.href = "https://book.stripe.com/14k7sx9sE1ea9by002";
+      window.location.href = "https://buy.stripe.com/7sI9Bc95d39R0V2dQR";
     } else if (data?.length > 1) {
-      // window.location.href = "https://book.stripe.com/9AQ9AF48kf505Zm4gk"
-      window.location.href = "https://buy.stripe.com/00g5kp34gf500F27sx";
+      window.location.href = "https://buy.stripe.com/3cs6p0gxFbGn6fm7su";
+      // window.location.href = "https://buy.stripe.com/00g5kp34gf500F27sx";
     }
   }
 

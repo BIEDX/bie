@@ -17,7 +17,7 @@ import { StudentRoutingModule } from './student-routing.module';
     CommonModule,
     StudentRoutingModule,
     SharedModule,
-    CarouselModule
+    CarouselModule,
   ]
 })
 export class StudentModule { }

@@ -1,5 +1,6 @@
 <!-- Enroll -->
-<section class="enroll overlay section d-none d-md-block" data-stellar-background-ratio="0.5" style="height: 1000px" id="register">
+<section class="enroll overlay section d-none d-md-block" data-stellar-background-ratio="0.5" style="height: 1000px"
+    id="register">
     <div class="container">
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
@@ -34,15 +35,26 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Enter Your Phone</label>
-                                    <input name="phone" type="text" formControlName="phone" placeholder="Enter your number with country code" required />
+                                    <ng-container *ngIf="userForm?.get('country_flag')?.value; else noFlag">
+                                        <!-- <input type="text" formControlName="country_flag" ng2TelInput
+                                            [ng2TelInputOptions]="{initialCountry: userForm?.get('country_flag')?.value?.iso2}"
+                                            (countryChange)="onCountryChange($event)"> -->
+                                    </ng-container>
+                                    <ng-template #noFlag>
+                                        <input type="text" formControlName="country_flag" ng2TelInput
+                                            [ng2TelInputOptions]="{initialCountry: iso2}"
+                                            (intlTelInputObject)="onLoadCountryChange($event)" />
+                                    </ng-template>
+                                    <input name="phone" type="text" formControlName="phone" class="phoneInput"
+                                        required />
                                 </div>
                                 <div class="form-group">
                                     <label>Select Country</label>
                                     <select class="form-control" id="sel1" formControlName="country">
-                    <option *ngFor="let data of countries" [value]="data.name">
-                      {{ data.name }}
-                    </option>
-                  </select>
+                                        <option *ngFor="let data of countries" [value]="data.name">
+                                            {{ data.name }}
+                                        </option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Affiliation</label>
@@ -50,14 +62,15 @@
                                 </div>
                                 <div class="form-group input-icons">
                                     <label>Enter Your Password</label>
-                                    <input name="password" [type]="passwordToggler ? 'password' : 'text'" formControlName="password" class="input-field" required />
+                                    <input name="password" [type]="passwordToggler ? 'password' : 'text'"
+                                        formControlName="password" class="input-field" required />
                                     <div class="eye-icon-div">
                                         <i (click)="passwordToggler = !passwordToggler" class="cursor" [ngClass]="
                         passwordToggler
                           ? 'fa fa-eye-slash eye-icon'
                           : 'fa fa-eye icon eye-icon1'
                       ">
-                    </i>
+                                        </i>
                                     </div>
                                 </div>
                                 <div id="errorMessage" class="">
@@ -65,13 +78,18 @@
                                         {{ errorResponse.header.message }}
                                     </p>
                                 </div>
-                                <div class="d-flex justify-content-center">
-                                    <button type="submit" class="btn bg-theme text-white f-14" (click)="signupHandler()">
-                    {{ btnMessage.length > 0 ? btnMessage : "Register Now" }}
-                  </button>
-                                    <button type="submit" class="btn btn-link text-theme f-14" [routerLink]="'/auth/sign-in'">
-                    Sign In
-                  </button>
+                                <div class="d-flex flex-column justify-content-center align-items-center">
+                                    <button type="submit" class="btn bg-theme text-white f-14"
+                                        (click)="signupHandler()">
+                                        {{ btnMessage.length > 0 ? btnMessage : "Register Now" }}
+                                    </button>
+                                    <div class="mt-2">
+                                        <span>Already have an account? </span>
+                                        <button type="submit" class="btn btn-link text-theme f-14  p-0"
+                                            [routerLink]="'/auth/sign-in'">
+                                            Sign In
+                                        </button>
+                                    </div>
                                 </div>
                             </form>
                             <!--/ End Form -->
@@ -85,7 +103,8 @@
                                     More than 6000 doctors have benefitted from BIEDX courses, it's your turn now!
                                 </h2>
                                 <p>
-                                    Whether you need to start from the basics or you need advanced radiology learning, we have you covered!
+                                    Whether you need to start from the basics or you need advanced radiology learning,
+                                    we have you covered!
                                 </p>
                             </div>
                         </div>
@@ -131,7 +150,8 @@
         </div>
     </div>
 </section>
-<section class="enroll enroll-img overlay section d-md-none" data-stellar-background-ratio="0.5" style="height: 1100px" id="register">
+<section class="enroll enroll-img overlay section d-md-none" data-stellar-background-ratio="0.5" style="height: 1100px"
+    id="register">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-12 mb-0">
@@ -139,7 +159,8 @@
                     <div class="section-title">
                         <h2>More than 6000 doctors have benefitted, it’s your turn!</h2>
                         <p>
-                            Whether you need to start from the basics or you need advanced radiology learning, we have you covered!
+                            Whether you need to start from the basics or you need advanced radiology learning, we have
+                            you covered!
                         </p>
                     </div>
                 </div>
@@ -187,7 +208,8 @@
                     <div class="form-title">
                         <h2>Enroll Today to participate in pre launch beta testing.</h2>
                         <p>
-                            For a <b>Free</b> and early access to educational content, hands-on training, and a lot more!
+                            For a <b>Free</b> and early access to educational content, hands-on training, and a lot
+                            more!
                         </p>
                     </div>
 
@@ -200,47 +222,56 @@
                         </div>
                         <div class="form-group">
                             <label>Enter Your name</label>
-                            <input name="name" type="text" formControlName="name" placeholder="Enter you name" required />
+                            <input name="name" type="text" formControlName="name" placeholder="Enter you name"
+                                required />
                         </div>
                         <div class="form-group">
                             <label>Enter Your Email</label>
-                            <input name="email" type="email" formControlName="email" placeholder="Enter your email address" required />
+                            <input name="email" type="email" formControlName="email"
+                                placeholder="Enter your email address" required />
                         </div>
                         <div class="form-group">
                             <label>Enter Your Phone</label>
-                            <input name="phone" type="text" formControlName="phone" placeholder="Enter your number with country code" required />
+                            <input name="phone" type="text" formControlName="phone"
+                                placeholder="Enter your number with country code" required />
                         </div>
                         <div class="form-group">
                             <label>Select Country</label>
                             <select class="form-control" id="sel1" formControlName="country">
-                <option *ngFor="let data of countries" [value]="data.name">
-                  {{ data.name }}
-                </option>
-              </select>
+                                <option *ngFor="let data of countries" [value]="data.name">
+                                    {{ data.name }}
+                                </option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>Affiliation</label>
-                            <input name="phone" type="text" formControlName="affiliation" placeholder="Enter your affiliation" required />
+                            <input name="phone" type="text" formControlName="affiliation"
+                                placeholder="Enter your affiliation" required />
                         </div>
                         <div class="form-group input-icons">
                             <label>Enter Your Password</label>
-                            <input name="password" [type]="passwordToggler ? 'password' : 'text'" formControlName="password" class="input-field" required />
+                            <input name="password" [type]="passwordToggler ? 'password' : 'text'"
+                                formControlName="password" class="input-field" required />
                             <div class="eye-icon-div">
                                 <i (click)="passwordToggler = !passwordToggler" class="cursor" [ngClass]="
                     passwordToggler
                       ? 'fa fa-eye-slash eye-icon'
                       : 'fa fa-eye icon eye-icon1'
                   ">
-                </i>
+                                </i>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-center">
+                        <div class="d-flex flex-column align-items-center justify-content-center">
                             <button type="submit" class="btn bg-theme text-white" (click)="signupHandler()">
-                {{ btnMessage.length > 0 ? btnMessage : "Register Now" }}
-              </button>
-                            <button type="submit" class="btn btn-link text-theme f-14" [routerLink]="'/auth/sign-in'">
-                SIgn In
-              </button>
+                                {{ btnMessage.length > 0 ? btnMessage : "Register Now" }}
+                            </button>
+                            <div class="mt-2">
+                                <span>Already have an account? </span>
+                                <button type="submit" class="btn btn-link text-theme f-14  p-0"
+                                    [routerLink]="'/auth/sign-in'">
+                                    Sign In
+                                </button>
+                            </div>
                         </div>
                     </form>
                     <!--/ End Form -->
