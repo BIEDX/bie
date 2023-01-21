@@ -58,7 +58,7 @@ export class SignUpComponent implements OnInit {
     this.btnMessage = "";
     this.errorResponse = null;
     this.userAuth.userSignUp(value).subscribe((res: any) => {
-      if (res.header.code === 200) {       
+      if (res.header.code === 200) {
         this.router.navigateByUrl('/auth/sign-in' + '?eid=' + this.eventId);
       } else {
         this.btnMessage = res.header.message;
