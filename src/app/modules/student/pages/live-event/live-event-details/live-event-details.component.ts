@@ -31,6 +31,7 @@ export class LiveEventDetailsComponent implements OnInit {
   otherTemplate: any;
   otherData: any;
   countries = COUNTRIES;
+  data: any;
   constructor(
     private _activatedRoute: ActivatedRoute,
     private _liveEventService: LiveEventService,
@@ -177,6 +178,7 @@ export class LiveEventDetailsComponent implements OnInit {
         (res) => {
           console.log('res', res);
           if (res) {
+            alert('Congratulations you are successfully register for BIE' + this.data + 'Symposium 2023');
             // this.template = true;
             localStorage.removeItem('cart');
             this._constantService.cartSubject.next(null);
@@ -196,19 +198,19 @@ export class LiveEventDetailsComponent implements OnInit {
 
   onEvent(event): void {
     console.log('event', event.target.value);
-    let data = event.target.value;
-    if (data === 'CEM') {
+    this.data = event.target.value;
+    if (this.data === 'CEM') {
       this.secondDayEventDetail = this.eventDetails?.video[0];
       console.log('firstDayEventDetail', this.firstDayEventDetail);
       this.firstDayEventDetail = null;
       this.bothDayEventDetail = null;
-    } else if (data === 'USG') {
+    } else if (this.data === 'USG') {
       this.firstDayEventDetail = this.eventDetails?.video[1];
       console.log('secondDayEventDetail', this.secondDayEventDetail);
       this.secondDayEventDetail = null;
       this.bothDayEventDetail = null;
     }
-    else if (data === 'USG & CEM') {
+    else if (this.data === 'USG & CEM') {
       this.bothDayEventDetail = this.eventDetails?.video;
       console.log('bothDayEventDetail', this.bothDayEventDetail);
       this.firstDayEventDetail = null;

@@ -24,7 +24,7 @@
                                             <span><i class="fa fa-calendar"></i>{{product.date}}</span>
                                         </div>
                                         <h4><a [href]="product.link" target="_blank">{{product.name}}</a></h4>
-                                        <div>
+                                        <div *ngIf="product?.join">
                                             <button [routerLink]="'/usg-cem-symposium-2023'" class="btn bg-theme text-white f-14">Join
                                                 Event</button>
                                         </div>
