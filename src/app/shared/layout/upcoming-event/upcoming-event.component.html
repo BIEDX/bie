@@ -11,7 +11,8 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <p-carousel [value]="products" [numVisible]="3" [numScroll]="3" [circular]="true" [autoplayInterval]="5000" [responsiveOptions]="responsiveOptions">
+                <p-carousel [value]="products" [numVisible]="3" [numScroll]="3" [circular]="true"
+                    [autoplayInterval]="5000" [responsiveOptions]="responsiveOptions">
                     <ng-template let-product pTemplate="item">
                         <div class="product-item event-slider">
                             <div class="product-item-content">
@@ -25,7 +26,7 @@
                                         </div>
                                         <h4><a [href]="product.link" target="_blank">{{product.name}}</a></h4>
                                         <div *ngIf="product?.join">
-                                            <button [routerLink]="'/usg-cem-symposium-2023'" class="btn bg-theme text-white f-14">Join
+                                            <button (click)="navigate()" class="btn bg-theme text-white f-14">Join
                                                 Event</button>
                                         </div>
                                     </div>

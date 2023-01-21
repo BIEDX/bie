@@ -86,6 +86,7 @@
     }
 }
 
+
 .btn-link {
     text-decoration: none;
 
@@ -97,4 +98,8 @@
     &:focus {
         box-shadow: none;
     }
+}
+
+.h-90-px {
+    height: 90px;
 }

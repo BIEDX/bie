@@ -14,11 +14,14 @@
 }
 
 .section-title {
-    padding: 0px!important;
+    padding: 0px !important;
 }
 
-.card-body{
-    p{
-        font-size: 14px;
+.card-body {
+    text-align: center;
+
+    p {
+        font-size: 12px;
+        font-weight: 600;
     }
 }

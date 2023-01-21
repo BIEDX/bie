@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'el-our-team',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OurTeamComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+   
+  ) { }
 
   ngOnInit(): void {
   }
+
 
 }

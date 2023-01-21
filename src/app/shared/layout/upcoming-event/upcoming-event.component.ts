@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'el-upcoming-event',
@@ -67,17 +68,19 @@ export class UpcomingEventComponent implements OnInit {
       image: '../../../../assets/images/objective.jpg',
       price: 79,
       join:true,
-      date:'Feb, 01 2023',
+      date:'Feb, 18 2023',
     },
     {
       name: 'BIE CEM Symposium 2023',
       image: '../../../../assets/images/objective1.webp',
       price: 79,
       join:true,
-      date:'Feb, 01 2023',
+      date:'Feb, 19 2023',
     },
   ];
-  constructor() {
+  constructor(
+    private _router: Router
+  ) {
     this.responsiveOptions = [
       {
         breakpoint: '1024px',
@@ -100,4 +103,9 @@ export class UpcomingEventComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  navigate() {
+    this._router.navigateByUrl('/usg-cem-symposium-2023')
+    window.scrollTo(0, 0);
+  }
 }
