@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080',
+  apiUrl: 'https://api.biedx.com',
   imgUrl: 'https://ajayshankar.blob.core.windows.net/bie/'
 };
 
