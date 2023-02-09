@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'https://api.biedx.com',
-  imgUrl: 'https://ajayshankar.blob.core.windows.net/bie/'
+  imgUrl: 'https://api.biedx.com/'
 };
 
 /*
