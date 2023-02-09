@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl:'https://biebackend.azurewebsites.net',
+  apiUrl:'https://api.biedx.com',
   imgUrl: 'https://ajayshankar.blob.core.windows.net/bie/'
 };
